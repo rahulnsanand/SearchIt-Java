@@ -1,42 +1,64 @@
 package com.searchit.tfg.TESTING;
 
 import com.github.wnameless.json.flattener.JsonFlattener;
-import com.github.wnameless.json.unflattener.JsonUnflattener;
-import org.apache.commons.io.FileUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static com.sun.activation.registries.LogSupport.log;
 
 public class JsonToCSV {
 
     public static void main(String[] args){
 
         JSONParser parser = new JSONParser();
+        String jsonFile = "C:\\Users\\Swastika\\Desktop\\zomato\\file1.json";
 
-        try (Reader reader = new FileReader("C:\\Users\\Swastika\\Desktop\\zomato\\file1.json")) {
+        try (Reader reader = new FileReader(jsonFile)) {
 
-            String exampleRequest = FileUtils.readFileToString(new File("C:\\Users\\Swastika\\Desktop\\zomato\\file1.json"), StandardCharsets.UTF_8);
 
-            String jsonStr = JsonFlattener.flatten(exampleRequest);
-            System.out.println(jsonStr);
+            Object jsonDataString = parser.parse(reader);
+
+            //Map<String, Object> flattenJson = JsonFlattener.flattenAsMap(jsonDataString);
+
+            System.out.println(jsonDataString);
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-//        String JsonFile = "{ \"a\" : { \"b\" : 1, \"c\": null, \"d\": [false, true] }, \"e\": \"f\", \"g\":2.3 }";
-//        Map<String, Object> flattenedJsonMap = JsonFlattener.flattenAsMap(JsonFile);
-//        System.out.println(flattenedJsonMap);
-
+    public List<String> getValuesForGivenKey(String jsonArrayStr, String key) {
+        JSONArray jsonArray = new JSONArray(jsonArrayStr);
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
+                .collect(Collectors.toList());
+    }
+    public static String readFile(String filename) {
+        String result = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            while (line != null) {
+                sb.append(line);
+                line = br.readLine();
+            }
+            result = sb.toString();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.searchit.tfg;
 
+import com.searchit.tfg.TESTING.Trie;
+
 public class Main{
 
     public static void main(String[] args) {
@@ -11,6 +13,15 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-
+        Trie dict = new Trie();
+        dict.insert("are");
+        dict.insert("area");
+        dict.insert("base");
+        dict.insert("cat");
+        dict.insert("cater");
+        dict.insert("basement");
+        String input = "cate";
+        System.out.print(input + ":   ");
+        System.out.println(dict.getMatchingPrefix(input));
     }
 }
