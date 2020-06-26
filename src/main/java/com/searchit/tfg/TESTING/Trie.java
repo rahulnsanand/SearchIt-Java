@@ -1,75 +1,62 @@
 package com.searchit.tfg.TESTING;
 
-import java.util.HashMap;
-
 public class Trie {
+    private TrieNode root;
 
-    private final TrieNode root;
-
-    public Trie(){
-        root = new TrieNode((char)0);
+    public Trie() {
+        root = new TrieNode();
     }
 
-    // Method to insert a new word to Trie
-    public void insert(String word){
-        // Find length of the given word
-        int length = word.length();
-        TrieNode crawl = root;
-        // Traverse through all characters of given word
-        for( int level = 0; level < length; level++)
-        {
-            HashMap<Character,TrieNode> child = crawl.getChildren();
-            char ch = word.charAt(level);
-            // If there is already a child for current character of given word
-            if( child.containsKey(ch))
-                crawl = child.get(ch);
-            else   // Else create a child
-            {
-                TrieNode temp = new TrieNode(ch);
-                child.put( ch, temp );
-                crawl = temp;
-            }
+    public void insert(String word) {
+        TrieNode current = root;
+
+        for (char l : word.toCharArray()) {
+            current = current.getChildren().computeIfAbsent(l, c -> new TrieNode());
         }
-        // Set bIsEnd true for last character
-        crawl.setIsEnd(true);
+        current.setEndOfWord(true);
     }
 
-    // The main method that finds out the longest string 'input'
-    public String getMatchingPrefix(String input){
-        String result = ""; // Initialize resultant string
-        int length = input.length();  // Find length of the input string
+    public boolean delete(String word) {
+        return delete(root, word, 0);
+    }
 
-        // Initialize reference to traverse through Trie
-        TrieNode crawl = root;
+    public boolean containsNode(String word) {
+        TrieNode current = root;
 
-        // Iterate through all characters of input string 'str' and traverse
-        // down the Trie
-        int level, prevMatch = 0;
-        for( level = 0 ; level < length; level++ )
-        {
-            // Find current character of str
-            char ch = input.charAt(level);
-
-            // HashMap of current Trie node to traverse down
-            HashMap<Character,TrieNode> child = crawl.getChildren();
-
-            // See if there is a Trie edge for the current character
-            if( child.containsKey(ch) )
-            {
-                result += ch;          //Update result
-                crawl = child.get(ch); //Update crawl to move down in Trie
-                // If this is end of a word, then update prevMatch
-                if( crawl.isEnd() )
-                    prevMatch = level + 1;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            TrieNode node = current.getChildren().get(ch);
+            if (node == null) {
+                return false;
             }
-            else  break;
+            current = node;
         }
-
-        // If the last processed character did not match end of a word,
-        // return the previously matching prefix
-        if( !crawl.isEnd() )
-            return result.substring(0, prevMatch);
-        else return result;
+        return current.isEndOfWord();
     }
 
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public boolean delete(TrieNode current, String word, int index) {
+        if (index == word.length()) {
+            if (!current.isEndOfWord()) {
+                return false;
+            }
+            current.setEndOfWord(false);
+            return current.getChildren().isEmpty();
+        }
+        char ch = word.charAt(index);
+        TrieNode node = current.getChildren().get(ch);
+        if (node == null) {
+            return false;
+        }
+        boolean shouldDeleteCurrentNode = delete(node, word, index + 1) && !node.isEndOfWord();
+
+        if (shouldDeleteCurrentNode) {
+            current.getChildren().remove(ch);
+            return current.getChildren().isEmpty();
+        }
+        return false;
+    }
 }

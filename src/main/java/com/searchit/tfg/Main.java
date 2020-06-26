@@ -1,5 +1,7 @@
 package com.searchit.tfg;
 
+
+import com.searchit.tfg.TESTING.CSVParserClass;
 import com.searchit.tfg.TESTING.Trie;
 
 public class Main{
@@ -13,15 +15,18 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-        Trie dict = new Trie();
-        dict.insert("are");
-        dict.insert("area");
-        dict.insert("base");
-        dict.insert("cat");
-        dict.insert("cater");
-        dict.insert("basement");
-        String input = "cate";
-        System.out.print(input + ":   ");
-        System.out.println(dict.getMatchingPrefix(input));
+        CSVParserClass csvParserClass = new CSVParserClass();
+        csvParserClass.readFile();
+        //csvParserClass.printFile();
+
+
+        Trie trie = new Trie();
+        trie.insert("Hauz Khas");
+        trie.insert("Helslo");
+        trie.insert("Hesdllo");
+        trie.insert("Hellasdo");
+
+        System.out.println(trie.containsNode("Hello"));
+
     }
 }

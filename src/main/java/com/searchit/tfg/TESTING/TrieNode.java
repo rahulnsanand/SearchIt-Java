@@ -1,27 +1,21 @@
 package com.searchit.tfg.TESTING;
 
 import java.util.HashMap;
+import java.util.Map;
 
 class TrieNode {
-    public TrieNode(char ch)  {
-        value = ch;
-        children = new HashMap<>();
-        bIsEnd = false;
-    }
-    public HashMap<Character,TrieNode> getChildren(){
+    private final Map<Character, TrieNode> children = new HashMap<>();
+    private boolean endOfWord;
+
+    Map<Character, TrieNode> getChildren() {
         return children;
     }
-    public char getValue(){
-        return value;
-    }
-    public void setIsEnd(boolean val){
-        bIsEnd = val;
-    }
-    public boolean isEnd(){
-        return bIsEnd;
+
+    boolean isEndOfWord() {
+        return endOfWord;
     }
 
-    private final char value;
-    private final HashMap<Character,TrieNode> children;
-    private boolean bIsEnd;
+    void setEndOfWord(boolean endOfWord) {
+        this.endOfWord = endOfWord;
+    }
 }
