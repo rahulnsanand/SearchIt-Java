@@ -14,13 +14,14 @@ public class ConsoleProgress {
         this.title=title;
 
     }
-    public void start(int loopLen){
+    public void start(){
         progressBar = title+"\t[";
         System.out.print(progressBar);
         System.out.print('\r');
     }
 
-    public void addStep(){
+    public void addStep(int toConvert, int loopLen){
+        int currentPosition = getCurrentStep(toConvert, loopLen);
         progressBar += "=";
         System.out.print(progressBar);
         System.out.print('\r');
@@ -29,6 +30,11 @@ public class ConsoleProgress {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private int getCurrentStep(int toConvert, int loopLen){
+        int currentStep =( (toConvert/loopLen)*100);
+        return currentStep;
     }
 
     public void addDetailedStep(String extraInfo){
