@@ -24,7 +24,7 @@ public class CSVParserClass {
                 Reader inputReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
                 CsvParser parser = new CsvParser(new CsvParserSettings());
                 List<String[]> parsedRows = parser.parseAll(inputReader);
-                consoleProgress.start();
+                consoleProgress.start(parsedRows.size());
                 for (int i = 0 ; i <parsedRows.size(); i ++) {
                     nameArray.add(Arrays.toString(parsedRows.get(i)));
                     consoleProgress.addStep();
