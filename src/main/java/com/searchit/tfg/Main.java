@@ -18,8 +18,8 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-        CSVParserClass csvParserClass = new CSVParserClass();
-        csvParserClass.readFile();
+//        CSVParserClass csvParserClass = new CSVParserClass();
+//        csvParserClass.readFile();
         //csvParserClass.printFile();
 
 
@@ -38,8 +38,11 @@ public class Main{
 //        trie.insert("Hesdllo");
 //        trie.insert("Hellasdo");
 
-        int a = getCurrentStep(101,101);
-        System.out.println(a);
+//        int a = getCurrentStep(101,101);
+//        System.out.println(a);
+
+        Check check = new Check();
+        check.Checker();
 
     }
 
