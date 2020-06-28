@@ -25,12 +25,6 @@ public class Main{
 //        csvParserClass.printFile();
 
 
-//        ConsoleProgress consoleProgress= new ConsoleProgress();
-//        consoleProgress.start(10,0);
-//        for (int i = 1 ; i <=10; i ++) {
-//            consoleProgress.addStep(i);
-//        }
-//        consoleProgress.stop();
 
 
 

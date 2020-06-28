@@ -1,5 +1,5 @@
 package com.searchit.tfg.TESTING;
 
-public class RestaurantIDSearch {
+public class RestaurantWebSearch {
 
 }
