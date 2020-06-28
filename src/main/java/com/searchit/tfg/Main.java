@@ -51,13 +51,13 @@ public class Main{
 
 
         String SourceJson = "C:\\Users\\swastika\\Desktop\\test.json";
-        String CSV1 = "C:\\Users\\swastika\\Desktop\\test1.csv";
-        String CSV2 = "C:\\Users\\swastika\\Desktop\\test2.csv";
+//        String CSV1 = "C:\\Users\\swastika\\Desktop\\test1.csv";
+//        String CSV2 = "C:\\Users\\swastika\\Desktop\\test2.csv";
 
         File SourceJsonFile = new File(SourceJson);
 
-        File CSVFile1 = new File(CSV1);
-        File CSVFile2 = new File(CSV2);
+//        File CSVFile1 = new File(CSV1);
+//        File CSVFile2 = new File(CSV2);
 
 
 
