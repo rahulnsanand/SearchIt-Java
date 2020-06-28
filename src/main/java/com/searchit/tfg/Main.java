@@ -41,14 +41,9 @@ public class Main{
 //        jsonToCSV.JsonToFormattedCsv(JsonFile,CSVFile);
 //        System.out.println(jsonToCSV.getExampleRoot(JsonFile,CSVFile));
 
-        String SourceJson = "C:\\Users\\swastika\\Desktop\\test.json";
-        String DatasetSourceFolder = "C:\\Users\\swastika\\Desktop\\test.json";
+        File zomatoDataDirectory = new File("C:\\Users\\swastika\\Desktop\\Restaurants\\");
 
-
-        //jsonToCSV.readJson(new File(DatasetSourceFolder));
-        String Agra = "C:\\Users\\swastika\\Desktop\\test.json";
-        File AgraCSV = new File(Agra);
-        jsonToCSV.readJson(AgraCSV);
+        jsonToCSV.readWriteFinalJson(sourceJson, destJson);
 
 
 
