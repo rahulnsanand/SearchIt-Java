@@ -1,9 +1,13 @@
 package com.searchit.tfg;
 
 
+import com.fasterxml.jackson.databind.MappingIterator;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.searchit.tfg.TESTING.JsonToCSV;
+import com.searchit.tfg.TESTING.OrderLine;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,28 +37,28 @@ public class Main{
 //        int a = getCurrentStep(101,101);
 //        System.out.println(a);
 
-//        JsonToCSV jsonToCSV = new JsonToCSV();
+        JsonToCSV jsonToCSV = new JsonToCSV();
 //        jsonToCSV.JsonToFormattedCsv(JsonFile,CSVFile);
 //        System.out.println(jsonToCSV.getExampleRoot(JsonFile,CSVFile));
 
-
-
-
         String SourceJson = "C:\\Users\\swastika\\Desktop\\test.json";
-//        String CSV1 = "C:\\Users\\swastika\\Desktop\\test1.csv";
-//        String CSV2 = "C:\\Users\\swastika\\Desktop\\test2.csv";
+        String DatasetSourceFolder = "C:\\Users\\swastika\\Desktop\\test.json";
 
-        File SourceJsonFile = new File(SourceJson);
 
+        //jsonToCSV.readJson(new File(DatasetSourceFolder));
+        String Agra = "C:\\Users\\swastika\\Desktop\\test.json";
+        File AgraCSV = new File(Agra);
+        jsonToCSV.readJson(AgraCSV);
+
+
+
+        File SourceJsonFile = new File(DatasetSourceFolder);
 //        File CSVFile1 = new File(CSV1);
 //        File CSVFile2 = new File(CSV2);
-
-
 
 //        JsonToCSV jsonToCSV = new JsonToCSV();
 //
 //        jsonToCSV.csvToJson();
-
 
     }
 }

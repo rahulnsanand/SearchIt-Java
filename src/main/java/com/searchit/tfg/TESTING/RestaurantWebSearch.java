@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class RestaurantWebSearch {
 
-    public void GetID(String URL){
+    public static String GetID(String URL){
         Document doc = null;
 
         try {
@@ -25,7 +25,6 @@ public class RestaurantWebSearch {
         for (Element element :scriptElements ){
             for (DataNode node : element.dataNodes()) {
                 if(node.toString().contains("res_id")){
-                    System.out.println("Got Json");
                     String data = node.getWholeData();
                     String[] split = data.split("\n");
                     for(String i :split){
@@ -34,7 +33,7 @@ public class RestaurantWebSearch {
                             for(int j=0; j<JsonData.length;j++){
                                 if(JsonData[j].contains("res_id")){
                                     String[] res_idWhole = JsonData[j+1].split(",");
-                                    System.out.println(res_idWhole[0]);
+                                    return res_idWhole[0];
                                 }
                             }
                         }
@@ -42,5 +41,6 @@ public class RestaurantWebSearch {
                 }
             }
         }
+        return "NULL";
     }
 }
