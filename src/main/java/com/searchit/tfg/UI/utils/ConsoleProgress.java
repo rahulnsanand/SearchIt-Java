@@ -9,7 +9,7 @@ public class ConsoleProgress {
     String progressBar;
     int startingLoopVal = 0;
     int loopLen = 0;
-    static int outputLength = 25;
+    int outputLength = 25;
 
     public ConsoleProgress(String title, int outputLength){
         this.title=title;
@@ -72,7 +72,7 @@ public class ConsoleProgress {
         System.out.println(progressBar);
     }
 
-    public static int getCurrentStep(int toConvert, int loopLen){
+    public int getCurrentStep(int toConvert, int loopLen){
         return (int) Math.floor(((double) toConvert / (double) loopLen)*outputLength);
     }
 }

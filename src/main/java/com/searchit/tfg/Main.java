@@ -1,16 +1,18 @@
 package com.searchit.tfg;
 
 
-import com.searchit.tfg.TESTING.CSVParserClass;
-import com.searchit.tfg.TESTING.Trie;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.searchit.tfg.TESTING.JsonToCSV;
 
-import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 public class Main{
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
 //        MainWindow.createWindow();
 //        SearchPanel.SearchElements();
 //        SearchPanel.SearchPanelFrame.setVisible(false);
@@ -20,7 +22,7 @@ public class Main{
 
 //        CSVParserClass csvParserClass = new CSVParserClass();
 //        csvParserClass.readFile();
-        //csvParserClass.printFile();
+//        csvParserClass.printFile();
 
 
 //        ConsoleProgress consoleProgress= new ConsoleProgress();
@@ -41,12 +43,28 @@ public class Main{
 //        int a = getCurrentStep(101,101);
 //        System.out.println(a);
 
-        Check check = new Check();
-        check.Checker();
+//        JsonToCSV jsonToCSV = new JsonToCSV();
+//        jsonToCSV.JsonToFormattedCsv(JsonFile,CSVFile);
+//        System.out.println(jsonToCSV.getExampleRoot(JsonFile,CSVFile));
 
-    }
 
-    public static int getCurrentStep(int toConvert, int loopLen){
-        return (int) Math.floor(((double) toConvert / (double) loopLen)*10);
+
+
+        String SourceJson = "C:\\Users\\swastika\\Desktop\\test.json";
+        String CSV1 = "C:\\Users\\swastika\\Desktop\\test1.csv";
+        String CSV2 = "C:\\Users\\swastika\\Desktop\\test2.csv";
+
+        File SourceJsonFile = new File(SourceJson);
+
+        File CSVFile1 = new File(CSV1);
+        File CSVFile2 = new File(CSV2);
+
+
+
+//        JsonToCSV jsonToCSV = new JsonToCSV();
+//
+//        jsonToCSV.csvToJson();
+
+
     }
 }
