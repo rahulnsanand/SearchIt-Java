@@ -8,6 +8,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.searchit.tfg.TESTING.JsonToCSV;
 import com.searchit.tfg.TESTING.OrderLine;
+import com.searchit.tfg.UI.utils.ConsoleProgress;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,13 +42,27 @@ public class Main{
 //        jsonToCSV.JsonToFormattedCsv(JsonFile,CSVFile);
 //        System.out.println(jsonToCSV.getExampleRoot(JsonFile,CSVFile));
 
-        File zomatoDataDirectory = new File("C:\\Users\\swastika\\Desktop\\Restaurants\\");
+        String zomatoDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\";
+        String rawJSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\JSON\\";
+        String finalJSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\Final JSON\\";
 
-        jsonToCSV.readWriteFinalJson(sourceJson, destJson);
+        //jsonToCSV.csvToJson(zomatoDataDirectory);
 
+        jsonToCSV.readWriteFinalJson(rawJSONDataDirectory, finalJSONDataDirectory);
 
+//        ConsoleProgress cp = new ConsoleProgress("Title",10);
+//        cp.start(10,0);
+//        for(int i = 0; i < 10; i++){
+//            try {
+//                Thread.sleep(1000);
+//
+//                cp.addStep(i,"HELLO");
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        cp.stop();
 
-        File SourceJsonFile = new File(DatasetSourceFolder);
 //        File CSVFile1 = new File(CSV1);
 //        File CSVFile2 = new File(CSV2);
 

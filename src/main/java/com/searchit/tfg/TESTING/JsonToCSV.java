@@ -11,6 +11,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvFactory;
 import com.fasterxml.jackson.dataformat.csv.CsvGenerator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.searchit.tfg.UI.utils.ConsoleProgress;
 import net.minidev.json.JSONArray;
 
 import java.io.File;
@@ -23,15 +24,14 @@ import java.util.Map;
 
 public class JsonToCSV {
     private static MappingIterator<OrderLine> orderLines;
-    private static MappingIterator<OrderLine> orderLines1;
-    private static MappingIterator<OrderLine> orderLines2;
-    public static String nameRead;
 
-    public void csvToJson(File jsonSource) throws IOException {
 
-        File zomatoDataDirectory = new File("C:\\Users\\swastika\\Desktop\\Restaurants\\");
-        String cityNames[] = zomatoDataDirectory.list();
+    public void csvToJson(String csvSourceFolder) throws IOException {
 
+
+        File sourceFolder = new File(csvSourceFolder);
+
+        String cityFileNames[] = sourceFolder.list();
         CsvSchema orderLineSchema = CsvSchema
                 .emptySchema()
                 .withColumnSeparator('|')
@@ -40,15 +40,28 @@ public class JsonToCSV {
         JsonFactory jsonFactory = new JsonFactory();
 
         CsvMapper csvMapper = new CsvMapper();
-        File DestJsonFile = new File("C:\\Users\\swastika\\Desktop\\test.json");
-        JsonGenerator jsonGenerator = jsonFactory.createGenerator(DestJsonFile, JsonEncoding.UTF8);
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT,true);
+        ConsoleProgress consoleProgress = new ConsoleProgress("Getting CSV",25);
 
-        System.out.println(jsonSource);
+        consoleProgress.start(cityFileNames.length,0);
+        for(int i = 0; i <cityFileNames.length; i++){
+            String cityNames[] = cityFileNames[i].split(".csv");
+            String csvFileNames = cityFileNames[i];
+            File sourceFile = new File(sourceFolder+"\\"+csvFileNames);
+            System.out.println(sourceFile);
+            String ExtraInfo = "Processing :"+sourceFile;
+            consoleProgress.addStep(i,ExtraInfo);
+            for(int j = 0; j <cityNames.length; j++){
+                String cityName = sourceFolder+"\\"+cityNames[j]+".json";
+                JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(cityName), JsonEncoding.UTF8);
+                orderLines = csvMapper.readerFor(OrderLine.class).with(orderLineSchema).readValues(sourceFile);
+                objectMapper.writeValue(jsonGenerator, orderLines.readAll());
+                jsonGenerator.close();
+            }
+        }
+        consoleProgress.stop();
 
-        orderLines1 = csvMapper.readerFor(OrderLine.class).with(orderLineSchema).readValues(jsonSource);
-        objectMapper.writeValue(jsonGenerator, orderLines1.readAll());
-        jsonGenerator.close();
+
 
 //        System.out.println(file2);
 //        orderLines2 = csvMapper.readerFor(TestOrder.class).with(orderLineSchema).readValues(file2);
@@ -80,33 +93,44 @@ public class JsonToCSV {
 
     }
 
-    public void readWriteFinalJson(String sourceJson, String destJson) throws IOException {
-
+    public void readWriteFinalJson(String sourceJsonFolder, String destJsonFolder) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-        OrderLine[] node = objectMapper.readValue(sourceJson,OrderLine[].class);
-        System.out.println("Reading :"+sourceJson);
-        int counter = 1;
-        JSONArray jsonArray = new JSONArray();
-        FileWriter fileWriter = new FileWriter(destJson);
-        for (OrderLine orderLine : node) {
 
-            System.out.println("Currently at :"+orderLine.getNAME());
-            int Count = counter;
+        File sourceFolder = new File(sourceJsonFolder);
+        String rawJsonFiles[] = sourceFolder.list();
 
-            String URL = orderLine.getURL();
-            String CuisineCategory = orderLine.getCUSINE_CATEGORY();
-            String City = orderLine.getCITY();
-            String Name = orderLine.getNAME();
-            String Res_ID =RestaurantWebSearch.GetID(orderLine.getURL());
-            FinalJsonOrder jsonOrder = new FinalJsonOrder(String.valueOf(Count),Res_ID,Name,City,CuisineCategory,URL);
-            jsonArray.add(jsonOrder);
-            System.out.println("Added To Array");
-            counter++;
+
+
+        for (String rawJsonFile : rawJsonFiles) {
+            String destinationFile = destJsonFolder + rawJsonFile;
+            String sourceFile = sourceJsonFolder + rawJsonFile;
+            OrderLine[] node = objectMapper.readValue(new File(sourceFile), OrderLine[].class);
+            int counter = 1;
+            JSONArray jsonArray = new JSONArray();
+            FileWriter fileWriter = new FileWriter(new File(destinationFile));
+            ConsoleProgress consoleProgress = new ConsoleProgress(rawJsonFile,25);
+            consoleProgress.start(node.length, 0);
+            for (int i = 0; i < node.length; i++) {
+                int Count = counter;
+                String URL = node[i].getURL();
+                String CuisineCategory = node[i].getCUSINE_CATEGORY();
+                String City = node[i].getCITY();
+                String Name = node[i].getNAME();
+                String Res_ID = RestaurantWebSearch.GetID(node[i].getURL());
+                FinalJsonOrder jsonOrder = new FinalJsonOrder(String.valueOf(Count), Res_ID, Name, City, CuisineCategory, URL);
+                jsonArray.add(jsonOrder);
+                counter++;
+                consoleProgress.addStep(i, Res_ID + "ID:\t" + Name +  " added!");
+            }
+            fileWriter.write(jsonArray.toString().replace("\\", ""));
+            fileWriter.flush();
+            consoleProgress.stop();
         }
-        fileWriter.write(jsonArray.toString().replace("\\",""));
-        fileWriter.flush();
+
+
+
+//
 
     }
 
