@@ -1,158 +1,183 @@
 package com.searchit.tfg.TESTING;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FlopTrie {
-    FlopTrieNode root;
+
+    private static class FlopTrieNode {
+
+        private boolean isEndOfWord;
+        private String ID;
+        private String URL;
+        private String City;
+        private String Name;
+        public static final int ALPHABET_SIZE = 220;
+        private final FlopTrieNode[] children = new FlopTrieNode[ALPHABET_SIZE];
+
+        private FlopTrieNode() {
+            isEndOfWord = false;
+            for (int i = 0; i < ALPHABET_SIZE; i++)
+                children[i] = null;
+        }
+
+        private boolean isEndOfWord() {
+            return isEndOfWord;
+        }
+
+        private void setEndOfWord(boolean endOfWord) {
+            isEndOfWord = endOfWord;
+        }
+
+        private String getID() {
+            return ID;
+        }
+
+        private void setID(String ID) {
+            this.ID = ID;
+        }
+
+        private String getURL() {
+            return URL;
+        }
+
+        private void setURL(String URL) {
+            this.URL = URL;
+        }
+
+        private String getCity() {
+            return City;
+        }
+
+        private void setCity(String city) {
+            City = city;
+        }
+
+        private String getName() {
+            return Name;
+        }
+
+        private void setName(String name) {
+            Name = name;
+        }
+
+    }
+
+    private final FlopTrieNode rootLevelNode;
 
     public FlopTrie() {
-        root = new FlopTrieNode();
-        root.setName(null);
+        rootLevelNode= new FlopTrieNode();
     }
 
-    public void add(String name, String id, String url, String city) {
-        FlopTrieNode current = root;
-        current.setNext(null);
+    public void insert(String Name, String id, String url, String city){
+        
+        int level;
+        int length = Name.length();
+        int index;
 
-        for (char l : name.toCharArray()) {
-            current = current.getChildren().computeIfAbsent(l, c -> new FlopTrieNode());
+        FlopTrieNode insertNode = rootLevelNode;
+
+        for (level = 0; level < length; level++)
+        {
+            index = CharToIndex(Name.charAt(level));
+            if (insertNode.children[index] == null)
+                insertNode.children[index] = new FlopTrieNode();
+
+            insertNode = insertNode.children[index];
         }
-        current.setNext(new FlopTrieNode());
-        //Every character must be a node, every node must point to the next node. Every node must have all the
-        //details required.
-        current.setName(name);
-        current.setID(id);
-        current.setURL(url);
-        current.setCity(city);
-        current.setEndOfWord(true);
+        // mark last node as leaf
+        insertNode.setName(Name);
+        insertNode.setID(id);
+        insertNode.setURL(url);
+        insertNode.setCity(city);
+        insertNode.setEndOfWord(true);
     }
-
-    public boolean deleteData(String word) {
-        return delete(root, word, 0);
-    }
-
-    public boolean hasData(String word) {
-        FlopTrieNode current = root;
-
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            FlopTrieNode node = current.getChildren().get(ch);
-            if (node == null) {
+    public boolean hasData(String Name) {
+        int level;
+        int length = Name.length();
+        int index;
+        FlopTrieNode searchNode = rootLevelNode;
+        for (level = 0; level < length; level++)
+        {
+            index = CharToIndex(Name.charAt(level));
+            if (searchNode.children[index] == null)
                 return false;
-            }
-            current = node;
+            searchNode = searchNode.children[index];
         }
-        return current.isEndOfWord();
+        return (searchNode != null && searchNode.isEndOfWord);
     }
-
-    public List<String> getSuggestion(String word, int countSuggestion){
-        List<String> suggestions = new ArrayList<>();
-        FlopTrieNode current = root;
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            FlopTrieNode node  = current.getChildren().get(ch);
-            current = node;
-        }
-        Map<Character, FlopTrieNode> map= current.getChildren();
-        for(int i = 0; i<map.size(); i++){
-            suggestions.add(map.get(i).toString());
-        }
-
-        return suggestions;
-    }
-
-    private String  returnPrefixSuggestion(FlopTrieNode node){
-        String suggestWord= "Hello";
-        return suggestWord;
-    }
-
     public String getID(String word){
-        FlopTrieNode current = root;
-        String ID = "";
+        int level;
+        int length = word.length();
+        int index;
+        FlopTrieNode idSearchNode = rootLevelNode;
         if(hasData(word)){
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                FlopTrieNode node = current.getChildren().get(ch);
-                current = node;
+            for (level = 0; level < length; level++)
+            {
+                index = word.charAt(level) - ' ';
+                idSearchNode = idSearchNode.children[index];
             }
-            ID = current.getID();
         }
-        else{
-            return "That doesn't exist";
-        }
-        return ID;
+        return idSearchNode.getID();
     }
     public String getCity(String word){
-        FlopTrieNode current = root;
-        String ID = "";
+        int level;
+        int length = word.length();
+        int index;
+        FlopTrieNode citySearchNode = rootLevelNode;
         if(hasData(word)){
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                FlopTrieNode node = current.getChildren().get(ch);
-                current = node;
+            for (level = 0; level < length; level++)
+            {
+                index = CharToIndex(word.charAt(level));
+                citySearchNode = citySearchNode.children[index];
             }
-            ID = current.getCity();
         }
-        else{
-            return "That doesn't exist";
-        }
-        return ID;
+        return citySearchNode.getCity();
     }
     public String getURL(String word){
-        FlopTrieNode current = root;
-        String ID = "";
+        int level;
+        int length = word.length();
+        int index;
+        FlopTrieNode urlSearchNode = rootLevelNode;
         if(hasData(word)){
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                FlopTrieNode node = current.getChildren().get(ch);
-                current = node;
+            for (level = 0; level < length; level++)
+            {
+                index = CharToIndex(word.charAt(level));
+                urlSearchNode = urlSearchNode.children[index];
             }
-            ID = current.getURL();
         }
-        else{
-            return "That doesn't exist";
-        }
-        return ID;
+        return urlSearchNode.getURL();
     }
     public String getName(String word){
-        FlopTrieNode current = root;
-        String ID = "";
+        int level;
+        int length = word.length();
+        int index;
+        FlopTrieNode nameSearchNode = rootLevelNode;
         if(hasData(word)){
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                FlopTrieNode node = current.getChildren().get(ch);
-                current = node;
+            for (level = 0; level < length; level++)
+            {
+                index = CharToIndex(word.charAt(level));
+                nameSearchNode = nameSearchNode.children[index];
             }
-            ID = current.getName();
         }
-        else{
-            return "That doesn't exist";
-        }
-        return ID;
+        return nameSearchNode.getName();
     }
     public String getDetails(String word){
-        FlopTrieNode current = root;
-        String ID = "";
-        String Name = "";
-        String City = "";
-        String URL = "";
-
+        int level;
+        int length = word.length();
+        int index;
+        String Name = "", City = "", URL = "", ID = "";
+        FlopTrieNode detailSearchNode = rootLevelNode;
         if(hasData(word)){
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
-                FlopTrieNode node = current.getChildren().get(ch);
-                current = node;
+            for (level = 0; level < length; level++)
+            {
+                index = CharToIndex(word.charAt(level));
+                detailSearchNode = detailSearchNode.children[index];
             }
-            ID = current.getID();
-            Name = current.getName();
-            City = current.getCity();
-            URL = current.getURL();
         }
-        else{
-            return "That doesn't exist";
-        }
+        ID = detailSearchNode.getID();
+        Name = detailSearchNode.getName();
+        City = detailSearchNode.getCity();
+        URL = detailSearchNode.getURL();
         return "Restaurant Details\n\n" +
                 "ID   :\t"+ID+"\n"+
                 "Name :\t"+Name+"\n"+
@@ -160,33 +185,79 @@ public class FlopTrie {
                 "URL  :\t"+URL;
     }
 
-    public boolean isEmpty() {
-        return root == null;
+    public int CharToIndex(char a){
+        return a-' ';
+    }
+    private boolean isLastNode(FlopTrieNode lastSearchNode){
+        return lastSearchNode.isEndOfWord;
     }
 
-    private boolean delete(FlopTrieNode current, String word, int index) {
-        if (index == word.length()) {
-            if (!current.isEndOfWord()) {
-                return false;
-            }
-            current.setEndOfWord(false);
-            current.setID("");
-            current.setURL("");
-            current.setCity("");
-            current.setName("");
-            return current.getChildren().isEmpty();
-        }
-        char ch = word.charAt(index);
-        FlopTrieNode node = current.getChildren().get(ch);
-        if (node == null) {
-            return false;
-        }
-        boolean shouldDeleteCurrentNode = delete(node, word, index + 1) && !node.isEndOfWord();
+    List<String> suggestions = new ArrayList<>();
 
-        if (shouldDeleteCurrentNode) {
-            current.getChildren().remove(ch);
-            return current.getChildren().isEmpty();
+    public int getSuggestions(String word){
+        FlopTrieNode internalSearchNode = rootLevelNode;
+        int level;
+        int len=word.length();
+        int index;
+
+        for(level=0; level<len; level++){
+            index = CharToIndex(word.charAt(level));
+            if(internalSearchNode==null){
+                return 404;
+            }
+            if(internalSearchNode.isEndOfWord()){
+                return 0;
+            }
+            internalSearchNode = internalSearchNode.children[index];
         }
-        return false;
+        boolean isWord = internalSearchNode.isEndOfWord();
+        boolean isLast = isLastNode(internalSearchNode);
+        if(isWord && isLast){
+            suggestions.add(word);
+            showSuggestion();
+            return -1;
+        }
+        if(!isLast){
+            suggestionRec(internalSearchNode,word);
+            showSuggestion();
+            return -1;
+        }
+        showSuggestion();
+        return -1;
+    }
+
+    private void suggestionRec(FlopTrieNode internalSearchNode,String searchWord) {
+        if(internalSearchNode.isEndOfWord()){
+            suggestions.add(searchWord);
+        }
+        if(isLastNode(internalSearchNode)){
+            System.out.println("Faulty data!");
+        }
+
+        for(int i=0;i<FlopTrieNode.ALPHABET_SIZE;i++) {
+            if(internalSearchNode.children[i]!=null){
+                if (internalSearchNode.children[i].isEndOfWord()) {
+                    suggestions.add(internalSearchNode.children[i].getName());
+                }
+                else{
+                    suggestionRec(internalSearchNode.children[i],searchWord);
+                }
+            }
+        }
+    }
+
+    Map<Integer,String> map = new HashMap<>();
+    private void showSuggestion(){
+        Scanner sc = new Scanner(System.in);
+        for(int i=0; i<suggestions.size();i++){
+            System.out.println(i+1+"::\t"+suggestions.get(i));
+            map.put(i+1,suggestions.get(i));
+        }
+        int choice = sc.nextInt();
+        System.out.println(getIDFromSuggestion(choice));
+    }
+
+    private String getIDFromSuggestion(int choice){
+        return getID(map.get(choice));
     }
 }

@@ -26,13 +26,13 @@ public class UpdateTrie {
                     String restaurantID = listCar.get(j).getRes_id();
                     String restaurantURL = listCar.get(j).getRes_url();
                     String restaurantCity = listCar.get(j).getRes_city();
-
-                    flopTrie.add(restaurantName,restaurantID,restaurantURL,restaurantCity);
-
+                    System.out.println(restaurantName+" : "+restaurantCity);
+                    flopTrie.insert(restaurantName,restaurantID,restaurantURL,restaurantCity);
                 }
                 cp.addStep(i,"Added :\t"+JSONFiles[i]);
             } catch (IOException e) {
                 e.printStackTrace();
+                break;
             }
 
         }

@@ -7,6 +7,7 @@ import com.searchit.tfg.UI.utils.ConsoleProgress;
 import com.searchit.tfg.datasetUtils.DatasetCreator;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main{
 
@@ -21,12 +22,23 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-        String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\Final JSON\\";
+        String JSONDataDirectory = "D:\\Shared Projects\\Zomato Dataset\\Final JSON\\";
+        String ReadDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\JSON\\";
 
+        //DatasetCreator datasetCreator = new DatasetCreator();
+        //datasetCreator.readWriteFinalJson(ReadDataDirectory,JSONDataDirectory);
+
+        String check = "™";
+        for(int i =0; i <check.length(); i++){
+            System.out.println(flopTrie.CharToIndex(check.charAt(i)));
+        }
         UpdateTrie.update(JSONDataDirectory,flopTrie);
-        System.out.println();
-        System.out.println(flopTrie.getSuggestion("Kebabs",4));
 
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter search >>");
+        String word = sc.next();
+        int noOfSuggestion = flopTrie.getSuggestions(word);
+        System.out.println(noOfSuggestion);
     }
 
     public void consoleProgressCheck(){
