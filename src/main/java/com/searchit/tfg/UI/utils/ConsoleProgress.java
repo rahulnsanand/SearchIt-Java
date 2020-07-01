@@ -1,19 +1,17 @@
 package com.searchit.tfg.UI.utils;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.text.SimpleDateFormat;
 
 public class ConsoleProgress {
 
 
-    String title = "";
-    String progressBar;
-    int startingLoopVal = 0;
-    int loopLen = 0;
-    int outputLength = 25;
-    long startTime;
-    long estdTime;
+    private String title = "";
+    private String progressBar;
+    private int startingLoopVal = 0;
+    private int loopLen = 0;
+    private int outputLength = 25;
+    private long startTime;
+    private long estdTime;
     private SimpleDateFormat hoursFormat = new SimpleDateFormat("HH:mm:ss");
     private SimpleDateFormat minutesFormat = new SimpleDateFormat("mm:ss");
     private SimpleDateFormat secondsFormat = new SimpleDateFormat("ss");
@@ -88,11 +86,11 @@ public class ConsoleProgress {
         System.out.println(progressBar);
     }
 
-    public int getCurrentStep(int toConvert, int loopLen){
+    private int getCurrentStep(int toConvert, int loopLen){
         return (int) Math.floor(((double) toConvert / (double) loopLen)*outputLength);
     }
 
-    public String getElapsedTime(long difference){
+    private String getElapsedTime(long difference){
         long microseconds = difference / 1000;
         long milliseconds = microseconds / 1000;
         long seconds = milliseconds / 1000;
@@ -102,7 +100,7 @@ public class ConsoleProgress {
 
     }
 
-    public String getEstdTime(long difference, int currentLoopLen){
+    private String getEstdTime(long difference, int currentLoopLen){
         long microseconds;
         if(currentLoopLen>0){
             microseconds = (difference*loopLen)/(currentLoopLen*1000);
@@ -118,7 +116,7 @@ public class ConsoleProgress {
         return getTimeFormat(hours,minutes,seconds,milliseconds);
     }
 
-    public String getTimeFormat(long hours, long minutes, long seconds, long milliseconds){
+    private String getTimeFormat(long hours, long minutes, long seconds, long milliseconds){
         if(hours==0 && minutes >0){
             return minutesFormat.format(milliseconds);
         }
