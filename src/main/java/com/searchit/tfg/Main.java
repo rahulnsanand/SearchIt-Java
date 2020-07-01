@@ -1,21 +1,13 @@
 package com.searchit.tfg;
 
 
-import com.fasterxml.jackson.databind.MappingIterator;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.searchit.tfg.TESTING.JsonToCSV;
-import com.searchit.tfg.TESTING.OrderLine;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.searchit.tfg.datasetUtils.DatasetCreator;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 
 public class Main{
+
+//APIEY : ddc19ec4e7244f81d2ef270dfba9ae31
 
     public static void main(String[] args) throws IOException {
 //        MainWindow.createWindow();
@@ -38,7 +30,7 @@ public class Main{
 //        int a = getCurrentStep(101,101);
 //        System.out.println(a);
 
-        JsonToCSV jsonToCSV = new JsonToCSV();
+        DatasetCreator datasetCreator = new DatasetCreator();
 //        jsonToCSV.JsonToFormattedCsv(JsonFile,CSVFile);
 //        System.out.println(jsonToCSV.getExampleRoot(JsonFile,CSVFile));
 
@@ -48,7 +40,7 @@ public class Main{
 
         //jsonToCSV.csvToJson(zomatoDataDirectory);
 
-        jsonToCSV.readWriteFinalJson(rawJSONDataDirectory, finalJSONDataDirectory);
+        datasetCreator.readWriteFinalJson(rawJSONDataDirectory, finalJSONDataDirectory);
 
 //        ConsoleProgress cp = new ConsoleProgress("Title",10);
 //        cp.start(10,0);
