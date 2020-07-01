@@ -3,6 +3,9 @@ package com.searchit.tfg;
 
 import com.searchit.tfg.TESTING.FlopTrie;
 import com.searchit.tfg.TESTING.UpdateTrie;
+import com.searchit.tfg.UI.MainWindow;
+import com.searchit.tfg.UI.ResultsPanel;
+import com.searchit.tfg.UI.SearchPanel;
 import com.searchit.tfg.UI.utils.ConsoleProgress;
 import com.searchit.tfg.datasetUtils.DatasetCreator;
 
@@ -22,23 +25,19 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-        String JSONDataDirectory = "D:\\Shared Projects\\Zomato Dataset\\Final JSON\\";
-        String ReadDataDirectory = "C:\\Users\\swastika\\Desktop\\Zomato Dataset\\JSON\\";
+        String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
 
-        //DatasetCreator datasetCreator = new DatasetCreator();
-        //datasetCreator.readWriteFinalJson(ReadDataDirectory,JSONDataDirectory);
-
-        String check = "™";
-        for(int i =0; i <check.length(); i++){
-            System.out.println(flopTrie.CharToIndex(check.charAt(i)));
-        }
-        UpdateTrie.update(JSONDataDirectory,flopTrie);
+        updateFlopTrie(JSONDataDirectory);
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter search >>");
         String word = sc.next();
         int noOfSuggestion = flopTrie.getSuggestions(word);
         System.out.println(noOfSuggestion);
+    }
+
+    public static void updateFlopTrie(String dir){
+        UpdateTrie.update(dir,flopTrie);
     }
 
     public void consoleProgressCheck(){

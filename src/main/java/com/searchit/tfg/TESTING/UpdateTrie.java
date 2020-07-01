@@ -26,7 +26,6 @@ public class UpdateTrie {
                     String restaurantID = listCar.get(j).getRes_id();
                     String restaurantURL = listCar.get(j).getRes_url();
                     String restaurantCity = listCar.get(j).getRes_city();
-                    System.out.println(restaurantName+" : "+restaurantCity);
                     flopTrie.insert(restaurantName,restaurantID,restaurantURL,restaurantCity);
                 }
                 cp.addStep(i,"Added :\t"+JSONFiles[i]);

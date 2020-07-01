@@ -71,17 +71,16 @@ public class FlopTrie {
     public void insert(String Name, String id, String url, String city){
         
         int level;
-        int length = Name.length();
+        int lengthName = Name.length();
+        int lengthCity = city.length();
         int index;
 
         FlopTrieNode insertNode = rootLevelNode;
 
-        for (level = 0; level < length; level++)
-        {
+        for (level = 0; level < lengthName; level++) {
             index = CharToIndex(Name.charAt(level));
             if (insertNode.children[index] == null)
                 insertNode.children[index] = new FlopTrieNode();
-
             insertNode = insertNode.children[index];
         }
         // mark last node as leaf
@@ -192,7 +191,8 @@ public class FlopTrie {
         return lastSearchNode.isEndOfWord;
     }
 
-    List<String> suggestions = new ArrayList<>();
+    Map<String,String> suggestions = new HashMap<>();
+    Map<Integer,String> keys = new HashMap<>();
 
     public int getSuggestions(String word){
         FlopTrieNode internalSearchNode = rootLevelNode;
@@ -213,7 +213,7 @@ public class FlopTrie {
         boolean isWord = internalSearchNode.isEndOfWord();
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
-            suggestions.add(word);
+            suggestions.put(internalSearchNode.getID(),word);
             showSuggestion();
             return -1;
         }
@@ -226,9 +226,13 @@ public class FlopTrie {
         return -1;
     }
 
+    private String getNameCity(FlopTrieNode node){
+        return node.getName()+", "+node.getCity();
+    }
+
     private void suggestionRec(FlopTrieNode internalSearchNode,String searchWord) {
         if(internalSearchNode.isEndOfWord()){
-            suggestions.add(searchWord);
+            suggestions.put("123",searchWord);
         }
         if(isLastNode(internalSearchNode)){
             System.out.println("Faulty data!");
@@ -237,7 +241,7 @@ public class FlopTrie {
         for(int i=0;i<FlopTrieNode.ALPHABET_SIZE;i++) {
             if(internalSearchNode.children[i]!=null){
                 if (internalSearchNode.children[i].isEndOfWord()) {
-                    suggestions.add(internalSearchNode.children[i].getName());
+                    suggestions.put(getID(internalSearchNode.children[i].getName()),getNameCity(internalSearchNode.children[i]));
                 }
                 else{
                     suggestionRec(internalSearchNode.children[i],searchWord);
@@ -246,18 +250,22 @@ public class FlopTrie {
         }
     }
 
-    Map<Integer,String> map = new HashMap<>();
     private void showSuggestion(){
         Scanner sc = new Scanner(System.in);
-        for(int i=0; i<suggestions.size();i++){
-            System.out.println(i+1+"::\t"+suggestions.get(i));
-            map.put(i+1,suggestions.get(i));
+        int counter = 1;
+        System.out.println(suggestions.size());
+        for(Map.Entry<String,String> mapLoop : suggestions.entrySet()){
+            keys.put(counter,mapLoop.getKey());
+            System.out.println(counter+"::\t"+mapLoop.getValue());
+            counter++;
         }
+        System.out.print(">>");
         int choice = sc.nextInt();
         System.out.println(getIDFromSuggestion(choice));
     }
 
     private String getIDFromSuggestion(int choice){
-        return getID(map.get(choice));
+
+        return keys.get(choice);
     }
 }
