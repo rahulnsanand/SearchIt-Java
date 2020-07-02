@@ -11,6 +11,17 @@ public class GetDataPOJO {
         return res_id;
     }
 
+    @Override
+    public String toString() {
+        return  "==================================\n"+
+                "Restaurant ID      :" + res_id  + "\n"+
+                "Restaurant Name    :" + res_name  + "\n"+
+                "Restaurant City    :" + res_city  + "\n"+
+                "Restaurant URL     :" + res_url  + "\n"+
+                "==================================\n";
+                //"Restaurant Region  :" + res_region + '\'';
+    }
+
     public void setRes_id(String res_id) {
         this.res_id = res_id;
     }

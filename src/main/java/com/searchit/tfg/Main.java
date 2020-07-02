@@ -24,7 +24,7 @@ public class Main{
 //        MainWindow.displayWindow();
 
         updateFlopTrie(JSONDataDirectory);
-        System.out.println(flopTrie.getCity("18401590"));
+        System.out.println(flopTrie.getFlopTrieDetails("18401590"));
 
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("Enter search >>");

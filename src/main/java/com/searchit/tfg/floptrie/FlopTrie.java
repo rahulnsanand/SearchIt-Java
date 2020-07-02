@@ -149,6 +149,39 @@ public class FlopTrie {
         }
         return getNotFound();
     }
+    public String getURL(String res_id){
+        FlopTrieNode citySearchNode = rootLevelNode;
+        if(hasData(res_id)){
+            boolean isLast = isLastNode(citySearchNode);
+            if(!isLast){
+                findURL(citySearchNode,res_id);
+                return getDataPOJO.getRes_url();
+            }
+        }
+        return getNotFound();
+    }
+    public String getName(String res_id){
+        FlopTrieNode citySearchNode = rootLevelNode;
+        if(hasData(res_id)){
+            boolean isLast = isLastNode(citySearchNode);
+            if(!isLast){
+                findName(citySearchNode,res_id);
+                return getDataPOJO.getRes_name();
+            }
+        }
+        return getNotFound();
+    }
+    public String getFlopTrieDetails(String res_id){
+        FlopTrieNode citySearchNode = rootLevelNode;
+        if(hasData(res_id)){
+            boolean isLast = isLastNode(citySearchNode);
+            if(!isLast){
+                findFlopTrieDetails(citySearchNode,res_id);
+                return getDataPOJO.toString();
+            }
+        }
+        return getNotFound();
+    }
 
     private void findCity(FlopTrieNode searchCity, String res_id) {
         for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
@@ -162,26 +195,42 @@ public class FlopTrie {
             }
         }
     }
-    private void findURL(FlopTrieNode searchCity, String res_id) {
+    private void findURL(FlopTrieNode searchURL, String res_id) {
         for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
-            if(searchCity.children[level]!=null){
-                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
-                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+            if(searchURL.children[level]!=null){
+                if (searchURL.children[level].isEndOfWord() && searchURL.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_url(searchURL.children[level].getURL());
                 }
                 else{
-                    findCity(searchCity.children[level],res_id);
+                    findURL(searchURL.children[level],res_id);
                 }
             }
         }
     }
-    private void findName(FlopTrieNode searchCity, String res_id) {
+    private void findName(FlopTrieNode searchName, String res_id) {
         for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
-            if(searchCity.children[level]!=null){
-                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
-                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+            if(searchName.children[level]!=null){
+                if (searchName.children[level].isEndOfWord() && searchName.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_name(searchName.children[level].getName());
                 }
                 else{
-                    findCity(searchCity.children[level],res_id);
+                    findName(searchName.children[level],res_id);
+                }
+            }
+        }
+    }
+    private void findFlopTrieDetails(FlopTrieNode searchDetails, String res_id) {
+        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+            if(searchDetails.children[level]!=null){
+                if (searchDetails.children[level].isEndOfWord() && searchDetails.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_name(searchDetails.children[level].getName());
+                    getDataPOJO.setRes_url(searchDetails.children[level].getURL());
+                    getDataPOJO.setRes_city(searchDetails.children[level].getCity());
+                    getDataPOJO.setRes_id(res_id);
+
+                }
+                else{
+                    findFlopTrieDetails(searchDetails.children[level],res_id);
                 }
             }
         }
