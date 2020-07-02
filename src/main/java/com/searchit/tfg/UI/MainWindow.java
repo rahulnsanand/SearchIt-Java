@@ -1,8 +1,6 @@
 package com.searchit.tfg.UI;
 
 
-import com.searchit.tfg.UI.utils.HintTextField;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,10 +10,7 @@ public class MainWindow{
     static JFrame MainWindowFrame;
 
     public static void createWindow() {
-
         MainWindowFrame = new JFrame("SearchIt");
-
-
     }
 
     public static void displayWindow(){

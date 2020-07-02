@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.dataset.retrieve;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -105,7 +105,7 @@ public class ZomatoAPISearch {
         zomatoWebOrder.setRatingText(jsonObject.get("user_rating").getAsJsonObject().get("rating_text").toString());
         zomatoWebOrder.setRestaurantName(jsonObject.get("name").toString());
         zomatoWebOrder.setPhoneNumber(jsonObject.get("phone_numbers").toString());
-        zomatoWebOrder.setRetyNo(retry);
+        zomatoWebOrder.setRetryNo(retry);
     }
 
     private static final String[] API_KEY_STATIC = new String[3];

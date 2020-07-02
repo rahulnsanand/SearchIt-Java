@@ -1,4 +1,4 @@
-package com.searchit.tfg.datasetUtils;
+package com.searchit.tfg.dataset.utils;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;

@@ -1,10 +1,13 @@
 package com.searchit.tfg;
 
 
-import com.searchit.tfg.TESTING.ZomatoAPISearch;
-import com.searchit.tfg.TESTING.ZomatoWebOrder;
+import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
+import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
+import com.searchit.tfg.UI.MainWindow;
+import com.searchit.tfg.UI.SearchPanel;
 import com.searchit.tfg.UI.utils.ConsoleProgress;
 import com.searchit.tfg.floptrie.FlopTrie;
+import com.searchit.tfg.floptrie.GetDataPOJO;
 import com.searchit.tfg.floptrie.UpdateTrie;
 
 import java.util.Scanner;
@@ -13,28 +16,39 @@ public class Main{
 
     private static final FlopTrie flopTrie = new FlopTrie();
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
+    private static GetDataPOJO getDataPOJO = new GetDataPOJO();
     private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
-
+    private static String word;
     public static void main(String[] args) {
-//        MainWindow.createWindow();
-//        SearchPanel.SearchElements();
-//        SearchPanel.SearchPanelFrame.setVisible(false);
+        MainWindow.createWindow();
+        SearchPanel.SearchElements();
+        //SearchPanel.SearchPanelFrame.setVisible(false);
 //        ResultsPanel resultsPanel = new ResultsPanel("HAHAHA");
-//        resultsPanel.resultPanel();
-//        MainWindow.displayWindow();
+//        ResultsPanel.resultPanel();
+        MainWindow.displayWindow();
 
-        updateFlopTrie(JSONDataDirectory);
-        System.out.println(flopTrie.getFlopTrieDetails("18401590"));
+//        updateFlopTrie(JSONDataDirectory);
+//        getInput();
+//        search(word);
+//        callAPI();
 
-//        Scanner sc = new Scanner(System.in);
-//        System.out.print("Enter search >>");
-//        String word = sc.next();
-//        System.out.println(flopTrie.getSuggestions(word));
-//
-//        String res_id = flopTrie.showSuggestion(10);
-//        ZomatoAPISearch zomatoAPISearch = new ZomatoAPISearch();
-//        int status = zomatoAPISearch.getApiDetails(zomato,res_id);
-//        getResponse(status);
+    }
+
+    public static void getInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter search >>");
+        word = sc.next();
+    }
+
+    public static void search(String word){
+        flopTrie.getSuggestions(word, 2);
+        flopTrie.showSuggestion(2,getDataPOJO);
+    }
+
+    public static void callAPI(){
+        ZomatoAPISearch zomatoAPISearch = new ZomatoAPISearch();
+        int status = zomatoAPISearch.getApiDetails(zomato,getDataPOJO.getRes_id());
+        getResponse(status);
     }
 
     public static void getResponse(int statusID){
@@ -67,8 +81,9 @@ public class Main{
 
     private static void getDetails() {
         System.out.println(zomato.toString());
-        if(zomato.getRetyNo()>0){
-            System.out.println(zomato.getRetyNo());
+
+        if(zomato.getRetryNo()>0){
+            System.out.println(zomato.getRetryNo());
         }
     }
 

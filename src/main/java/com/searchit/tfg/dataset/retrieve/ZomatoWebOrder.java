@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.dataset.retrieve;
 
 public class ZomatoWebOrder {
 
@@ -33,14 +33,14 @@ public class ZomatoWebOrder {
         this.phoneNumber = phoneNumber;
     }
 
-    private int retyNo;
+    private int retryNo;
 
-    public int getRetyNo() {
-        return retyNo;
+    public int getRetryNo() {
+        return retryNo;
     }
 
-    public void setRetyNo(int retyNo) {
-        this.retyNo = retyNo;
+    public void setRetryNo(int retyNo) {
+        this.retryNo = retyNo;
     }
 
     public String getThumbURL() {

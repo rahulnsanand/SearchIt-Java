@@ -1,7 +1,5 @@
 package com.searchit.tfg.floptrie;
 
-import com.searchit.tfg.TESTING.ZomatoAPISearch;
-
 import java.util.*;
 
 public class FlopTrie {
@@ -261,8 +259,9 @@ public class FlopTrie {
     Map<Integer,String> searchKeyID = new HashMap<>();
     Map<String, String> idName = new HashMap<>();
     Map<String, String> idCity = new HashMap<>();
+    int suggestionCounter = 0;
 
-    public int getSuggestions(String word){
+    public void getSuggestions(String word, int limit){
         FlopTrieNode internalSearchNode = rootLevelNode;
         int level;
         int len=word.length();
@@ -272,42 +271,44 @@ public class FlopTrie {
             index = CharToIndex(word.toLowerCase().charAt(level));
             internalSearchNode = internalSearchNode.children[index];
             if(internalSearchNode==null){
-                return 404;
+                return;
             }
             if(internalSearchNode.isEndOfWord()){
-                return 0;
+                return;
             }
         }
         boolean isWord = internalSearchNode.isEndOfWord();
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
             idName.put(internalSearchNode.getID(),word);
-            idCity.put(internalSearchNode.getID(),internalSearchNode.getCity());
-            return 1;
+            //idCity.put(internalSearchNode.getID(),getCity(internalSearchNode.getID()));
+            return;
         }
         if(!isLast){
-            suggestionRec(internalSearchNode);
-            return 12;
+            suggestionRec(internalSearchNode, limit);
         }
-        return -1;
     }
-
-    private void suggestionRec(FlopTrieNode internalSearchNode) {
+    private void suggestionRec(FlopTrieNode internalSearchNode, int limit) {
 
         for(int i=0;i<FlopTrieNode.ALPHABET_SIZE;i++) {
             if(internalSearchNode.children[i]!=null){
                 if (internalSearchNode.children[i].isEndOfWord()) {
+                    suggestionCounter++;
                     idName.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getName());
-                    idCity.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getCity());
+                    //idCity.put(internalSearchNode.children[i].getID(),getCity(internalSearchNode.children[i].getID()));
                 }
                 else{
-                    suggestionRec(internalSearchNode.children[i]);
+                    if(suggestionCounter<limit){
+                        suggestionRec(internalSearchNode.children[i], limit);
+                    }
+                    else{
+                        return;
+                    }
                 }
             }
         }
     }
-
-    public String showSuggestion(int limit){
+    public void showSuggestion(int limit, GetDataPOJO getDataPOJO){
         Scanner sc = new Scanner(System.in);
         int counter = 1;
         for(Map.Entry<String,String> mapLoop : idName.entrySet()){
@@ -315,11 +316,11 @@ public class FlopTrie {
                 break;
             }
             searchKeyID.put(counter,mapLoop.getKey());
-            System.out.println(counter+"::\t"+mapLoop.getValue()+", "+ ZomatoAPISearch.getRegion(mapLoop.getKey()));
+            System.out.println(counter+"::\t"+mapLoop.getValue()+", "+ idCity.get(mapLoop.getKey()));
             counter++;
         }
         System.out.print(">>");
         int choice = sc.nextInt();
-        return searchKeyID.get(choice);
+        getDataPOJO.setRes_id(searchKeyID.get(choice));
     }
 }

@@ -1,6 +1,5 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.dataset.retrieve;
 
-import com.searchit.tfg.floptrie.FlopTrie;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.DataNode;

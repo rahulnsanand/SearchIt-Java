@@ -1,4 +1,4 @@
-package com.searchit.tfg.datasetUtils;
+package com.searchit.tfg.dataset.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

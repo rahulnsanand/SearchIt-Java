@@ -13,7 +13,7 @@ public class ResultsPanel extends MainWindow {
 
 
     private static JPanel ResultPanelFrame;
-    static File SFProTextRegularLocation = new File("C:\\Users\\rahul\\Desktop\\Themes\\Themes\\sfwin-master\\SFPro\\TrueType\\SFProText-Regular.ttf");
+    static File SFProTextRegularLocation = new File("C:\\Users\\swastika\\Desktop\\Shared Projects\\SearchIt IntelliJ\\src\\main\\resources\\SFProText-Regular.ttf");
     static Font SFProRegular;
     private static SearchItem searchItem;
     private static javax.swing.JScrollPane SearchResultScroll;
@@ -24,7 +24,7 @@ public class ResultsPanel extends MainWindow {
         ResultsPanel.RestaurantName =RestaurantName;
     }
 
-    public void resultPanel(){
+    public static void resultPanel(){
 
         Container container = MainWindowFrame.getContentPane();
         container.removeAll();

@@ -1,4 +1,4 @@
-package com.searchit.tfg.datasetUtils;
+package com.searchit.tfg.dataset.utils;
 
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
