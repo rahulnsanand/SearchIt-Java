@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.datasetUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,19 +25,18 @@ public class JsonConverter {
             String csvFileName = csvSplit[0]+".csv";
             String csvFilePath = CSVDirFiles+"\\"+csvFileName;
 
-            if(!jsonFilePath.contains("C:\\Users\\swastika\\Desktop\\Zomato Dataset\\Final JSON\\Delhi3.json")){
-                JsonNode jsonTree = objectMapper.readTree(new File(jsonFilePath));
-                CsvSchema.Builder csvSchemaBuilder = CsvSchema.builder();
-                JsonNode firstObject = jsonTree.elements().next();
-                firstObject.fieldNames().forEachRemaining(csvSchemaBuilder::addColumn);
-                CsvSchema csvSchema = csvSchemaBuilder.build().withHeader();
+            JsonNode jsonTree = objectMapper.readTree(new File(jsonFilePath));
+            CsvSchema.Builder csvSchemaBuilder = CsvSchema.builder();
+            JsonNode firstObject = jsonTree.elements().next();
+            firstObject.fieldNames().forEachRemaining(csvSchemaBuilder::addColumn);
+            CsvSchema csvSchema = csvSchemaBuilder.build().withHeader();
 
-                CsvMapper csvMapper = new CsvMapper();
-                csvMapper.writerFor(JsonNode.class)
-                        .with(csvSchema)
-                        .writeValue(new File(csvFilePath), jsonTree);
-                cp.addStep(i, csvFileName+" Written!");
-            }
+            CsvMapper csvMapper = new CsvMapper();
+            csvMapper.writerFor(JsonNode.class)
+                    .with(csvSchema)
+                    .writeValue(new File(csvFilePath), jsonTree);
+            cp.addStep(i, csvFileName+" Written!");
+
         }
         cp.stop();
     }

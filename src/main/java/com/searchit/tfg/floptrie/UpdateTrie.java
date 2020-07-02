@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.floptrie;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,12 +21,12 @@ public class UpdateTrie {
 
             try {
                 List<TrieOrder> listCar = objectMapper.readValue(new File(jsonFilePath), new TypeReference<List<TrieOrder>>(){});
-                for(int j = 0; j <listCar.size(); j++){
-                    String restaurantName = listCar.get(j).getRes_name();
-                    String restaurantID = listCar.get(j).getRes_id();
-                    String restaurantURL = listCar.get(j).getRes_url();
-                    String restaurantCity = listCar.get(j).getRes_city();
-                    flopTrie.insert(restaurantName,restaurantID,restaurantURL,restaurantCity);
+                for (TrieOrder trieOrder : listCar) {
+                    String restaurantName = trieOrder.getRes_name();
+                    String restaurantID = trieOrder.getRes_id();
+                    String restaurantURL = trieOrder.getRes_url();
+                    String restaurantCity = trieOrder.getRes_city();
+                    flopTrie.insert(restaurantName, restaurantID, restaurantURL, restaurantCity);
                 }
                 cp.addStep(i,"Added :\t"+JSONFiles[i]);
             } catch (IOException e) {

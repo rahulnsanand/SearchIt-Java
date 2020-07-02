@@ -1,23 +1,23 @@
 package com.searchit.tfg;
 
 
-import com.searchit.tfg.TESTING.FlopTrie;
-import com.searchit.tfg.TESTING.UpdateTrie;
-import com.searchit.tfg.UI.MainWindow;
-import com.searchit.tfg.UI.ResultsPanel;
-import com.searchit.tfg.UI.SearchPanel;
+import com.searchit.tfg.TESTING.ZomatoAPISearch;
+import com.searchit.tfg.TESTING.ZomatoResult;
+import com.searchit.tfg.TESTING.ZomatoWebOrder;
+import com.searchit.tfg.floptrie.FlopTrie;
+import com.searchit.tfg.floptrie.UpdateTrie;
 import com.searchit.tfg.UI.utils.ConsoleProgress;
-import com.searchit.tfg.datasetUtils.DatasetCreator;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main{
 
     //APIKEY : ddc19ec4e7244f81d2ef270dfba9ae31
     private static final FlopTrie flopTrie = new FlopTrie();
+    private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
+    private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 //        MainWindow.createWindow();
 //        SearchPanel.SearchElements();
 //        SearchPanel.SearchPanelFrame.setVisible(false);
@@ -25,15 +25,51 @@ public class Main{
 //        resultsPanel.resultPanel();
 //        MainWindow.displayWindow();
 
-        String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
+        //updateFlopTrie(JSONDataDirectory);
 
-        updateFlopTrie(JSONDataDirectory);
+//        Scanner sc = new Scanner(System.in);
+//        System.out.print("Enter search >>");
+//        String word = sc.next();
+//        flopTrie.getSuggestions(word,5);
+//        String url = flopTrie.URL;
+//        System.out.println(url);
+//        updateSearchValues(url);
+//
+//        System.out.println(zomato.getRestaurantID());
+//        System.out.println(zomato.getThumbURL());
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter search >>");
-        String word = sc.next();
-        int noOfSuggestion = flopTrie.getSuggestions(word);
-        System.out.println(noOfSuggestion);
+        ZomatoAPISearch zomatoAPISearch = new ZomatoAPISearch();
+        int status = zomatoAPISearch.getApiDetails(zomato,"3000685");
+        getResponse(status);
+    }
+
+    public static void getResponse(int statusID){
+
+        if(statusID == 1){
+            getDetails();
+        }
+        else if (statusID == -1){
+            System.out.println("This restaurant doesn't exit anymore");
+        }
+        else if(statusID == 404){
+            System.out.println("Error "+statusID+": Couldn't get the details of this restaurant.");
+        }
+        else if(statusID ==101){
+            System.out.println("Couldn't connect to the website. Check internet speed.");
+        }
+        else if(statusID == 102){
+            System.out.println("IOException occured");
+        }
+        else if(statusID ==103){
+            System.out.println("Couldn't connect to the website. Check internet connection");
+        }
+    }
+
+    private static void getDetails() {
+        System.out.println(zomato.toString());
+        if(zomato.getRetyNo()>0){
+            System.out.println(zomato.getRetyNo());
+        }
     }
 
     public static void updateFlopTrie(String dir){

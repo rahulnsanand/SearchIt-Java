@@ -1,9 +1,12 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.floptrie;
+
+import com.searchit.tfg.TESTING.ZomatoWebOrder;
 
 import java.util.*;
 
 public class FlopTrie {
 
+    public String URL;
     private static class FlopTrieNode {
 
         private boolean isEndOfWord;
@@ -193,8 +196,9 @@ public class FlopTrie {
 
     Map<String,String> suggestions = new HashMap<>();
     Map<Integer,String> keys = new HashMap<>();
+    Map<String, String> values = new HashMap<>();
 
-    public int getSuggestions(String word){
+    public int getSuggestions(String word, int limit){
         FlopTrieNode internalSearchNode = rootLevelNode;
         int level;
         int len=word.length();
@@ -213,16 +217,17 @@ public class FlopTrie {
         boolean isWord = internalSearchNode.isEndOfWord();
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
-            suggestions.put(internalSearchNode.getID(),word);
-            showSuggestion();
+            suggestions.put(internalSearchNode.getID(),word+internalSearchNode.getCity());
+            values.put(internalSearchNode.getID(),word);
+            URL=showSuggestion(limit);
             return -1;
         }
         if(!isLast){
             suggestionRec(internalSearchNode,word);
-            showSuggestion();
+            URL=showSuggestion(limit);
             return -1;
         }
-        showSuggestion();
+        URL=showSuggestion(limit);
         return -1;
     }
 
@@ -231,9 +236,6 @@ public class FlopTrie {
     }
 
     private void suggestionRec(FlopTrieNode internalSearchNode,String searchWord) {
-        if(internalSearchNode.isEndOfWord()){
-            suggestions.put("123",searchWord);
-        }
         if(isLastNode(internalSearchNode)){
             System.out.println("Faulty data!");
         }
@@ -242,6 +244,7 @@ public class FlopTrie {
             if(internalSearchNode.children[i]!=null){
                 if (internalSearchNode.children[i].isEndOfWord()) {
                     suggestions.put(getID(internalSearchNode.children[i].getName()),getNameCity(internalSearchNode.children[i]));
+                    values.put(getID(internalSearchNode.children[i].getName()),internalSearchNode.children[i].getName());
                 }
                 else{
                     suggestionRec(internalSearchNode.children[i],searchWord);
@@ -250,22 +253,19 @@ public class FlopTrie {
         }
     }
 
-    private void showSuggestion(){
+    private String showSuggestion(int limit){
         Scanner sc = new Scanner(System.in);
         int counter = 1;
-        System.out.println(suggestions.size());
         for(Map.Entry<String,String> mapLoop : suggestions.entrySet()){
+            if(counter>limit){
+                break;
+            }
             keys.put(counter,mapLoop.getKey());
             System.out.println(counter+"::\t"+mapLoop.getValue());
             counter++;
         }
         System.out.print(">>");
         int choice = sc.nextInt();
-        System.out.println(getIDFromSuggestion(choice));
-    }
-
-    private String getIDFromSuggestion(int choice){
-
-        return keys.get(choice);
+        return getURL(values.get(keys.get(choice)));
     }
 }

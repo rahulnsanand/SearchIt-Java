@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.floptrie;
 
 public class TrieOrder {
     private String res_url;
