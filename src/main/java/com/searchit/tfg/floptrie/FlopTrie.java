@@ -1,12 +1,11 @@
 package com.searchit.tfg.floptrie;
 
-import com.searchit.tfg.TESTING.ZomatoWebOrder;
+import com.searchit.tfg.TESTING.ZomatoAPISearch;
 
 import java.util.*;
 
 public class FlopTrie {
 
-    public String URL;
     private static class FlopTrieNode {
 
         private boolean isEndOfWord;
@@ -66,6 +65,8 @@ public class FlopTrie {
     }
 
     private final FlopTrieNode rootLevelNode;
+    private boolean checkFlag = false;
+    private GetDataPOJO getDataPOJO = new GetDataPOJO();
 
     public FlopTrie() {
         rootLevelNode= new FlopTrieNode();
@@ -75,13 +76,19 @@ public class FlopTrie {
         
         int level;
         int lengthName = Name.length();
-        int lengthCity = city.length();
+        int lengthID = id.length();
         int index;
 
         FlopTrieNode insertNode = rootLevelNode;
 
         for (level = 0; level < lengthName; level++) {
-            index = CharToIndex(Name.charAt(level));
+            index = CharToIndex(Name.toLowerCase().charAt(level));
+            if (insertNode.children[index] == null)
+                insertNode.children[index] = new FlopTrieNode();
+            insertNode = insertNode.children[index];
+        }
+        for (level = 0; level < lengthID; level++) {
+            index = CharToIndex(id.charAt(level));
             if (insertNode.children[index] == null)
                 insertNode.children[index] = new FlopTrieNode();
             insertNode = insertNode.children[index];
@@ -93,179 +100,177 @@ public class FlopTrie {
         insertNode.setCity(city);
         insertNode.setEndOfWord(true);
     }
-    public boolean hasData(String Name) {
-        int level;
-        int length = Name.length();
-        int index;
+
+    public boolean hasData(String res_id) {
         FlopTrieNode searchNode = rootLevelNode;
-        for (level = 0; level < length; level++)
-        {
-            index = CharToIndex(Name.charAt(level));
-            if (searchNode.children[index] == null)
-                return false;
-            searchNode = searchNode.children[index];
+        boolean isLast = isLastNode(searchNode);
+        if(!isLast){
+            findID(searchNode,res_id);
+            return getCheckFlag();
         }
-        return (searchNode != null && searchNode.isEndOfWord);
+        else{
+            return searchNode.getID().equals(res_id);
+        }
     }
-    public String getID(String word){
-        int level;
-        int length = word.length();
-        int index;
-        FlopTrieNode idSearchNode = rootLevelNode;
-        if(hasData(word)){
-            for (level = 0; level < length; level++)
-            {
-                index = word.charAt(level) - ' ';
-                idSearchNode = idSearchNode.children[index];
+    private boolean findID(FlopTrieNode searchNode, String res_id) {
+        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+            if(searchNode.children[level]!=null){
+                if (searchNode.children[level].isEndOfWord()) {
+                    String foundID = searchNode.children[level].getID();
+                    if (foundID.equals(res_id)) {
+                        setCheckFlag(true);
+                    }
+                }
+                else{
+                    findID(searchNode.children[level],res_id);
+                }
             }
         }
-        return idSearchNode.getID();
+        return false;
     }
-    public String getCity(String word){
-        int level;
-        int length = word.length();
-        int index;
+    private void setCheckFlag(boolean status){
+        this.checkFlag = status;
+    }
+    private boolean getCheckFlag(){
+        return checkFlag;
+    }
+    private String getNotFound(){
+        return "Restaurant Doesn't exist";
+    }
+
+    public String getCity(String res_id){
         FlopTrieNode citySearchNode = rootLevelNode;
-        if(hasData(word)){
-            for (level = 0; level < length; level++)
-            {
-                index = CharToIndex(word.charAt(level));
-                citySearchNode = citySearchNode.children[index];
+        if(hasData(res_id)){
+            boolean isLast = isLastNode(citySearchNode);
+            if(!isLast){
+                findCity(citySearchNode,res_id);
+                return getDataPOJO.getRes_city();
             }
         }
-        return citySearchNode.getCity();
+        return getNotFound();
     }
-    public String getURL(String word){
-        int level;
-        int length = word.length();
-        int index;
-        FlopTrieNode urlSearchNode = rootLevelNode;
-        if(hasData(word)){
-            for (level = 0; level < length; level++)
-            {
-                index = CharToIndex(word.charAt(level));
-                urlSearchNode = urlSearchNode.children[index];
+
+    private void findCity(FlopTrieNode searchCity, String res_id) {
+        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+            if(searchCity.children[level]!=null){
+                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+                }
+                else{
+                    findCity(searchCity.children[level],res_id);
+                }
             }
         }
-        return urlSearchNode.getURL();
     }
-    public String getName(String word){
-        int level;
-        int length = word.length();
-        int index;
-        FlopTrieNode nameSearchNode = rootLevelNode;
-        if(hasData(word)){
-            for (level = 0; level < length; level++)
-            {
-                index = CharToIndex(word.charAt(level));
-                nameSearchNode = nameSearchNode.children[index];
+    private void findURL(FlopTrieNode searchCity, String res_id) {
+        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+            if(searchCity.children[level]!=null){
+                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+                }
+                else{
+                    findCity(searchCity.children[level],res_id);
+                }
             }
         }
-        return nameSearchNode.getName();
     }
-    public String getDetails(String word){
-        int level;
-        int length = word.length();
-        int index;
-        String Name = "", City = "", URL = "", ID = "";
-        FlopTrieNode detailSearchNode = rootLevelNode;
-        if(hasData(word)){
-            for (level = 0; level < length; level++)
-            {
-                index = CharToIndex(word.charAt(level));
-                detailSearchNode = detailSearchNode.children[index];
+    private void findName(FlopTrieNode searchCity, String res_id) {
+        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+            if(searchCity.children[level]!=null){
+                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
+                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+                }
+                else{
+                    findCity(searchCity.children[level],res_id);
+                }
             }
         }
-        ID = detailSearchNode.getID();
-        Name = detailSearchNode.getName();
-        City = detailSearchNode.getCity();
-        URL = detailSearchNode.getURL();
-        return "Restaurant Details\n\n" +
-                "ID   :\t"+ID+"\n"+
-                "Name :\t"+Name+"\n"+
-                "City :\t"+City+"\n"+
-                "URL  :\t"+URL;
     }
+
+    //TODO: FIND REGION VALUES ALSO TO IMPROVE SUGGESTION
+//    private void findRegion(FlopTrieNode searchCity, String res_id) {
+//        for(int level=0;level<FlopTrieNode.ALPHABET_SIZE;level++) {
+//            if(searchCity.children[level]!=null){
+//                if (searchCity.children[level].isEndOfWord() && searchCity.children[level].getID().equals(res_id)) {
+//                    getDataPOJO.setRes_city(searchCity.children[level].getCity());
+//                }
+//                else{
+//                    findCity(searchCity.children[level],res_id);
+//                }
+//            }
+//        }
+//    }
 
     public int CharToIndex(char a){
         return a-' ';
     }
+
     private boolean isLastNode(FlopTrieNode lastSearchNode){
         return lastSearchNode.isEndOfWord;
     }
 
-    Map<String,String> suggestions = new HashMap<>();
-    Map<Integer,String> keys = new HashMap<>();
-    Map<String, String> values = new HashMap<>();
+    Map<Integer,String> searchKeyID = new HashMap<>();
+    Map<String, String> idName = new HashMap<>();
+    Map<String, String> idCity = new HashMap<>();
 
-    public int getSuggestions(String word, int limit){
+    public int getSuggestions(String word){
         FlopTrieNode internalSearchNode = rootLevelNode;
         int level;
         int len=word.length();
         int index;
 
         for(level=0; level<len; level++){
-            index = CharToIndex(word.charAt(level));
+            index = CharToIndex(word.toLowerCase().charAt(level));
+            internalSearchNode = internalSearchNode.children[index];
             if(internalSearchNode==null){
                 return 404;
             }
             if(internalSearchNode.isEndOfWord()){
                 return 0;
             }
-            internalSearchNode = internalSearchNode.children[index];
         }
         boolean isWord = internalSearchNode.isEndOfWord();
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
-            suggestions.put(internalSearchNode.getID(),word+internalSearchNode.getCity());
-            values.put(internalSearchNode.getID(),word);
-            URL=showSuggestion(limit);
-            return -1;
+            idName.put(internalSearchNode.getID(),word);
+            idCity.put(internalSearchNode.getID(),internalSearchNode.getCity());
+            return 1;
         }
         if(!isLast){
-            suggestionRec(internalSearchNode,word);
-            URL=showSuggestion(limit);
-            return -1;
+            suggestionRec(internalSearchNode);
+            return 12;
         }
-        URL=showSuggestion(limit);
         return -1;
     }
 
-    private String getNameCity(FlopTrieNode node){
-        return node.getName()+", "+node.getCity();
-    }
-
-    private void suggestionRec(FlopTrieNode internalSearchNode,String searchWord) {
-        if(isLastNode(internalSearchNode)){
-            System.out.println("Faulty data!");
-        }
+    private void suggestionRec(FlopTrieNode internalSearchNode) {
 
         for(int i=0;i<FlopTrieNode.ALPHABET_SIZE;i++) {
             if(internalSearchNode.children[i]!=null){
                 if (internalSearchNode.children[i].isEndOfWord()) {
-                    suggestions.put(getID(internalSearchNode.children[i].getName()),getNameCity(internalSearchNode.children[i]));
-                    values.put(getID(internalSearchNode.children[i].getName()),internalSearchNode.children[i].getName());
+                    idName.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getName());
+                    idCity.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getCity());
                 }
                 else{
-                    suggestionRec(internalSearchNode.children[i],searchWord);
+                    suggestionRec(internalSearchNode.children[i]);
                 }
             }
         }
     }
 
-    private String showSuggestion(int limit){
+    public String showSuggestion(int limit){
         Scanner sc = new Scanner(System.in);
         int counter = 1;
-        for(Map.Entry<String,String> mapLoop : suggestions.entrySet()){
+        for(Map.Entry<String,String> mapLoop : idName.entrySet()){
             if(counter>limit){
                 break;
             }
-            keys.put(counter,mapLoop.getKey());
-            System.out.println(counter+"::\t"+mapLoop.getValue());
+            searchKeyID.put(counter,mapLoop.getKey());
+            System.out.println(counter+"::\t"+mapLoop.getValue()+", "+ ZomatoAPISearch.getRegion(mapLoop.getKey()));
             counter++;
         }
         System.out.print(">>");
         int choice = sc.nextInt();
-        return getURL(values.get(keys.get(choice)));
+        return searchKeyID.get(choice);
     }
 }

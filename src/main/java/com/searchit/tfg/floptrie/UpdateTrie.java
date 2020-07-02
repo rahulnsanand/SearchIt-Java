@@ -20,8 +20,8 @@ public class UpdateTrie {
             String jsonFilePath = JSONDir+JSONFiles[i];
 
             try {
-                List<TrieOrder> listCar = objectMapper.readValue(new File(jsonFilePath), new TypeReference<List<TrieOrder>>(){});
-                for (TrieOrder trieOrder : listCar) {
+                List<TrieOrder> jsonList = objectMapper.readValue(new File(jsonFilePath), new TypeReference<List<TrieOrder>>(){});
+                for (TrieOrder trieOrder : jsonList) {
                     String restaurantName = trieOrder.getRes_name();
                     String restaurantID = trieOrder.getRes_id();
                     String restaurantURL = trieOrder.getRes_url();
