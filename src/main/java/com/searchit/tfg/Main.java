@@ -8,6 +8,7 @@ import com.searchit.tfg.UI.SearchPanel;
 import com.searchit.tfg.UI.utils.ConsoleProgress;
 import com.searchit.tfg.floptrie.FlopTrie;
 import com.searchit.tfg.floptrie.GetDataPOJO;
+import com.searchit.tfg.floptrie.UpdateSearchList;
 import com.searchit.tfg.floptrie.UpdateTrie;
 
 import java.lang.reflect.Array;
@@ -16,27 +17,45 @@ import java.util.*;
 public class Main{
 
     private static final FlopTrie flopTrie = new FlopTrie();
+    private static final FlopTrie.FlopTrieNode flopTrieNode = new FlopTrie.FlopTrieNode();
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
     private static GetDataPOJO getDataPOJO = new GetDataPOJO();
     private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
     private static String word;
     static MainWindow mainWindow = new MainWindow();
     private static ArrayList<String> searchList = new ArrayList<>();
+    private static Map<String, String> idSearch = new HashMap<>();
 
     public static void main(String[] args) {
 
-        mainWindow.createWindow();
-        mainWindow.initLoadingPanel();
-        mainWindow.displayWindow();
-        mainWindow.showLoadingPanel();
+        setupFrame();
         updateFlopTrie(JSONDataDirectory);
-        SearchPanel searchPanel = new SearchPanel(flopTrie);
+        updateSearch();
+        SearchPanel searchPanel = new SearchPanel(searchList, idSearch);
         mainWindow.switchToSearchPanel(searchPanel);
-
 //        getInput();
 //        search(word);
 //        callAPI();
 
+    }
+
+    public static void setupFrame(){
+        mainWindow.createWindow();
+        mainWindow.initLoadingPanel();
+        mainWindow.displayWindow();
+        mainWindow.showLoadingPanel();
+    }
+
+    public static void updateSearch(){
+        mainWindow.updateProgressBar.setIndeterminate(true);
+        mainWindow.mainFrameLoadingText.setText("Updating HashMap!");
+        UpdateSearchList.hashMapUpdate(flopTrieNode,idSearch);
+        mainWindow.mainFrameLoadingText.setText("Updating Search List!");
+        UpdateSearchList.searchListUpdate(flopTrieNode, searchList);
+        mainWindow.updateProgressBar.setIndeterminate(false);
+        mainWindow.updateProgressBar.setMinimum(0);
+        mainWindow.updateProgressBar.setMaximum(100);
+        mainWindow.updateProgressBar.setValue(100);
     }
 
     public static void getInput(){
@@ -46,7 +65,7 @@ public class Main{
     }
 
     public static void search(String word){
-        flopTrie.getSuggestions(word, 2);
+        flopTrie.getSuggestions(flopTrieNode,word, 2);
         flopTrie.showSuggestion(2,getDataPOJO);
     }
 
@@ -93,7 +112,7 @@ public class Main{
     }
 
     public static void updateFlopTrie(String dir){
-        UpdateTrie.update(dir,flopTrie, mainWindow);
+        UpdateTrie.update(dir,flopTrie,flopTrieNode, mainWindow);
     }
 
     public void consoleProgressCheck(){

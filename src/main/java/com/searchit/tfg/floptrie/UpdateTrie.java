@@ -11,14 +11,16 @@ import java.util.List;
 
 public class UpdateTrie {
 
-    public static void update(String JSONDir, FlopTrie flopTrie, MainWindow mainWindow){
+    public static void update(String JSONDir, FlopTrie flopTrie, FlopTrie.FlopTrieNode flopTrieNode, MainWindow mainWindow){
         File JSONDirFiles = new File(JSONDir);
         String[] JSONFiles = JSONDirFiles.list();
         ObjectMapper objectMapper = new ObjectMapper();
 
         assert JSONFiles != null;
+        ConsoleProgress cp = new ConsoleProgress("Json File",25);
         mainWindow.updateProgressBar.setMaximum(JSONFiles.length-1);
         mainWindow.updateProgressBar.setMinimum(0);
+        //cp.start(JSONFiles.length,0);
         for(int i = 0; i < JSONFiles.length; i++) {
             String jsonFilePath = JSONDir+JSONFiles[i];
 
@@ -29,8 +31,9 @@ public class UpdateTrie {
                     String restaurantID = trieOrder.getRes_id();
                     String restaurantURL = trieOrder.getRes_url();
                     String restaurantCity = trieOrder.getRes_city();
-                    flopTrie.insert(restaurantName, restaurantID, restaurantURL, restaurantCity);
+                    flopTrie.insert(flopTrieNode,restaurantName, restaurantID, restaurantURL, restaurantCity);
                 }
+                //cp.addStep(i);
                 mainWindow.mainFrameLoadingText.setText("Updated "+JSONFiles[i]+" FlopTrie Values!");
                 mainWindow.updateProgressBar.setValue(i);
             } catch (IOException e) {
@@ -38,6 +41,7 @@ public class UpdateTrie {
                 break;
             }
         }
+        //cp.stop();
         mainWindow.mainFrameLoadingText.setText("FlopTrie Updated!");
     }
 

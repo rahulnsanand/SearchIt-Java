@@ -6,80 +6,80 @@ import java.util.*;
 
 public class FlopTrie {
 
-    private static class FlopTrieNode {
+    public static class FlopTrieNode {
 
-        private boolean isEndOfWord;
-        private String ID;
-        private String URL;
-        private String City;
-        private String Name;
-        public static final int ALPHABET_SIZE = 220;
-        private final FlopTrieNode[] children = new FlopTrieNode[ALPHABET_SIZE];
+        public boolean isEndOfWord;
+        public String ID;
+        public String URL;
+        public String City;
+        public String Name;
+        public static int ALPHABET_SIZE = 220;
+        public final FlopTrieNode[] children = new FlopTrieNode[ALPHABET_SIZE];
 
-        private FlopTrieNode() {
+        public FlopTrieNode() {
             isEndOfWord = false;
             for (int i = 0; i < ALPHABET_SIZE; i++)
                 children[i] = null;
         }
 
-        private boolean isEndOfWord() {
+        public boolean isEndOfWord() {
             return isEndOfWord;
         }
 
-        private void setEndOfWord(boolean endOfWord) {
+        public void setEndOfWord(boolean endOfWord) {
             isEndOfWord = endOfWord;
         }
 
-        private String getID() {
+        public String getID() {
             return ID;
         }
 
-        private void setID(String ID) {
+        public void setID(String ID) {
             this.ID = ID;
         }
 
-        private String getURL() {
+        public String getURL() {
             return URL;
         }
 
-        private void setURL(String URL) {
+        public void setURL(String URL) {
             this.URL = URL;
         }
 
-        private String getCity() {
+        public String getCity() {
             return City;
         }
 
-        private void setCity(String city) {
+        public void setCity(String city) {
             City = city;
         }
 
-        private String getName() {
+        public String getName() {
             return Name;
         }
 
-        private void setName(String name) {
+        public void setName(String name) {
             Name = name;
         }
 
     }
 
-    private final FlopTrieNode rootLevelNode;
+    //private final FlopTrieNode rootLevelNode;
     private boolean checkFlag = false;
     private GetDataPOJO getDataPOJO = new GetDataPOJO();
 
     public FlopTrie() {
-        rootLevelNode= new FlopTrieNode();
+        //rootLevelNode= new FlopTrieNode();
     }
 
-    public void insert(String Name, String id, String url, String city){
+    public void insert(FlopTrieNode flopTrieNode, String Name, String id, String url, String city){
         
         int level;
         int lengthName = Name.length();
         int lengthID = id.length();
         int index;
 
-        FlopTrieNode insertNode = rootLevelNode;
+        FlopTrieNode insertNode = flopTrieNode;
 
         for (level = 0; level < lengthName; level++) {
             index = CharToIndex(Name.toLowerCase().charAt(level));
@@ -101,8 +101,8 @@ public class FlopTrie {
         insertNode.setEndOfWord(true);
     }
 
-    public boolean hasData(String res_id) {
-        FlopTrieNode searchNode = rootLevelNode;
+    public boolean hasData(FlopTrieNode flopTrieNode, String res_id) {
+        FlopTrieNode searchNode = flopTrieNode;
         boolean isLast = isLastNode(searchNode);
         if(!isLast){
             findID(searchNode,res_id);
@@ -138,9 +138,9 @@ public class FlopTrie {
         return "Restaurant Doesn't exist";
     }
 
-    public String getCity(String res_id){
-        FlopTrieNode citySearchNode = rootLevelNode;
-        if(hasData(res_id)){
+    public String getCity(FlopTrieNode flopTrieNode, String res_id){
+        FlopTrieNode citySearchNode = flopTrieNode;
+        if(hasData(citySearchNode,res_id)){
             boolean isLast = isLastNode(citySearchNode);
             if(!isLast){
                 findCity(citySearchNode,res_id);
@@ -149,9 +149,9 @@ public class FlopTrie {
         }
         return getNotFound();
     }
-    public String getURL(String res_id){
-        FlopTrieNode citySearchNode = rootLevelNode;
-        if(hasData(res_id)){
+    public String getURL(FlopTrieNode flopTrieNode, String res_id){
+        FlopTrieNode citySearchNode = flopTrieNode;
+        if(hasData(citySearchNode,res_id)){
             boolean isLast = isLastNode(citySearchNode);
             if(!isLast){
                 findURL(citySearchNode,res_id);
@@ -160,9 +160,9 @@ public class FlopTrie {
         }
         return getNotFound();
     }
-    public String getName(String res_id){
-        FlopTrieNode citySearchNode = rootLevelNode;
-        if(hasData(res_id)){
+    public String getName(FlopTrieNode flopTrieNode, String res_id){
+        FlopTrieNode citySearchNode = flopTrieNode;
+        if(hasData(citySearchNode, res_id)){
             boolean isLast = isLastNode(citySearchNode);
             if(!isLast){
                 findName(citySearchNode,res_id);
@@ -171,9 +171,9 @@ public class FlopTrie {
         }
         return getNotFound();
     }
-    public String getFlopTrieDetails(String res_id){
-        FlopTrieNode citySearchNode = rootLevelNode;
-        if(hasData(res_id)){
+    public String getFlopTrieDetails(FlopTrieNode flopTrieNode, String res_id){
+        FlopTrieNode citySearchNode = flopTrieNode;
+        if(hasData(citySearchNode, res_id)){
             boolean isLast = isLastNode(citySearchNode);
             if(!isLast){
                 findFlopTrieDetails(citySearchNode,res_id);
@@ -263,8 +263,8 @@ public class FlopTrie {
     Map<String, String> idCity = new HashMap<>();
     int suggestionCounter = 0;
 
-    public void getSuggestions(String word, int limit){
-        FlopTrieNode internalSearchNode = rootLevelNode;
+    public void getSuggestions(FlopTrieNode flopTrieNode, String word, int limit){
+        FlopTrieNode internalSearchNode = flopTrieNode;
         int level;
         int len=word.length();
         int index;
@@ -283,7 +283,7 @@ public class FlopTrie {
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
             idName.put(internalSearchNode.getID(),word);
-            searchList.add(word+", "+internalSearchNode.getCity());
+            //searchList.add(word+", "+internalSearchNode.getCity());
             //idCity.put(internalSearchNode.getID(),getCity(internalSearchNode.getID()));
             return;
         }
@@ -298,7 +298,7 @@ public class FlopTrie {
                 if (internalSearchNode.children[i].isEndOfWord()) {
                     suggestionCounter++;
                     idName.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getName());
-                    searchList.add(internalSearchNode.children[i].getName()+", "+internalSearchNode.children[i].getCity());
+                    //searchList.add(internalSearchNode.children[i].getName()+", "+internalSearchNode.children[i].getCity());
                     //idCity.put(internalSearchNode.children[i].getID(),getCity(internalSearchNode.children[i].getID()));
                 }
                 else{
@@ -312,6 +312,7 @@ public class FlopTrie {
             }
         }
     }
+
     public void showSuggestion(int limit, GetDataPOJO getDataPOJO){
         Scanner sc = new Scanner(System.in);
         int counter = 1;
@@ -327,11 +328,5 @@ public class FlopTrie {
         int choice = sc.nextInt();
         getDataPOJO.setRes_id(searchKeyID.get(choice));
     }
-
-    public ArrayList<String> getSearchItems(){
-        return searchList;
-    }
-
-    public ArrayList<String> searchList = new ArrayList<>();
 
 }

@@ -2,6 +2,7 @@ package com.searchit.tfg.UI;
 
 import com.searchit.tfg.UI.utils.HintTextField;
 import com.searchit.tfg.floptrie.FlopTrie;
+import org.apache.commons.lang3.ObjectUtils;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -13,6 +14,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
 
 public class SearchPanel extends JPanel{
 
@@ -21,12 +23,12 @@ public class SearchPanel extends JPanel{
     public javax.swing.JTextField searchTextField;
     public javax.swing.JButton switchThemeButton;
     public javax.swing.JComboBox<String> suggestionBox;
+    public String id = "";
+    public String res_name = "";
     public boolean darkTheme = false;
-    public Thread t;
-    private ArrayList<String> searchList= new ArrayList<>();
 
-    public SearchPanel(FlopTrie flopTrie){
-        initComponents(flopTrie);
+    public SearchPanel(ArrayList<String> list, Map<String, String> nameID){
+        initComponents(list, nameID);
     }
 
     public void switchThemeButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,18 +55,13 @@ public class SearchPanel extends JPanel{
     public void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
-    public void initComponents(FlopTrie flopTrie) {
+
+    public void initComponents(ArrayList<String> searchItemList, Map<String, String> nameID) {
 
         searchItLogo = new javax.swing.JLabel();
         switchThemeButton = new javax.swing.JButton();
         searchTextField = new HintTextField("Start typing here...");
         madeInIndia = new javax.swing.JLabel();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        suggestionBox = new javax.swing.JComboBox(model) {
-            public Dimension getPreferredSize() {
-                return new Dimension(super.getPreferredSize().width, 0);
-            }
-        };
 
         setBackground(new java.awt.Color(32, 32, 32));
 
@@ -79,11 +76,7 @@ public class SearchPanel extends JPanel{
         switchThemeButton.setText("LightMode");
         switchThemeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         switchThemeButton.setOpaque(true);
-        switchThemeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                switchThemeButtonActionPerformed(evt);
-            }
-        });
+        switchThemeButton.addActionListener(this::switchThemeButtonActionPerformed);
 
         searchTextField.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         searchTextField.setEditable(true);
@@ -94,117 +87,19 @@ public class SearchPanel extends JPanel{
         searchTextField.setMinimumSize(new java.awt.Dimension(400, 20));
         searchTextField.setPreferredSize(new java.awt.Dimension(400, 20));
         searchTextField.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY));
-        searchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchTextFieldActionPerformed(evt);
-            }
-        });
-        searchTextField.setLayout(new BorderLayout());
-        searchTextField.add(suggestionBox,BorderLayout.SOUTH);
+        searchTextField.addActionListener(this::searchTextFieldActionPerformed);
 
         madeInIndia.setFont(new java.awt.Font("Consolas", Font.ITALIC, 12));
         madeInIndia.setText("Made In India by TheFlopGuy");
         madeInIndia.setForeground(new java.awt.Color(102, 102, 102));
 
-        t = new Thread(() -> {
-            System.out.println("Thread Started");
-            searchTextField.addKeyListener(new KeyAdapter() {
-                @Override
-                public void keyPressed(KeyEvent e) {
-                    setAdjusting(suggestionBox, true);
-                    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                        if (suggestionBox.isPopupVisible()) {
-                            e.setKeyCode(KeyEvent.VK_ENTER);
-                        }
-                    }
-                    if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN) {
-                        e.setSource(suggestionBox);
-                        suggestionBox.dispatchEvent(e);
-                        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                            searchTextField.setText(suggestionBox.getSelectedItem().toString());
-                            suggestionBox.setPopupVisible(false);
-                        }
-                    }
-                    if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                        suggestionBox.setPopupVisible(false);
-                    }
-                    setAdjusting(suggestionBox, false);
-                }
-            });
-            searchTextField.getDocument().addDocumentListener(new DocumentListener() {
-                public void changedUpdate(DocumentEvent e) {
-                    System.out.println("Change");
-                    flopTrie.getSuggestions(searchTextField.getText(), 10);
-                    changed();
-                }
-                public void removeUpdate(DocumentEvent e) {
-                    System.out.println("remove");
-                    flopTrie.getSuggestions(searchTextField.getText(), 10);
-                    changed();
-                }
-                public void insertUpdate(DocumentEvent e) {
-                    System.out.println("insert");
-                    flopTrie.getSuggestions(searchTextField.getText(), 10);
-                    changed();
-                }
-
-                public void changed() {
-                    if (!searchTextField.getText().equals("") || !searchTextField.getText().equals(" ")){
-                        setAdjusting(suggestionBox, false);
-                        searchList = flopTrie.getSearchItems();
-                        for (String item : searchList) {
-                            model.addElement(item);
-                        }
-                        suggestionBox.setSelectedItem(null);
-                        suggestionBox.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                if (!isAdjusting(suggestionBox)) {
-                                    if (suggestionBox.getSelectedItem() != null) {
-                                        searchTextField.setText(suggestionBox.getSelectedItem().toString());
-                                    }
-                                }
-                            }
-                        });
-                        updateList();
-                    }
-                }
-                private void updateList() {
-                    setAdjusting(suggestionBox, true);
-                    model.removeAllElements();
-                    String input = searchTextField.getText();
-                    if (!input.isEmpty()) {
-                        for (String item : searchList) {
-                            if (item.toLowerCase().startsWith(input.toLowerCase())) {
-                                model.addElement(item);
-                            }
-                        }
-                    }
-                    suggestionBox.setPopupVisible(model.getSize() > 0);
-                    setAdjusting(suggestionBox, false);
-                }
-
-//                public void setupAutoComplete() {
-//                    txtInput.getDocument().addDocumentListener(new DocumentListener() {
-//                        public void insertUpdate(DocumentEvent e) {
-//                            updateList();
-//                        }
-//                        public void removeUpdate(DocumentEvent e) {
-//                            updateList();
-//                        }
-//                        public void changedUpdate(DocumentEvent e) {
-//                            updateList();
-//                        }
-//                    });
-//
-//                }
-            });
-            searchTextField.setLayout(new BorderLayout());
-            searchTextField.add(suggestionBox, BorderLayout.SOUTH);
-        });
-        t.start();
+        setupAutoComplete(searchTextField, searchItemList, nameID);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        layoutSetup(layout);
+    }
+
+    public void layoutSetup(GroupLayout layout){
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,6 +136,7 @@ public class SearchPanel extends JPanel{
                                 .addContainerGap())
         );
     }
+
     private static boolean isAdjusting(JComboBox cbInput) {
         if (cbInput.getClientProperty("is_adjusting") instanceof Boolean) {
             return (Boolean) cbInput.getClientProperty("is_adjusting");
@@ -252,5 +148,84 @@ public class SearchPanel extends JPanel{
         cbInput.putClientProperty("is_adjusting", adjusting);
     }
 
+    public static void setupAutoComplete(final JTextField txtInput, final ArrayList<String> items, final Map<String, String> nameID) {
+        final DefaultComboBoxModel model = new DefaultComboBoxModel();
+        final JComboBox cbInput = new JComboBox(model) {
+            public Dimension getPreferredSize() {
+                return new Dimension(super.getPreferredSize().width, 0);
+            }
+        };
+        setAdjusting(cbInput, false);
+        for (String item : items) {
+            model.addElement(item);
+        }
+        cbInput.setSelectedItem(null);
+        cbInput.addActionListener(e -> {
+            if (!isAdjusting(cbInput)) {
+                if (cbInput.getSelectedItem() != null) {
+                    txtInput.setText(cbInput.getSelectedItem().toString());
+                }
+            }
+        });
 
+        txtInput.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                setAdjusting(cbInput, true);
+//                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+//                    if (cbInput.isPopupVisible()) {
+//                        e.setKeyCode(KeyEvent.VK_ENTER);
+//                    }
+//                }
+                if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    e.setSource(cbInput);
+                    cbInput.dispatchEvent(e);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    try{
+                        txtInput.setText(cbInput.getSelectedItem().toString());
+                        cbInput.setPopupVisible(false);
+                        System.out.println(nameID.get(cbInput.getSelectedItem().toString()));
+                    }catch (NullPointerException nullPointerException){
+                        System.out.println("Invalid Restaurant");
+                    }
+                }
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cbInput.setPopupVisible(false);
+                }
+                setAdjusting(cbInput, false);
+            }
+        });
+
+        txtInput.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                updateList();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                updateList();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                updateList();
+            }
+
+            private void updateList() {
+                setAdjusting(cbInput, true);
+                model.removeAllElements();
+                String input = txtInput.getText();
+                if (!input.isEmpty()) {
+                    for (String item : items) {
+                        if (item.toLowerCase().startsWith(input.toLowerCase())) {
+                            model.addElement(item);
+                        }
+                    }
+                }
+                cbInput.setPopupVisible(model.getSize() > 0);
+                setAdjusting(cbInput, false);
+            }
+        });
+        txtInput.setLayout(new BorderLayout());
+        txtInput.add(cbInput, BorderLayout.SOUTH);
+    }
 }
