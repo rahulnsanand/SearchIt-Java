@@ -26,8 +26,8 @@ public class ResultsPanel extends MainWindow {
 
     public static void resultPanel(){
 
-        Container container = MainWindowFrame.getContentPane();
-        container.removeAll();
+        //Container container = MainWindowFrame.getContentPane();
+        //container.removeAll();
 
         try{
             SFProRegular = Font.createFont(Font.TRUETYPE_FONT, SFProTextRegularLocation);
@@ -45,16 +45,16 @@ public class ResultsPanel extends MainWindow {
         ResultPanelFrame = new JPanel();
         searchItem = new SearchItem(RestaurantName);
 
-        MainWindowFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        MainWindowFrame.getContentPane().add(ResultPanelFrame);
+        //MainWindowFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //MainWindowFrame.getContentPane().add(ResultPanelFrame);
 
         searchItLogo.setFont(SFProRegular.deriveFont(35f));
         searchItLogo.setText("SearchIt");
 
         searchItButton.setFont(SFProRegular.deriveFont(15f));
         searchItButton.setText("SearchIt");
-        GroupLayout layout = new GroupLayout(MainWindowFrame.getContentPane());
-        MainWindowFrame.getContentPane().setLayout(layout);
+        //GroupLayout layout = new GroupLayout(MainWindowFrame.getContentPane());
+        //MainWindowFrame.getContentPane().setLayout(layout);
 
 
         ResultPanelFrame = new javax.swing.JPanel();
@@ -64,7 +64,7 @@ public class ResultsPanel extends MainWindow {
         SearchResultScroll.setBackground(new java.awt.Color(31,31,31));
         SearchResultScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //SearchResultScroll.add(new SearchItem());
-        MainWindow.MainWindowFrame.setContentPane(ResultPanelFrame);
+        //MainWindow.MainWindowFrame.setContentPane(ResultPanelFrame);
         ResultPanelFrame.add(searchItem, BorderLayout.CENTER);
         ResultPanelFrame.setVisible(true);
 

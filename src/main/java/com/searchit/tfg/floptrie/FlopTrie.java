@@ -1,5 +1,7 @@
 package com.searchit.tfg.floptrie;
 
+import com.searchit.tfg.UI.MainWindow;
+
 import java.util.*;
 
 public class FlopTrie {
@@ -281,6 +283,7 @@ public class FlopTrie {
         boolean isLast = isLastNode(internalSearchNode);
         if(isWord && isLast){
             idName.put(internalSearchNode.getID(),word);
+            searchList.add(word+", "+internalSearchNode.getCity());
             //idCity.put(internalSearchNode.getID(),getCity(internalSearchNode.getID()));
             return;
         }
@@ -295,6 +298,7 @@ public class FlopTrie {
                 if (internalSearchNode.children[i].isEndOfWord()) {
                     suggestionCounter++;
                     idName.put(internalSearchNode.children[i].getID(),internalSearchNode.children[i].getName());
+                    searchList.add(internalSearchNode.children[i].getName()+", "+internalSearchNode.children[i].getCity());
                     //idCity.put(internalSearchNode.children[i].getID(),getCity(internalSearchNode.children[i].getID()));
                 }
                 else{
@@ -323,4 +327,11 @@ public class FlopTrie {
         int choice = sc.nextInt();
         getDataPOJO.setRes_id(searchKeyID.get(choice));
     }
+
+    public ArrayList<String> getSearchItems(){
+        return searchList;
+    }
+
+    public ArrayList<String> searchList = new ArrayList<>();
+
 }

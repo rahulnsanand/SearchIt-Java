@@ -2,6 +2,7 @@ package com.searchit.tfg.floptrie;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.searchit.tfg.UI.MainWindow;
 import com.searchit.tfg.UI.utils.ConsoleProgress;
 
 import java.io.File;
@@ -10,12 +11,14 @@ import java.util.List;
 
 public class UpdateTrie {
 
-    public static void update(String JSONDir, FlopTrie flopTrie){
+    public static void update(String JSONDir, FlopTrie flopTrie, MainWindow mainWindow){
         File JSONDirFiles = new File(JSONDir);
-        String JSONFiles[] = JSONDirFiles.list();
+        String[] JSONFiles = JSONDirFiles.list();
         ObjectMapper objectMapper = new ObjectMapper();
-        ConsoleProgress cp = new ConsoleProgress("FlopTrie Creation",25);
-        cp.start(JSONFiles.length,0);
+
+        assert JSONFiles != null;
+        mainWindow.updateProgressBar.setMaximum(JSONFiles.length-1);
+        mainWindow.updateProgressBar.setMinimum(0);
         for(int i = 0; i < JSONFiles.length; i++) {
             String jsonFilePath = JSONDir+JSONFiles[i];
 
@@ -28,14 +31,14 @@ public class UpdateTrie {
                     String restaurantCity = trieOrder.getRes_city();
                     flopTrie.insert(restaurantName, restaurantID, restaurantURL, restaurantCity);
                 }
-                cp.addStep(i,"Added :\t"+JSONFiles[i]);
+                mainWindow.mainFrameLoadingText.setText("Updated "+JSONFiles[i]+" FlopTrie Values!");
+                mainWindow.updateProgressBar.setValue(i);
             } catch (IOException e) {
                 e.printStackTrace();
                 break;
             }
-
         }
-        cp.stop();
+        mainWindow.mainFrameLoadingText.setText("FlopTrie Updated!");
     }
 
 }

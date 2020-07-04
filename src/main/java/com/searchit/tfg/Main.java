@@ -10,7 +10,8 @@ import com.searchit.tfg.floptrie.FlopTrie;
 import com.searchit.tfg.floptrie.GetDataPOJO;
 import com.searchit.tfg.floptrie.UpdateTrie;
 
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Main{
 
@@ -19,15 +20,19 @@ public class Main{
     private static GetDataPOJO getDataPOJO = new GetDataPOJO();
     private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
     private static String word;
-    public static void main(String[] args) {
-        MainWindow.createWindow();
-        SearchPanel.SearchElements();
-        //SearchPanel.SearchPanelFrame.setVisible(false);
-//        ResultsPanel resultsPanel = new ResultsPanel("HAHAHA");
-//        ResultsPanel.resultPanel();
-        MainWindow.displayWindow();
+    static MainWindow mainWindow = new MainWindow();
+    private static ArrayList<String> searchList = new ArrayList<>();
 
-//        updateFlopTrie(JSONDataDirectory);
+    public static void main(String[] args) {
+
+        mainWindow.createWindow();
+        mainWindow.initLoadingPanel();
+        mainWindow.displayWindow();
+        mainWindow.showLoadingPanel();
+        updateFlopTrie(JSONDataDirectory);
+        SearchPanel searchPanel = new SearchPanel(flopTrie);
+        mainWindow.switchToSearchPanel(searchPanel);
+
 //        getInput();
 //        search(word);
 //        callAPI();
@@ -88,7 +93,7 @@ public class Main{
     }
 
     public static void updateFlopTrie(String dir){
-        UpdateTrie.update(dir,flopTrie);
+        UpdateTrie.update(dir,flopTrie, mainWindow);
     }
 
     public void consoleProgressCheck(){
