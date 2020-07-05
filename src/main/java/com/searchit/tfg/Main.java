@@ -21,23 +21,17 @@ public class Main{
     private static final FlopTrie flopTrie = new FlopTrie();
     private static final SearchData searchData = new SearchData();
     private static final FlopTrie.FlopTrieNode flopTrieNode = new FlopTrie.FlopTrieNode();
-    private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
-    private static GetDataPOJO getDataPOJO = new GetDataPOJO();
+
     private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
     private static String word;
     static MainWindow mainWindow = new MainWindow();
 
     public static void main(String[] args) {
-
         setupFrame();
         updateFlopTrie(JSONDataDirectory);
         updateSearch();
         SearchPanel searchPanel = new SearchPanel(searchData,mainWindow);
         mainWindow.switchToSearchPanel(searchPanel);
-//        getInput();
-//        search(word);
-//        callAPI();
-
     }
 
     public static void setupFrame(){
@@ -67,49 +61,7 @@ public class Main{
 
     public static void search(String word){
         flopTrie.getSuggestions(flopTrieNode,word, 2);
-        flopTrie.showSuggestion(2,getDataPOJO);
-    }
-
-    public static void callAPI(){
-        ZomatoAPISearch zomatoAPISearch = new ZomatoAPISearch();
-        int status = zomatoAPISearch.getApiDetails(zomato,getDataPOJO.getRes_id());
-        getResponse(status);
-    }
-
-    public static void getResponse(int statusID){
-
-        if(statusID == 1){
-            getDetails();
-        }
-        else if (statusID == -1){
-            System.out.println("This restaurant doesn't exit anymore");
-        }
-        else if(statusID == 404){
-            System.out.println("Error "+statusID+": Couldn't get the details of this restaurant.");
-        }
-        else if(statusID ==101){
-            System.out.println("Couldn't connect to the website. Check internet speed.");
-        }
-        else if(statusID == 102){
-            System.out.println("IOException occured");
-        }
-        else if(statusID ==103){
-            System.out.println("Couldn't connect to the website. Check internet connection");
-        }
-        else if(statusID ==104){
-            System.out.println("API Limit exceeded!");
-        }
-        else if(statusID ==105) {
-            System.out.println("Null Value Of Restaurant ID Passed!");
-        }
-    }
-
-    private static void getDetails() {
-        System.out.println(zomato.toString());
-
-        if(zomato.getRetryNo()>0){
-            System.out.println(zomato.getRetryNo());
-        }
+        //flopTrie.showSuggestion(2,getDataPOJO);
     }
 
     public static void updateFlopTrie(String dir){

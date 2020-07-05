@@ -132,83 +132,87 @@ public class ZomatoWebOrder {
     }
 
     public String getRestaurantID() {
-        return restaurantID;
+        return getPure(restaurantID);
     }
 
     public String getRestaurantName() {
-        return restaurantName;
+        return getPure(restaurantName);
     }
 
     public String getCountryCode() {
-        return countryCode;
+        return getPure(countryCode);
     }
 
     public String getCity() {
-        return city;
+        return getPure(city);
     }
 
     public String getAddress() {
-        return address;
+        return getPure(address);
     }
 
     public String getLocality() {
-        return locality;
+        return getPure(locality);
     }
 
     public String getLocalityVerbose() {
-        return localityVerbose;
+        return getPure(localityVerbose);
     }
 
     public String getLongitude() {
-        return longitude;
+        return getPure(longitude);
     }
 
     public String getLatitude() {
-        return latitude;
+        return getPure(latitude);
     }
 
     public String getCuisines() {
-        return cuisines;
+        return getPure(cuisines);
     }
 
     public String getAverageCostForTwo() {
-        return averageCostForTwo;
+        return getPure(averageCostForTwo);
     }
 
     public String getCurrency() {
-        return currency;
+        return getPure(currency);
     }
 
     public String getHasTableBooking() {
-        return hasTableBooking;
+        return getPure(hasTableBooking);
     }
 
     public String getHasOnlineDelivery() {
-        return hasOnlineDelivery;
+        return getPure(hasOnlineDelivery);
     }
 
     public String getIsDeliveringNow() {
-        return isDeliveringNow;
+        return getPure(isDeliveringNow);
     }
 
     public String getPriceRange() {
-        return priceRange;
+        return getPure(priceRange);
     }
 
     public String getAggregateRating() {
-        return aggregateRating;
+        return getPure(aggregateRating);
     }
 
     public String getRatingColor() {
-        return ratingColor;
+        return getPure(ratingColor);
     }
 
     public String getRatingText() {
-        return ratingText;
+        return getPure(ratingText);
     }
 
     public String getVotes() {
-        return votes;
+        return getPure(votes);
+    }
+
+    public String getPure(String input){
+        return input.replaceAll("^\"|\"$","");
     }
 
     public ZomatoWebOrder() {

@@ -18,11 +18,10 @@ public class MainWindow{
         MainWindowFrame = new JFrame("SearchIt");
         MainWindowFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         MainWindowFrame.setTitle("SearchIt");
-        MainWindowFrame.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        MainWindowFrame.setMinimumSize(new java.awt.Dimension(720, 480));
-        MainWindowFrame.setPreferredSize(new java.awt.Dimension(720, 480));
+        MainWindowFrame.setMaximumSize(new java.awt.Dimension(1920, 1240));
+        MainWindowFrame.setMinimumSize(new java.awt.Dimension(720, 540));
         MainWindowFrame.setLocation(screenSize.width/2-MainWindowFrame.getSize().width/2, screenSize.height/2-MainWindowFrame.getSize().height/2);
-        MainWindowFrame.setSize(new Dimension(screenSize.getSize().width/2,screenSize.getSize().height/2));
+        MainWindowFrame.setPreferredSize(new Dimension(screenSize.getSize().width/2,screenSize.getSize().height/2));
         MainWindowFrame.setResizable(false);
     }
 
