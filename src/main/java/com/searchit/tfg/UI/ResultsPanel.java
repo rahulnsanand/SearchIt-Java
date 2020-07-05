@@ -1,6 +1,7 @@
 package com.searchit.tfg.UI;
 
-import com.searchit.tfg.TESTING.RetrieveMapsAPI;
+import com.searchit.tfg.TESTING.ThumbnailRetrieve;
+import com.searchit.tfg.UI.SearchElement.RetrieveMapsAPI;
 import com.searchit.tfg.UI.SearchElement.SearchData;
 import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
 import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
@@ -36,6 +37,7 @@ public class ResultsPanel extends JPanel {
     private MainWindow mainWindow;
     private SearchData searchData;
     private ImageIcon mapImage = new ImageIcon();
+    private ImageIcon thumbImage = new ImageIcon();
 
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
 
@@ -152,10 +154,19 @@ public class ResultsPanel extends JPanel {
         costForTwoLabel = new javax.swing.JLabel();
         costForTwoLabel.setText(zomato.getAverageCostForTwo());
 
-        mapImage = RetrieveMapsAPI.getMapImage(zomato.getLatitude(),zomato.getLongitude());
+        mapsImageLabel = new javax.swing.JLabel();
+        mapImage = RetrieveMapsAPI.getMapImage(zomato.getLatitude(),zomato.getLongitude(),690,130);
+        Image scaledMapInstance = mapImage.getImage()
+                .getScaledInstance(690,130, Image.SCALE_SMOOTH);
+        ImageIcon scaledMapIcon = new ImageIcon(scaledMapInstance);
+        mapsImageLabel.setIcon(scaledMapIcon);
 
-        mapsImageLabel = new javax.swing.JLabel(mapImage);
         thumbImageLabel = new javax.swing.JLabel();
+        thumbImage = ThumbnailRetrieve.getThumbImage(zomato.getThumbURL());
+        Image scaledThumbInstance = thumbImage.getImage()
+                .getScaledInstance(200,200, Image.SCALE_SMOOTH);
+        ImageIcon scaledThumbIcon = new ImageIcon(scaledThumbInstance);
+        thumbImageLabel.setIcon(scaledThumbIcon);
 
         aggregateRatingLabel = new javax.swing.JLabel();
         aggregateRatingLabel.setText(zomato.getAggregateRating());

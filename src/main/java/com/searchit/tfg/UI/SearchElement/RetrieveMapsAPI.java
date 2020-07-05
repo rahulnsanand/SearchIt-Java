@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.UI.SearchElement;
 
 import javax.swing.*;
 import java.io.FileOutputStream;
@@ -13,10 +13,10 @@ public class RetrieveMapsAPI {
 
     private static String API_KEY = "AIzaSyC-BH_ZRhd4idviLzTVae13oHpFtoXfAHU";
     private static String defaultURL = "https://maps.googleapis.com/maps/api/staticmap?";
-    private static String outputFile = "src\\main\\resources\\image.jpg";
+    private static String outputFile = "src\\main\\resources\\MapImage.jpg";
 
-    public static ImageIcon getMapImage(String latitude, String longitude){
-        String updatedURL = defaultURL+"center="+latitude+","+longitude+"&markers=size:mid%7color:red|"+latitude+","+longitude+"&zoom=15&size=400x400&key="+API_KEY;
+    public static ImageIcon getMapImage(String latitude, String longitude, int width, int height){
+        String updatedURL = defaultURL+"center="+latitude+","+longitude+"&markers=size:mid%7color:red|"+latitude+","+longitude+"&zoom=15&size="+width+"x"+height+"&key="+API_KEY;
         InputStream is = null;
         try {
             URL url = new URL(updatedURL);
@@ -35,9 +35,7 @@ public class RetrieveMapsAPI {
             e.printStackTrace();
         }
 
-        return new ImageIcon((new ImageIcon(outputFile))
-                .getImage().getScaledInstance(630, 600,
-                        java.awt.Image.SCALE_SMOOTH));
+        return new ImageIcon(outputFile);
     }
 
     public static void clearImage(){

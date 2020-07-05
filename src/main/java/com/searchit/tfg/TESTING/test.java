@@ -13,14 +13,9 @@ import javax.swing.event.*;
 
 public class test {
 
-    //public static void main(String[] args) throws Exception {
-//        String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=13.0209240507,80.1817423850&markers=size:mid%7color:red|13.0209240507,80.1817423850&zoom=15&size=400x400&key=AIzaSyC-BH_ZRhd4idviLzTVae13oHpFtoXfAHU";
-//        String destinationFile = "src/main/resources/image.jpg";
+//    public static void main(String[] args){
 //
+//        ThumbnailRetrieve.getThumbImage("");
 //
-//
-//        JLabel imgMap = new JLabel(imageIcon);
-//        imgMap.setBounds(5, 5, 571, 308);
-//        //contentPane.add(imgMap);
-    //}
+//    }
 }

@@ -26,7 +26,7 @@ public class ZomatoWebOrder {
     private String phoneNumber;
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return getPure(phoneNumber);
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -44,7 +44,7 @@ public class ZomatoWebOrder {
     }
 
     public String getThumbURL() {
-        return thumbURL;
+        return getPure(thumbURL);
     }
 
     public void setThumbURL(String thumbURL) {
