@@ -1,6 +1,8 @@
 package com.searchit.tfg;
 
 
+import com.searchit.tfg.UI.ResultsPanel;
+import com.searchit.tfg.UI.SearchElement.SearchData;
 import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
 import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
 import com.searchit.tfg.UI.MainWindow;
@@ -17,21 +19,20 @@ import java.util.*;
 public class Main{
 
     private static final FlopTrie flopTrie = new FlopTrie();
+    private static final SearchData searchData = new SearchData();
     private static final FlopTrie.FlopTrieNode flopTrieNode = new FlopTrie.FlopTrieNode();
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
     private static GetDataPOJO getDataPOJO = new GetDataPOJO();
     private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
     private static String word;
     static MainWindow mainWindow = new MainWindow();
-    private static ArrayList<String> searchList = new ArrayList<>();
-    private static Map<String, String> idSearch = new HashMap<>();
 
     public static void main(String[] args) {
 
         setupFrame();
         updateFlopTrie(JSONDataDirectory);
         updateSearch();
-        SearchPanel searchPanel = new SearchPanel(searchList, idSearch);
+        SearchPanel searchPanel = new SearchPanel(searchData,mainWindow);
         mainWindow.switchToSearchPanel(searchPanel);
 //        getInput();
 //        search(word);
@@ -49,9 +50,9 @@ public class Main{
     public static void updateSearch(){
         mainWindow.updateProgressBar.setIndeterminate(true);
         mainWindow.mainFrameLoadingText.setText("Updating HashMap!");
-        UpdateSearchList.hashMapUpdate(flopTrieNode,idSearch);
+        searchData.setNameIDMap(UpdateSearchList.hashMapUpdate(flopTrieNode));
         mainWindow.mainFrameLoadingText.setText("Updating Search List!");
-        UpdateSearchList.searchListUpdate(flopTrieNode, searchList);
+        searchData.setNameList(UpdateSearchList.searchListUpdate(flopTrieNode));
         mainWindow.updateProgressBar.setIndeterminate(false);
         mainWindow.updateProgressBar.setMinimum(0);
         mainWindow.updateProgressBar.setMaximum(100);

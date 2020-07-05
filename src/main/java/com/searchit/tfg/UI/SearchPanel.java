@@ -1,5 +1,6 @@
 package com.searchit.tfg.UI;
 
+import com.searchit.tfg.UI.SearchElement.SearchData;
 import com.searchit.tfg.UI.utils.HintTextField;
 import com.searchit.tfg.floptrie.FlopTrie;
 import org.apache.commons.lang3.ObjectUtils;
@@ -15,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 public class SearchPanel extends JPanel{
 
@@ -26,9 +28,11 @@ public class SearchPanel extends JPanel{
     public String id = "";
     public String res_name = "";
     public boolean darkTheme = false;
+    public static SearchData searchData;
 
-    public SearchPanel(ArrayList<String> list, Map<String, String> nameID){
-        initComponents(list, nameID);
+    public SearchPanel(SearchData searchData, MainWindow mainWindow){
+        this.searchData=searchData;
+        initComponents(mainWindow);
     }
 
     public void switchThemeButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +60,7 @@ public class SearchPanel extends JPanel{
         // TODO add your handling code here:
     }
 
-    public void initComponents(ArrayList<String> searchItemList, Map<String, String> nameID) {
+    public void initComponents(MainWindow mainWindow) {
 
         searchItLogo = new javax.swing.JLabel();
         switchThemeButton = new javax.swing.JButton();
@@ -93,7 +97,7 @@ public class SearchPanel extends JPanel{
         madeInIndia.setText("Made In India by TheFlopGuy");
         madeInIndia.setForeground(new java.awt.Color(102, 102, 102));
 
-        setupAutoComplete(searchTextField, searchItemList, nameID);
+        setupAutoComplete(mainWindow, searchTextField);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layoutSetup(layout);
@@ -148,7 +152,7 @@ public class SearchPanel extends JPanel{
         cbInput.putClientProperty("is_adjusting", adjusting);
     }
 
-    public static void setupAutoComplete(final JTextField txtInput, final ArrayList<String> items, final Map<String, String> nameID) {
+    public static void setupAutoComplete(MainWindow mainWindow, final JTextField txtInput) {
         final DefaultComboBoxModel model = new DefaultComboBoxModel();
         final JComboBox cbInput = new JComboBox(model) {
             public Dimension getPreferredSize() {
@@ -156,7 +160,7 @@ public class SearchPanel extends JPanel{
             }
         };
         setAdjusting(cbInput, false);
-        for (String item : items) {
+        for (String item : searchData.getNameList()) {
             model.addElement(item);
         }
         cbInput.setSelectedItem(null);
@@ -183,9 +187,12 @@ public class SearchPanel extends JPanel{
                 }
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     try{
-                        txtInput.setText(cbInput.getSelectedItem().toString());
+                        searchData.setSelectedItem("");
+                        String selectedItem = cbInput.getSelectedItem().toString();
+                        txtInput.setText(selectedItem);
                         cbInput.setPopupVisible(false);
-                        System.out.println(nameID.get(cbInput.getSelectedItem().toString()));
+                        searchData.setSelectedItem(selectedItem);
+                        switchToResultPage(mainWindow, searchData);
                     }catch (NullPointerException nullPointerException){
                         System.out.println("Invalid Restaurant");
                     }
@@ -215,7 +222,7 @@ public class SearchPanel extends JPanel{
                 model.removeAllElements();
                 String input = txtInput.getText();
                 if (!input.isEmpty()) {
-                    for (String item : items) {
+                    for (String item : searchData.getNameList()) {
                         if (item.toLowerCase().startsWith(input.toLowerCase())) {
                             model.addElement(item);
                         }
@@ -227,5 +234,10 @@ public class SearchPanel extends JPanel{
         });
         txtInput.setLayout(new BorderLayout());
         txtInput.add(cbInput, BorderLayout.SOUTH);
+    }
+
+    private static void switchToResultPage(MainWindow mainWindow, SearchData searchData) {
+        ResultsPanel resultsPanel = new ResultsPanel(searchData,mainWindow);
+        mainWindow.switchToResultPanel(resultsPanel);
     }
 }

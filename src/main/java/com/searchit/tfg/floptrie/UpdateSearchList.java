@@ -1,11 +1,17 @@
 package com.searchit.tfg.floptrie;
 
+import com.searchit.tfg.UI.SearchElement.SearchData;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class UpdateSearchList {
 
-    public static ArrayList<String> searchListUpdate(FlopTrie.FlopTrieNode searchNode, ArrayList<String> list){
+    private static final ArrayList<String> list = new ArrayList<>();
+    private static final Map<String, String> idSearch = new HashMap<>();
+
+    public static ArrayList<String> searchListUpdate(FlopTrie.FlopTrieNode searchNode){
         for(int level = 0; level< FlopTrie.FlopTrieNode.ALPHABET_SIZE; level++) {
             if(searchNode.children[level]!=null){
                 if (searchNode.children[level].isEndOfWord()) {
@@ -14,14 +20,14 @@ public class UpdateSearchList {
                     list.add(name+", "+city);
                 }
                 else{
-                    searchListUpdate(searchNode.children[level], list);
+                    searchListUpdate(searchNode.children[level]);
                 }
             }
         }
         return list;
     }
 
-    public static Map<String,String> hashMapUpdate(FlopTrie.FlopTrieNode flopTrieNode, Map<String, String> idSearch) {
+    public static Map<String,String> hashMapUpdate(FlopTrie.FlopTrieNode flopTrieNode) {
         for(int level = 0; level< FlopTrie.FlopTrieNode.ALPHABET_SIZE; level++) {
             if(flopTrieNode.children[level]!=null){
                 if (flopTrieNode.children[level].isEndOfWord()) {
@@ -30,7 +36,7 @@ public class UpdateSearchList {
                     idSearch.put(name+", "+city,flopTrieNode.children[level].getID());
                 }
                 else{
-                    hashMapUpdate(flopTrieNode.children[level], idSearch);
+                    hashMapUpdate(flopTrieNode.children[level]);
                 }
             }
         }

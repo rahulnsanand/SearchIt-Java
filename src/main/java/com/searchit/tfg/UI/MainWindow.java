@@ -101,7 +101,7 @@ public class MainWindow{
 
     public void switchToSearchPanel(JPanel searchPanel){
 
-        MainWindowFrame.getContentPane().remove(mainPanel);
+        MainWindowFrame.getContentPane().removeAll();
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(MainWindowFrame.getContentPane());
         MainWindowFrame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,4 +113,20 @@ public class MainWindow{
                         .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
+
+    public void switchToResultPanel(ResultsPanel resultPanel){
+
+        MainWindowFrame.getContentPane().removeAll();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(MainWindowFrame.getContentPane());
+        MainWindowFrame.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(resultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(resultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
+
 }
