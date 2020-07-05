@@ -1,25 +1,17 @@
 package com.searchit.tfg.UI;
 
+import com.searchit.tfg.TESTING.RetrieveMapsAPI;
 import com.searchit.tfg.UI.SearchElement.SearchData;
 import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
 import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
-import com.searchit.tfg.floptrie.GetDataPOJO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class ResultsPanel extends JPanel {
 
-
-    public boolean isDarkTheme() {
-        return darkTheme;
-    }
-
-    public void setDarkTheme(boolean darkTheme) {
-        this.darkTheme = darkTheme;
-    }
-
-    public boolean darkTheme;
+    public int darkTheme;
     public String selectedItem;
     public String selectedID;
     private javax.swing.JLabel addressLabel;
@@ -43,15 +35,9 @@ public class ResultsPanel extends JPanel {
     private javax.swing.JLabel votesLabel;
     private MainWindow mainWindow;
     private SearchData searchData;
+    private ImageIcon mapImage = new ImageIcon();
+
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
-
-    public String getSelectedItem() {
-        return selectedItem;
-    }
-
-    public void setSelectedItem(String selectedItem) {
-        this.selectedItem = selectedItem;
-    }
 
     public static void callAPI(String res_id){
         ZomatoAPISearch zomatoAPISearch = new ZomatoAPISearch();
@@ -93,97 +79,101 @@ public class ResultsPanel extends JPanel {
         }
     }
 
-    public ResultsPanel(SearchData searchData, MainWindow mainWindow){
+    public ResultsPanel(SearchData searchData, MainWindow mainWindow, int darkTheme){
         this.selectedItem = searchData.getSelectedItem();
         this.selectedID = searchData.getNameIDMap().get(this.selectedItem);
         this.mainWindow = mainWindow;
         this.searchData = searchData;
+        this.darkTheme = darkTheme;
         callAPI(this.selectedID);
-        initComponents(mainWindow);
+        initComponents();
     }
-
-//    public static void resultPanel(){
-//
-////        try{
-//////            SFProRegular = Font.createFont(Font.TRUETYPE_FONT, SFProTextRegularLocation);
-////            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//////            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, SFProTextRegularLocation));
-////
-////        }
-////        catch(IOException | FontFormatException e){
-////
-////        }
-//
-//    }
-
+    public void themeCheck() {
+        if(darkTheme==1){
+            setBackground(new java.awt.Color(50, 50, 50, 255));
+            addressLabel.setForeground(new java.awt.Color(239, 239, 239));
+            aggregateRatingLabel.setForeground(new java.awt.Color(239, 239, 239));
+            topPanel.setBackground(new java.awt.Color(41, 41, 41, 255));
+            bottomPanel.setBackground(new java.awt.Color(41, 41, 41, 255));
+            costForTwoLabel.setForeground(new java.awt.Color(239, 239, 239));
+            downloadAsJSONButton.setForeground(new java.awt.Color(41, 41, 41, 255));
+            searchPageButton.setForeground(new java.awt.Color(41, 41, 41, 255));
+            hasOnlineDeliveryLabel.setForeground(new java.awt.Color(239, 239, 239));
+            hasTableBookingLabel.setForeground(new java.awt.Color(239, 239, 239));
+            idLabel.setForeground(new java.awt.Color(239, 239, 239));
+            isDeliveringNowLabel.setForeground(new java.awt.Color(239, 239, 239));
+            madeInIndiaLabel.setForeground(new java.awt.Color(239, 239, 239));
+            nameLabel.setForeground(new java.awt.Color(239, 239, 239));
+            phoneLabel.setForeground(new java.awt.Color(239, 239, 239));
+            ratingTextLabel.setForeground(new java.awt.Color(239, 239, 239));
+            searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239));
+            votesLabel.setForeground(new java.awt.Color(239, 239, 239));
+        }
+        else{
+            setBackground(new java.awt.Color(239, 239, 239, 255));
+            addressLabel.setForeground(new java.awt.Color(52, 52, 52, 255));
+            aggregateRatingLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            topPanel.setBackground(new java.awt.Color(41, 41, 41, 255));
+            bottomPanel.setBackground(new java.awt.Color(41, 41, 41, 255));
+            costForTwoLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            downloadAsJSONButton.setForeground(new java.awt.Color(41, 41, 41, 255));
+            searchPageButton.setForeground(new java.awt.Color(41, 41, 41, 255));
+            hasOnlineDeliveryLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            hasTableBookingLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            idLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            isDeliveringNowLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            madeInIndiaLabel.setForeground(new java.awt.Color(239, 239, 239, 255));
+            nameLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            phoneLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            ratingTextLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239, 255));
+            votesLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+        }
+    }
     private void backToSearchPage(java.awt.event.ActionEvent evt) {
         SearchPanel searchPanel= new SearchPanel(searchData,mainWindow);
         mainWindow.switchToSearchPanel(searchPanel);
     }
 
-    public void initComponents(MainWindow mainWindow) {
+    public void initComponents() {
 
         topPanel = new javax.swing.JPanel();
         searchItLogoLabel = new javax.swing.JLabel();
-        searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239));
         downloadAsJSONButton = new javax.swing.JButton();
         bottomPanel = new javax.swing.JPanel();
         madeInIndiaLabel = new javax.swing.JLabel();
-        madeInIndiaLabel.setForeground(new java.awt.Color(239, 239, 239));
         searchPageButton = new javax.swing.JButton();
-        thumbImageLabel = new javax.swing.JLabel();
-        thumbImageLabel.setForeground(new java.awt.Color(239, 239, 239));
         nameLabel = new javax.swing.JLabel();
         nameLabel.setText(zomato.getRestaurantName());
-        nameLabel.setForeground(new java.awt.Color(239, 239, 239));
         idLabel = new javax.swing.JLabel();
         idLabel.setText(zomato.getRestaurantID());
-        idLabel.setForeground(new java.awt.Color(239, 239, 239));
         addressLabel = new javax.swing.JLabel();
         addressLabel.setText(zomato.getAddress());
-        addressLabel.setForeground(new java.awt.Color(239, 239, 239));
         costForTwoLabel = new javax.swing.JLabel();
         costForTwoLabel.setText(zomato.getAverageCostForTwo());
-        costForTwoLabel.setForeground(new java.awt.Color(239, 239, 239));
 
-        mapsImageLabel = new javax.swing.JLabel();
-        //mapsImageLabel.setText(zomato.getRestaurantName());
-        mapsImageLabel.setForeground(new java.awt.Color(239, 239, 239));
+        mapImage = RetrieveMapsAPI.getMapImage(zomato.getLatitude(),zomato.getLongitude());
+
+        mapsImageLabel = new javax.swing.JLabel(mapImage);
+        thumbImageLabel = new javax.swing.JLabel();
 
         aggregateRatingLabel = new javax.swing.JLabel();
         aggregateRatingLabel.setText(zomato.getAggregateRating());
-        aggregateRatingLabel.setForeground(new java.awt.Color(239, 239, 239));
         ratingTextLabel = new javax.swing.JLabel();
         ratingTextLabel.setText(zomato.getRatingText());
-        ratingTextLabel.setForeground(new java.awt.Color(239, 239, 239));
         votesLabel = new javax.swing.JLabel();
         votesLabel.setText(zomato.getVotes());
-        votesLabel.setForeground(new java.awt.Color(239, 239, 239));
-
         hasTableBookingLabel = new javax.swing.JLabel();
         hasTableBookingLabel.setText(zomato.getHasTableBooking());
-        hasTableBookingLabel.setForeground(new java.awt.Color(239, 239, 239));
         hasOnlineDeliveryLabel = new javax.swing.JLabel();
         hasOnlineDeliveryLabel.setText(zomato.getHasOnlineDelivery());
-        hasOnlineDeliveryLabel.setForeground(new java.awt.Color(239, 239, 239));
         isDeliveringNowLabel = new javax.swing.JLabel();
         isDeliveringNowLabel.setText(zomato.getIsDeliveringNow());
-        isDeliveringNowLabel.setForeground(new java.awt.Color(239, 239, 239));
         phoneLabel = new javax.swing.JLabel();
         phoneLabel.setText(zomato.getPhoneNumber());
-        phoneLabel.setForeground(new java.awt.Color(239, 239, 239));
+        themeCheck();
 
-        setBackground(new java.awt.Color(50, 50, 50));
-
-        topPanel.setBackground(new java.awt.Color(41, 41, 41));
         topPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        searchItLogoLabel.setFont(new java.awt.Font("Consolas", 2, 48)); // NOI18N
-        searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239));
-        searchItLogoLabel.setText("SᴇᴀʀᴄʜIᴛ");
-
-        downloadAsJSONButton.setFont(new java.awt.Font("Consolas", Font.BOLD, 12)); // NOI18N
-        downloadAsJSONButton.setText("Download as Json");
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -205,17 +195,17 @@ public class ResultsPanel extends JPanel {
                                         .addComponent(downloadAsJSONButton)))
         );
 
-        bottomPanel.setBackground(new java.awt.Color(41, 41, 41));
         bottomPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         bottomPanel.setMaximumSize(new java.awt.Dimension(32767, 38));
         bottomPanel.setMinimumSize(new java.awt.Dimension(100, 38));
 
-        madeInIndiaLabel.setFont(new java.awt.Font("Consolas", 2, 12)); // NOI18N
-        madeInIndiaLabel.setText("Made In India By TheFlopGuy");
 
         searchPageButton.setFont(new java.awt.Font("Consolas", Font.BOLD, 12)); // NOI18N
         searchPageButton.setText("SearchIt Another Restaurant");
         searchPageButton.addActionListener(this::backToSearchPage);
+        downloadAsJSONButton.setFont(new java.awt.Font("Consolas", Font.BOLD, 12)); // NOI18N
+        downloadAsJSONButton.setText("Download as Json");
+        downloadAsJSONButton.addActionListener(this::downloadAsJSON);
 
         javax.swing.GroupLayout bottomPanelLayout = new javax.swing.GroupLayout(bottomPanel);
         bottomPanel.setLayout(bottomPanelLayout);
@@ -238,37 +228,31 @@ public class ResultsPanel extends JPanel {
                                 .addContainerGap())
         );
 
-        thumbImageLabel.setFont(new java.awt.Font("Consolas", 3, 36)); // NOI18N
         thumbImageLabel.setAlignmentY(0.0F);
         thumbImageLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(41, 41, 41)));
         thumbImageLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        nameLabel.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
-
-        idLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
-        addressLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
-        costForTwoLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
 
         mapsImageLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(41, 41, 41)));
         mapsImageLabel.setMaximumSize(new java.awt.Dimension(2, 400));
         mapsImageLabel.setMinimumSize(new java.awt.Dimension(2, 100));
         mapsImageLabel.setPreferredSize(new java.awt.Dimension(2, 200));
 
+        madeInIndiaLabel.setFont(new java.awt.Font("Consolas", 2, 12)); // NOI18N
+        madeInIndiaLabel.setText("Made In India By TheFlopGuy");
+        searchItLogoLabel.setFont(new java.awt.Font("Consolas", 2, 48)); // NOI18N
+        searchItLogoLabel.setText("SᴇᴀʀᴄʜIᴛ");
+        thumbImageLabel.setFont(new java.awt.Font("Consolas", 3, 36)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        idLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addressLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
         aggregateRatingLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
+        costForTwoLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
         ratingTextLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
         votesLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
         hasTableBookingLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
         hasOnlineDeliveryLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
         isDeliveringNowLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
-
         phoneLabel.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -341,6 +325,8 @@ public class ResultsPanel extends JPanel {
         );
     }
 
+    private void downloadAsJSON(ActionEvent actionEvent) {
+    }
 
 
 }

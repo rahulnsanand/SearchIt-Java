@@ -24,26 +24,26 @@ public class SearchPanel extends JPanel{
     public javax.swing.JLabel madeInIndia;
     public javax.swing.JTextField searchTextField;
     public javax.swing.JButton switchThemeButton;
-    public javax.swing.JComboBox<String> suggestionBox;
     public String id = "";
-    public String res_name = "";
-    public boolean darkTheme = false;
+    public static int darkTheme = 1;
+    public static int currentTheme = 1;
     public static SearchData searchData;
 
     public SearchPanel(SearchData searchData, MainWindow mainWindow){
-        this.searchData=searchData;
+        SearchPanel.searchData =searchData;
         initComponents(mainWindow);
     }
 
-    public void switchThemeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if(darkTheme){
+    public void themeCheck(){
+        if(darkTheme==1){
             setBackground(new java.awt.Color(32, 32, 32));
             searchItLogo.setForeground(new java.awt.Color(239, 239, 239));
             switchThemeButton.setBackground(new java.awt.Color(239, 239, 239));
             switchThemeButton.setText("LightMode");
             switchThemeButton.setForeground(new java.awt.Color(31, 31, 31));
             searchTextField.setForeground(new java.awt.Color(31, 31, 31));
-            darkTheme=false;
+            currentTheme=1;
+            darkTheme=0;
         }
         else{
             setBackground(new java.awt.Color(239, 239, 239));
@@ -52,8 +52,13 @@ public class SearchPanel extends JPanel{
             switchThemeButton.setText("DarkMode ");
             switchThemeButton.setForeground(new java.awt.Color(239, 239, 239));
             searchTextField.setForeground(new java.awt.Color(32, 32, 32));
-            darkTheme=true;
+            currentTheme=0;
+            darkTheme=1;
         }
+    }
+
+    public void switchThemeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        themeCheck();
     }
 
     public void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,17 +72,13 @@ public class SearchPanel extends JPanel{
         searchTextField = new HintTextField("Start typing here...");
         madeInIndia = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(32, 32, 32));
+        themeCheck();
 
         searchItLogo.setFont(new java.awt.Font("Consolas", 2, 60)); // NOI18N
-        searchItLogo.setForeground(new java.awt.Color(239, 239, 239));
         searchItLogo.setText("SᴇᴀʀᴄʜIᴛ");
         searchTextField.setFocusTraversalKeysEnabled(false);
 
-        switchThemeButton.setBackground(new java.awt.Color(239, 239, 239));
         switchThemeButton.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
-        switchThemeButton.setForeground(new java.awt.Color(50, 50, 50));
-        switchThemeButton.setText("LightMode");
         switchThemeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         switchThemeButton.setOpaque(true);
         switchThemeButton.addActionListener(this::switchThemeButtonActionPerformed);
@@ -85,7 +86,6 @@ public class SearchPanel extends JPanel{
         searchTextField.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         searchTextField.setEditable(true);
         searchTextField.setEnabled(true);
-        searchTextField.setForeground(new java.awt.Color(31, 31, 31));
         searchTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         searchTextField.setMaximumSize(new java.awt.Dimension(600, 20));
         searchTextField.setMinimumSize(new java.awt.Dimension(400, 20));
@@ -95,7 +95,6 @@ public class SearchPanel extends JPanel{
 
         madeInIndia.setFont(new java.awt.Font("Consolas", Font.ITALIC, 12));
         madeInIndia.setText("Made In India by TheFlopGuy");
-        madeInIndia.setForeground(new java.awt.Color(102, 102, 102));
 
         setupAutoComplete(mainWindow, searchTextField);
 
@@ -237,7 +236,8 @@ public class SearchPanel extends JPanel{
     }
 
     private static void switchToResultPage(MainWindow mainWindow, SearchData searchData) {
-        ResultsPanel resultsPanel = new ResultsPanel(searchData,mainWindow);
+        darkTheme = currentTheme;
+        ResultsPanel resultsPanel = new ResultsPanel(searchData,mainWindow, SearchPanel.currentTheme);
         mainWindow.switchToResultPanel(resultsPanel);
     }
 }
