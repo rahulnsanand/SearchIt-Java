@@ -1,6 +1,6 @@
 package com.searchit.tfg.UI;
 
-import com.searchit.tfg.TESTING.ThumbnailRetrieve;
+import com.searchit.tfg.UI.utils.ThumbnailRetrieve;
 import com.searchit.tfg.UI.SearchElement.RetrieveMapsAPI;
 import com.searchit.tfg.UI.SearchElement.SearchData;
 import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
@@ -15,7 +15,7 @@ public class ResultsPanel extends JPanel {
     public int darkTheme;
     public String selectedItem;
     public String selectedID;
-    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextArea addressLabel;
     private javax.swing.JLabel aggregateRatingLabel;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel costForTwoLabel;
@@ -33,11 +33,19 @@ public class ResultsPanel extends JPanel {
     private javax.swing.JButton searchPageButton;
     private javax.swing.JLabel thumbImageLabel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JLabel hasTableBookingIcon;
+    private javax.swing.JLabel hasDeliveryIcon;
+    private javax.swing.JLabel isDeliveringIcon;
     private javax.swing.JLabel votesLabel;
     private MainWindow mainWindow;
     private SearchData searchData;
     private ImageIcon mapImage = new ImageIcon();
     private ImageIcon thumbImage = new ImageIcon();
+    private ImageIcon tableBookingIcon = new ImageIcon();
+    private ImageIcon hasOnlineDeliveryIcon = new ImageIcon();
+    private ImageIcon isOnlineDeliveringIcon = new ImageIcon();
+    private static String TickIcon = "src\\main\\resources\\tick.png";
+    private static String CrossIcon = "src\\main\\resources\\cross.png";
 
     private static final ZomatoWebOrder zomato = new ZomatoWebOrder();
 
@@ -148,11 +156,22 @@ public class ResultsPanel extends JPanel {
         nameLabel = new javax.swing.JLabel();
         nameLabel.setText(zomato.getRestaurantName());
         idLabel = new javax.swing.JLabel();
-        idLabel.setText(zomato.getRestaurantID());
-        addressLabel = new javax.swing.JLabel();
-        addressLabel.setText(zomato.getAddress());
+        idLabel.setText("ID: "+zomato.getRestaurantID());
+        addressLabel = new javax.swing.JTextArea();
+        addressLabel.setText(formatAddress(zomato.getAddress()));
         costForTwoLabel = new javax.swing.JLabel();
-        costForTwoLabel.setText(zomato.getAverageCostForTwo());
+        costForTwoLabel.setText("- Cost for two: "+zomato.getCurrency()+" "+zomato.getAverageCostForTwo());
+
+        hasTableBookingIcon = new javax.swing.JLabel();
+        hasDeliveryIcon = new javax.swing.JLabel();
+        isDeliveringIcon = new javax.swing.JLabel();
+        isDeliveringNowLabel = new javax.swing.JLabel();
+        hasTableBookingLabel = new javax.swing.JLabel();
+        hasOnlineDeliveryLabel = new javax.swing.JLabel();
+
+        hasTableBookingLabel.setText(getTable(zomato.getHasTableBooking()));
+        hasOnlineDeliveryLabel.setText(getDelivery(zomato.getHasOnlineDelivery()));
+        isDeliveringNowLabel.setText(getCurrentDelivery(zomato.getIsDeliveringNow()));
 
         mapsImageLabel = new javax.swing.JLabel();
         mapImage = RetrieveMapsAPI.getMapImage(zomato.getLatitude(),zomato.getLongitude(),690,130);
@@ -169,19 +188,14 @@ public class ResultsPanel extends JPanel {
         thumbImageLabel.setIcon(scaledThumbIcon);
 
         aggregateRatingLabel = new javax.swing.JLabel();
-        aggregateRatingLabel.setText(zomato.getAggregateRating());
+        aggregateRatingLabel.setText("Aggregate Rating: "+zomato.getAggregateRating());
         ratingTextLabel = new javax.swing.JLabel();
-        ratingTextLabel.setText(zomato.getRatingText());
+        ratingTextLabel.setText("Rating Text: "+zomato.getRatingText());
         votesLabel = new javax.swing.JLabel();
-        votesLabel.setText(zomato.getVotes());
-        hasTableBookingLabel = new javax.swing.JLabel();
-        hasTableBookingLabel.setText(zomato.getHasTableBooking());
-        hasOnlineDeliveryLabel = new javax.swing.JLabel();
-        hasOnlineDeliveryLabel.setText(zomato.getHasOnlineDelivery());
-        isDeliveringNowLabel = new javax.swing.JLabel();
-        isDeliveringNowLabel.setText(zomato.getIsDeliveringNow());
+        votesLabel.setText("No. of Votes: "+zomato.getVotes());
+
         phoneLabel = new javax.swing.JLabel();
-        phoneLabel.setText(zomato.getPhoneNumber());
+        phoneLabel.setText("Phone: "+zomato.getPhoneNumber());
         themeCheck();
 
         topPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -240,7 +254,7 @@ public class ResultsPanel extends JPanel {
         );
 
         thumbImageLabel.setAlignmentY(0.0F);
-        thumbImageLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(41, 41, 41)));
+        thumbImageLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, Color.decode("#"+zomato.getRatingColor())));
         thumbImageLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         mapsImageLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(41, 41, 41)));
@@ -266,39 +280,71 @@ public class ResultsPanel extends JPanel {
         isDeliveringNowLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
         phoneLabel.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
 
+        hasTableBookingIcon.setBorder(new javax.swing.border.MatteBorder(null));
+        hasTableBookingIcon.setMaximumSize(new java.awt.Dimension(20, 20));
+        hasTableBookingIcon.setMinimumSize(new java.awt.Dimension(20, 20));
+        hasTableBookingIcon.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        hasDeliveryIcon.setBorder(new javax.swing.border.MatteBorder(null));
+        hasDeliveryIcon.setMaximumSize(new java.awt.Dimension(20, 20));
+        hasDeliveryIcon.setMinimumSize(new java.awt.Dimension(20, 20));
+        hasDeliveryIcon.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        isDeliveringIcon.setBorder(new javax.swing.border.MatteBorder(null));
+        isDeliveringIcon.setMaximumSize(new java.awt.Dimension(20, 20));
+        isDeliveringIcon.setMinimumSize(new java.awt.Dimension(20, 20));
+        isDeliveringIcon.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        addressLabel.setBackground(new java.awt.Color(50, 50, 50));
+        addressLabel.setColumns(20);
+        addressLabel.setFont(new java.awt.Font("Consolas", 3, 12)); // NOI18N
+        addressLabel.setRows(5);
+        addressLabel.setBorder(null);
+        addressLabel.setEnabled(false);
+//        jScrollPane1.setViewportView(addressLabel);
+//        jScrollPane1.setBorder(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(mapsImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(thumbImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(24, 24, 24)
+                                                .addComponent(thumbImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(addressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                                                                .addGap(49, 49, 49))
+                                                                .addGap(40, 40, 40)
+                                                                .addComponent(hasTableBookingIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(hasDeliveryIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(166, 166, 166)
+                                                                .addComponent(isDeliveringIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(52, 52, 52))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addComponent(hasTableBookingLabel)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                                                                 .addComponent(hasOnlineDeliveryLabel)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                                                                 .addComponent(isDeliveringNowLabel))
+                                                        .addComponent(addressLabel)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(idLabel)
-                                                                        .addComponent(costForTwoLabel)
                                                                         .addComponent(phoneLabel)
-                                                                        .addComponent(votesLabel)
+                                                                        .addComponent(ratingTextLabel)
                                                                         .addComponent(aggregateRatingLabel)
-                                                                        .addComponent(ratingTextLabel))
-                                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                        .addComponent(mapsImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(idLabel)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(costForTwoLabel))
+                                                                        .addComponent(votesLabel))
+                                                                .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -307,37 +353,118 @@ public class ResultsPanel extends JPanel {
                                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(thumbImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(idLabel)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(idLabel)
+                                                        .addComponent(costForTwoLabel))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(nameLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(addressLabel)
+                                                .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(phoneLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(costForTwoLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(votesLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(aggregateRatingLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(ratingTextLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(hasTableBookingLabel)
-                                                        .addComponent(hasOnlineDeliveryLabel)
-                                                        .addComponent(isDeliveringNowLabel)))
-                                        .addComponent(thumbImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(mapsImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                                .addGap(10, 10, 10)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(hasTableBookingLabel)
+                                                                        .addComponent(hasOnlineDeliveryLabel))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(hasDeliveryIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(hasTableBookingIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(isDeliveringNowLabel)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(isDeliveringIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mapsImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bottomPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }
 
-    private void downloadAsJSON(ActionEvent actionEvent) {
+    private String getTable(String hasTableBooking) {
+        if(hasTableBooking.equals("0")){
+            tableBookingIcon = new ImageIcon(CrossIcon);
+            Image scaledTableInstance = tableBookingIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledTableIcon = new ImageIcon(scaledTableInstance);
+            hasTableBookingIcon.setIcon(scaledTableIcon);
+            return "No Table Booking";
+        }
+        else {
+            tableBookingIcon = new ImageIcon(TickIcon);
+            Image scaledTableInstance = tableBookingIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledTableIcon = new ImageIcon(scaledTableInstance);
+            hasTableBookingIcon.setIcon(scaledTableIcon);
+            return "Has Table Booking";
+        }
     }
 
+    private String getDelivery(String hasDelivery) {
+        if(hasDelivery.equals("0")){
+            hasOnlineDeliveryIcon = new ImageIcon(CrossIcon);
+            Image scaledHasDeliveryInstance = hasOnlineDeliveryIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledHasDeliveryIcon = new ImageIcon(scaledHasDeliveryInstance);
+            hasDeliveryIcon.setIcon(scaledHasDeliveryIcon);
+            return "No Online Delivery";
+        }
+        else {
+            hasOnlineDeliveryIcon = new ImageIcon(TickIcon);
+            Image scaledHasDeliveryInstance = hasOnlineDeliveryIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledHasDeliveryIcon = new ImageIcon(scaledHasDeliveryInstance);
+            hasDeliveryIcon.setIcon(scaledHasDeliveryIcon);
+            return "Has Online Delivery";
+        }
+    }
 
+    private String getCurrentDelivery(String isDelivering) {
+        if(isDelivering.equals("0")){
+            isOnlineDeliveringIcon = new ImageIcon(CrossIcon);
+            Image scaledIsDeliveryInstance = isOnlineDeliveringIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledIsDeliveryIcon = new ImageIcon(scaledIsDeliveryInstance);
+            isDeliveringIcon.setIcon(scaledIsDeliveryIcon);
+            return "Not Delivering Now";
+        }
+        else{
+            isOnlineDeliveringIcon = new ImageIcon(TickIcon);
+            Image scaledIsDeliveryInstance = isOnlineDeliveringIcon.getImage()
+                    .getScaledInstance(20,20, Image.SCALE_SMOOTH);
+            ImageIcon scaledIsDeliveryIcon = new ImageIcon(scaledIsDeliveryInstance);
+            isDeliveringIcon.setIcon(scaledIsDeliveryIcon);
+            return "Is Delivering Now";
+        }
+
+    }
+
+    public static String formatAddress(String s) {
+        String outAddress = "";
+        int counter = 0;
+        for (String val: s.split(" ")){
+            if(counter<4){
+                outAddress += val;
+                counter++;
+            }
+            else{
+                counter=0;
+                outAddress += "\n";
+            }
+        }
+        return outAddress;
+    }
+
+    private void downloadAsJSON(ActionEvent actionEvent) {
+    }
 }

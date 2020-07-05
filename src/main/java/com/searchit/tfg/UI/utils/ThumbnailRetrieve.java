@@ -1,4 +1,4 @@
-package com.searchit.tfg.TESTING;
+package com.searchit.tfg.UI.utils;
 
 import javax.swing.*;
 import java.io.*;

@@ -15,7 +15,9 @@ public class test {
 
 //    public static void main(String[] args){
 //
-//        ThumbnailRetrieve.getThumbImage("");
-//
+//        String str = "103, Vandaloor Road, Kelambakkam, Opposite Chettinad Hospital, Kelambakkam, Chennai";
+//        System.out.println();
+//        printWords(str);
 //    }
+
 }
