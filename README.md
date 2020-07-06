@@ -71,11 +71,6 @@ Next, open IntelliJ and open the project.
 
 Once the dependencies are automatically installed through Maven repo, Hope you have [Internet](), you can run the app by just simply clicking on "Run Main" option.
 
-### Plugins
-
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-
 
 ### Development
 
