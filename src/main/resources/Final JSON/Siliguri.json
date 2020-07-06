@@ -1,0 +1,1234 @@
+[{
+        "res_url": "https://www.zomato.com/siliguri/sher-e-punjab-restaurant-pradhan-nagar/info",
+        "res_id": "18738438",
+        "res_cuisine": "North Indian,Chinese,Biryani,Bengali,Seafood,Fast Food,Desserts,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Sher-E-Punjab Restaurant",
+        "res_no": "1"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/dhaba-by-amber-khalpara/info",
+        "res_id": "18741962",
+        "res_cuisine": "North Indian,Chinese,Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Dhaba By Amber",
+        "res_no": "2"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/punjabi-kadhai-1-janta-nagar/info",
+        "res_id": "18739692",
+        "res_cuisine": "North Indian,Beverages,Chinese,Continental,Healthy Food",
+        "res_city": "Siliguri",
+        "res_name": "Punjabi Kadhai",
+        "res_no": "3"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/cafe-bohemia-janta-nagar/info",
+        "res_id": "18863441",
+        "res_cuisine": "Cafe",
+        "res_city": "Siliguri",
+        "res_name": "Cafe Bohemia",
+        "res_no": "4"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/love-2-juice-khalpara/info",
+        "res_id": "18939329",
+        "res_cuisine": "Juices,Desserts",
+        "res_city": "Siliguri",
+        "res_name": "Love 2 Juice",
+        "res_no": "5"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/worth-the-hype-bankim-nagar/info",
+        "res_id": "18816428",
+        "res_cuisine": "Chinese,Italian,Continental,Lebanese",
+        "res_city": "Siliguri",
+        "res_name": "Worth The Hype",
+        "res_no": "6"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sarada-biriyani-house-pradhan-nagar/info",
+        "res_id": "18878528",
+        "res_cuisine": "Biryani,Chinese,Tibetan",
+        "res_city": "Siliguri",
+        "res_name": "Sarada Biriyani House",
+        "res_no": "7"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/dominos-pizza-khalpara/info",
+        "res_id": "18739273",
+        "res_cuisine": "Pizza,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Domino's Pizza",
+        "res_no": "8"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sagar-family-restaurant-bankim-nagar/info",
+        "res_id": "18739014",
+        "res_cuisine": "North Indian,Continental,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Sagar Family Restaurant",
+        "res_no": "9"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/kfc-janta-nagar/info",
+        "res_id": "18739613",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "KFC",
+        "res_no": "10"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/half-full-bankim-nagar/info",
+        "res_id": "18738534",
+        "res_cuisine": "Chinese,Italian,Mexican,North Indian,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "Half Full",
+        "res_no": "11"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/paul-restaurant-janta-nagar/info",
+        "res_id": "18738659",
+        "res_cuisine": "Bengali,Biryani,Chinese,North Indian,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Paul Restaurant",
+        "res_no": "12"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/zaika-biryani-khalpara/info",
+        "res_id": "18881128",
+        "res_cuisine": "Biryani,Rolls",
+        "res_city": "Siliguri",
+        "res_name": "Zaika Biryani",
+        "res_no": "13"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/kfc-patiram-jote/info",
+        "res_id": "18742746",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "KFC",
+        "res_no": "14"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/bedween-janta-nagar/info",
+        "res_id": "18738496",
+        "res_cuisine": "North Indian,Biryani,Rolls",
+        "res_city": "Siliguri",
+        "res_name": "Bedween",
+        "res_no": "15"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/brothers-garage-restaurant-bankim-nagar/info",
+        "res_id": "18879169",
+        "res_cuisine": "Continental,North Indian,Chinese,Momos",
+        "res_city": "Siliguri",
+        "res_name": "Brothers Garage Restaurant",
+        "res_no": "16"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-swedish-bankim-nagar/info",
+        "res_id": "18738563",
+        "res_cuisine": "North Indian,Italian,Chinese,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "The Swedish",
+        "res_no": "17"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-barcode-bankim-nagar/info",
+        "res_id": "18793438",
+        "res_cuisine": "Continental,Chinese,Italian,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "The Barcode",
+        "res_no": "18"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/mama-mia-bankim-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Ice Cream,Fast Food,Desserts,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Mama Mia!",
+        "res_no": "19"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/walkers-village-bankim-nagar/info",
+        "res_id": "18871449",
+        "res_cuisine": "Chinese,Italian,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Walker's Village",
+        "res_no": "20"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hashtag-bankim-nagar/info",
+        "res_id": "18738532",
+        "res_cuisine": "Chinese,North Indian,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "Hashtag",
+        "res_no": "21"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tamarynd-lounge-restaurant-bankim-nagar/info",
+        "res_id": "18738527",
+        "res_cuisine": "North Indian,Chinese,Italian",
+        "res_city": "Siliguri",
+        "res_name": "Tamarynd Lounge & Restaurant",
+        "res_no": "22"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/panache-bankim-nagar/info",
+        "res_id": "18738570",
+        "res_cuisine": "North Indian,Lebanese,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Panache",
+        "res_no": "23"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-tribe-bankim-nagar/info",
+        "res_id": "18738540",
+        "res_cuisine": "North Indian,Mexican,Italian,Chinese,Japanese,Tibetan,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "The Tribe",
+        "res_no": "24"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/aayushis-panificio-janta-nagar/info",
+        "res_id": "18884251",
+        "res_cuisine": "Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Aayushi's Panificio",
+        "res_no": "25"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/kulfreeze-bankim-nagar/info",
+        "res_id": "18875034",
+        "res_cuisine": "Ice Cream",
+        "res_city": "Siliguri",
+        "res_name": "Kulfreeze",
+        "res_no": "26"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/open-house-cafe-pub-bankim-nagar/info",
+        "res_id": "18738730",
+        "res_cuisine": "North Indian,Italian,Finger Food,Chinese,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "Open House Cafe & Pub",
+        "res_no": "27"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-yellow-chilli-bankim-nagar/info",
+        "res_id": "18738577",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "The Yellow Chilli",
+        "res_no": "28"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/koshe-kosha-bankim-nagar/info",
+        "res_id": "18738723",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Koshe Kosha",
+        "res_no": "29"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/haveli-khalpara/info",
+        "res_id": "18738935",
+        "res_cuisine": "North Indian,Chinese,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Haveli",
+        "res_no": "30"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/adda-restaurant-bankim-nagar/info",
+        "res_id": "18965085",
+        "res_cuisine": "North Indian,Chinese,Pizza,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Adda Restaurant",
+        "res_no": "31"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/uttams-bankim-nagar/info",
+        "res_id": "18879878",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Uttam's",
+        "res_no": "32"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/prasad-hotel-janta-nagar/info",
+        "res_id": "18738692",
+        "res_cuisine": "Bengali,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Prasad Hotel",
+        "res_no": "33"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/turban-tales-janta-nagar/info",
+        "res_id": "18882706",
+        "res_cuisine": "Continental,North Indian,Chinese,Healthy Food,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Turban Tales",
+        "res_no": "34"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/amber-the-vintage-bar-khalpara/info",
+        "res_id": "18742066",
+        "res_cuisine": "North Indian,Chinese,Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Amber - The Vintage Bar",
+        "res_no": "35"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/chainook-1-janta-nagar/info",
+        "res_id": "18739013",
+        "res_cuisine": "North Indian,Continental,Chinese,Beverages,Fast Food,Healthy Food",
+        "res_city": "Siliguri",
+        "res_name": "Chainook",
+        "res_no": "36"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/around-the-corner-pradhan-nagar/info",
+        "res_id": "18739227",
+        "res_cuisine": "North Indian,Chinese,Continental,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Around The Corner",
+        "res_no": "37"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/ccfc-khalpara/info",
+        "res_id": "18874863",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "CCFC",
+        "res_no": "38"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/steamy-moktu-bankim-nagar/info",
+        "res_id": "18829130",
+        "res_cuisine": "Asian,Momos,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Steamy Moktu",
+        "res_no": "39"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hello-kolkata-khalpara/info",
+        "res_id": "18939398",
+        "res_cuisine": "North Indian,Chinese,Rolls,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Hello Kolkata",
+        "res_no": "40"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/momo-hut-khalpara/info",
+        "res_id": "18739011",
+        "res_cuisine": "Fast Food,Momos",
+        "res_city": "Siliguri",
+        "res_name": "Momo Hut",
+        "res_no": "41"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/new-bombay-veg-non-veg-restaurant-khalpara/info",
+        "res_id": "18738982",
+        "res_cuisine": "Biryani,Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "New Bombay Veg & Non Veg Restaurant",
+        "res_no": "42"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-classic-bankim-nagar/info",
+        "res_id": "18882446",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "The Classic",
+        "res_no": "43"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/desi-galli-restaurant-patiram-jote/info",
+        "res_id": "18880577",
+        "res_cuisine": "Fast Food,North Indian,Chinese,South Indian,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Desi Galli Restaurant",
+        "res_no": "44"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/triptiz-fast-food-corner-janta-nagar/info",
+        "res_id": "18925784",
+        "res_cuisine": "Fast Food,Chinese,South Indian,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Triptiz Fast Food Corner",
+        "res_no": "45"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tai-wah-khalpara/info",
+        "res_id": "18738912",
+        "res_cuisine": "Chinese,Seafood,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Tai Wah",
+        "res_no": "46"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/indian-pagoda-chinese-restaurant-bar-janta-nagar/info",
+        "res_id": "18738494",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Indian Pagoda Chinese Restaurant & Bar",
+        "res_no": "47"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/mezban-biryani-house-saktigarh/info",
+        "res_id": "18881403",
+        "res_cuisine": "Biryani,Mughlai,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Mezban Biryani House",
+        "res_no": "48"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/unique-sweets-snacks-janta-nagar/info",
+        "res_id": "18738756",
+        "res_cuisine": "Street Food,Mithai",
+        "res_city": "Siliguri",
+        "res_name": "Unique Sweets & Snacks",
+        "res_no": "49"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/unique-sweets-and-snacks-janta-nagar/info",
+        "res_id": "18869222",
+        "res_cuisine": "Fast Food,Beverages,Mithai",
+        "res_city": "Siliguri",
+        "res_name": "Unique Sweets And Snacks",
+        "res_no": "50"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/munch-n-crunch-bankim-nagar/info",
+        "res_id": "18738524",
+        "res_cuisine": "Fast Food,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Munch N Crunch",
+        "res_no": "51"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/7-plates-fast-food-station-pradhan-nagar/info",
+        "res_id": "18738589",
+        "res_cuisine": "Chinese,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "7 Plates Fast Food Station",
+        "res_no": "52"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hi-spirits-patiram-jote/info",
+        "res_id": "18741215",
+        "res_cuisine": "North Indian,Italian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Hi Spirits",
+        "res_no": "53"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/pizza-hut-patiram-jote/info",
+        "res_id": "18742732",
+        "res_cuisine": "Pizza,Italian",
+        "res_city": "Siliguri",
+        "res_name": "Pizza Hut",
+        "res_no": "54"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-haphazard-bankim-nagar/info",
+        "res_id": "18738537",
+        "res_cuisine": "North Indian,Fast Food,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "The Haphazard",
+        "res_no": "55"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/blind-date-restaurant-1-patiram-jote/info",
+        "res_id": "18874813",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Blind Date Restaurant",
+        "res_no": "56"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/makhan-bhog-bankim-nagar/info",
+        "res_id": "18739582",
+        "res_cuisine": "Mithai,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Makhan Bhog",
+        "res_no": "57"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/darjeeling-biryani-hut-pradhan-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Chinese,North Indian,Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Darjeeling Biryani Hut",
+        "res_no": "58"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/taste-of-sikkim-pradhan-nagar/info",
+        "res_id": "18737696",
+        "res_cuisine": "Tibetan,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Taste Of Sikkim",
+        "res_no": "59"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/bunmee-house-pradhan-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Cafe,Fast Food,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Bunmee House",
+        "res_no": "60"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/yummy-veg-non-veg-fast-food-pradhan-nagar/info",
+        "res_id": "18951968",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Yummy Veg & Non Veg Fast Food",
+        "res_no": "61"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/in-n-out-haidar-para/info",
+        "res_id": "18896109",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "In N Out",
+        "res_no": "62"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/subway-patiram-jote/info",
+        "res_id": "18742749",
+        "res_cuisine": "Healthy Food,Sandwich,Salad",
+        "res_city": "Siliguri",
+        "res_name": "Subway",
+        "res_no": "63"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/shan-e-punjab-janta-nagar/info",
+        "res_id": "18738634",
+        "res_cuisine": "North Indian,Chinese,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Shan- E- Punjab",
+        "res_no": "64"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/shahi-pakwaan-taste-of-nawab-bankim-nagar/info",
+        "res_id": "18939091",
+        "res_cuisine": "North Indian,Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Shahi Pakwaan - Taste Of Nawab",
+        "res_no": "65"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/keventers-patiram-jote/info",
+        "res_id": "18884245",
+        "res_cuisine": "Desserts,Beverages,Ice Cream",
+        "res_city": "Siliguri",
+        "res_name": "Keventers",
+        "res_no": "66"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/dakshin-junction-bankim-nagar/info",
+        "res_id": "18875040",
+        "res_cuisine": "Indian,South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Dakshin Junction",
+        "res_no": "67"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/guru-sweets-snacks-bankim-nagar/info",
+        "res_id": "18874784",
+        "res_cuisine": "Bakery,South Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Guru Sweets & Snacks",
+        "res_no": "68"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/simply-dakshin-1-bankim-nagar/info",
+        "res_id": "18881911",
+        "res_cuisine": "South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Simply Dakshin",
+        "res_no": "69"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/adi-kalpana-pice-hotel-janta-nagar/info",
+        "res_id": "18739528",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Adi Kalpana Pice Hotel",
+        "res_no": "70"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/classic-fast-food-pradhan-nagar/info",
+        "res_id": "18878585",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Classic Fast Food",
+        "res_no": "71"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-manna-fast-food-pradhan-nagar/info",
+        "res_id": "18738586",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "The Manna Fast Food",
+        "res_no": "72"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/drishti-hotel-pradhan-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Chinese,Bengali,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Drishti Hotel",
+        "res_no": "73"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hotel-kolkata-kolkata-khalpara/info",
+        "res_id": "18881833",
+        "res_cuisine": "Bengali,Indian",
+        "res_city": "Siliguri",
+        "res_name": "Hotel Kolkata Kolkata",
+        "res_no": "74"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/kalapatru-pice-hotel-janta-nagar/info",
+        "res_id": "18739542",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Kalapatru Pice Hotel",
+        "res_no": "75"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/feast-the-food-court-patiram-jote/info",
+        "res_id": "NULL",
+        "res_cuisine": "South Indian,North Indian,Fast Food,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Feast - The Food Court",
+        "res_no": "76"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/simply-dakshin-khalpara/info",
+        "res_id": "18739112",
+        "res_cuisine": "South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Simply Dakshin",
+        "res_no": "77"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/haldirams-prabhuji-bankim-nagar/info",
+        "res_id": "18874911",
+        "res_cuisine": "Desserts,South Indian,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Haldiram's Prabhuji",
+        "res_no": "78"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/krishnas-restaurant-janta-nagar/info",
+        "res_id": "18938900",
+        "res_cuisine": "North Indian,Street Food,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Krishna's Restaurant",
+        "res_no": "79"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/arya-bakery-janta-nagar/info",
+        "res_id": "18877523",
+        "res_cuisine": "Pizza,Fast Food,Burger,Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Arya Bakery",
+        "res_no": "80"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/baskin-robbins-bankim-nagar/info",
+        "res_id": "18739585",
+        "res_cuisine": "Ice Cream,Desserts",
+        "res_city": "Siliguri",
+        "res_name": "Baskin Robbins",
+        "res_no": "81"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/new-food-plaza-pradhan-nagar/info",
+        "res_id": "18738264",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "New Food Plaza",
+        "res_no": "82"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/prabhu-bhog-janta-nagar/info",
+        "res_id": "18939333",
+        "res_cuisine": "Mithai,Street Food",
+        "res_city": "Siliguri",
+        "res_name": "Prabhu Bhog",
+        "res_no": "83"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/nandita-pice-hotel-khalpara/info",
+        "res_id": "18737796",
+        "res_cuisine": "Seafood,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Nandita Pice Hotel",
+        "res_no": "84"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sri-mahabir-bhojanalya-khalpara/info",
+        "res_id": "18738808",
+        "res_cuisine": "North Indian,South Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Sri Mahabir Bhojanalya",
+        "res_no": "85"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tista-hotel-janta-nagar/info",
+        "res_id": "18739693",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Tista Hotel",
+        "res_no": "86"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/creams-cherries-pradhan-nagar/info",
+        "res_id": "18874492",
+        "res_cuisine": "Desserts,Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Creams & Cherries",
+        "res_no": "87"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/apni-pasand-khalpara/info",
+        "res_id": "18738876",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Apni Pasand",
+        "res_no": "88"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tea-junction-1-patiram-jote/info",
+        "res_id": "18742752",
+        "res_cuisine": "Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Tea Junction",
+        "res_no": "89"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/victoria-junction-bankim-nagar/info",
+        "res_id": "18740649",
+        "res_cuisine": "Chinese,Italian,Sandwich,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Victoria Junction",
+        "res_no": "90"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/makhan-bhog-patiram-jote/info",
+        "res_id": "18742738",
+        "res_cuisine": "Mishti",
+        "res_city": "Siliguri",
+        "res_name": "Makhan Bhog",
+        "res_no": "91"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-belgian-waffle-co-bankim-nagar/info",
+        "res_id": "18739700",
+        "res_cuisine": "Desserts",
+        "res_city": "Siliguri",
+        "res_name": "The Belgian Waffle Co.",
+        "res_no": "92"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/ying-yang-bankim-nagar/info",
+        "res_id": "18882085",
+        "res_cuisine": "Bengali,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Ying Yang",
+        "res_no": "93"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/zafran-biriyani-hut-khalpara/info",
+        "res_id": "18874734",
+        "res_cuisine": "Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Zafran Biriyani Hut",
+        "res_no": "94"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/dps-cuisine-restaurant-world-of-calories-and-health-pradhan-nagar/info",
+        "res_id": "18851431",
+        "res_cuisine": "North Indian,Chinese,Healthy Food",
+        "res_city": "Siliguri",
+        "res_name": "DP's Cuisine Restaurant (World of Calories and Health)",
+        "res_no": "95"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/gupta-hotel-cum-bar-restaurant-pradhan-nagar/info",
+        "res_id": "18967813",
+        "res_cuisine": "North Indian,Continental,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Gupta Hotel Cum Bar & Restaurant",
+        "res_no": "96"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/rock-c-family-restaurant-bankim-nagar/info",
+        "res_id": "18739706",
+        "res_cuisine": "Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Rock C - Family Restaurant",
+        "res_no": "97"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/moti-mahal-delux-bankim-nagar/info",
+        "res_id": "18739732",
+        "res_cuisine": "North Indian,Rolls",
+        "res_city": "Siliguri",
+        "res_name": "Moti Mahal Delux",
+        "res_no": "98"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/alishan-max-club-1-bankim-nagar/info",
+        "res_id": "18739269",
+        "res_cuisine": "Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Alishan Max Club",
+        "res_no": "99"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/subway-bankim-nagar/info",
+        "res_id": "18740778",
+        "res_cuisine": "Healthy Food,Salad,Sandwich",
+        "res_city": "Siliguri",
+        "res_name": "Subway",
+        "res_no": "100"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/lion-bar-cum-restaurant-patiram-jote/info",
+        "res_id": "18741249",
+        "res_cuisine": "North Indian,Italian,Continental,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Lion Bar Cum Restaurant",
+        "res_no": "101"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/memory-of-china-street-pradhan-nagar/info",
+        "res_id": "18919716",
+        "res_cuisine": "Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Memory Of China Street",
+        "res_no": "102"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/little-china-patiram-jote/info",
+        "res_id": "18828650",
+        "res_cuisine": "Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Little China",
+        "res_no": "103"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/virrest-champasari/info",
+        "res_id": "18884400",
+        "res_cuisine": "Mexican,Italian",
+        "res_city": "Siliguri",
+        "res_name": "Virrest",
+        "res_no": "104"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/brew-some-cafe-khalpara/info",
+        "res_id": "18874764",
+        "res_cuisine": "Fast Food,Cafe",
+        "res_city": "Siliguri",
+        "res_name": "Brew Some Cafe",
+        "res_no": "105"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/wakhra-swag-1-patiram-jote/info",
+        "res_id": "18879368",
+        "res_cuisine": "North Indian,Chinese,Rolls,Finger Food",
+        "res_city": "Siliguri",
+        "res_name": "Wakhra Swag",
+        "res_no": "106"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tea-junction-bankim-nagar/info",
+        "res_id": "18739552",
+        "res_cuisine": "Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Tea Junction",
+        "res_no": "107"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/laziz-pizza-khalpara/info",
+        "res_id": "18884278",
+        "res_cuisine": "Fast Food,Pizza",
+        "res_city": "Siliguri",
+        "res_name": "Laziz Pizza",
+        "res_no": "108"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/arambaghs-chicken-khalpara/info",
+        "res_id": "18738546",
+        "res_cuisine": "Raw Meats,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Arambagh's Chicken",
+        "res_no": "109"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/veg-bite-pradhan-nagar/info",
+        "res_id": "18874353",
+        "res_cuisine": "Street Food",
+        "res_city": "Siliguri",
+        "res_name": "Veg Bite",
+        "res_no": "110"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/pot-head-pradhan-nagar/info",
+        "res_id": "18871173",
+        "res_cuisine": "Desserts,European,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Pot Head",
+        "res_no": "111"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hungry-bite-bankim-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Hungry Bite",
+        "res_no": "112"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/ka-khim-pradhan-nagar/info",
+        "res_id": "18797450",
+        "res_cuisine": "Tibetan,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Ka Khim",
+        "res_no": "113"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/guru-sweets-snacks-khalpara/info",
+        "res_id": "18886316",
+        "res_cuisine": "Mithai,Fast Food,South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Guru Sweets & Snacks",
+        "res_no": "114"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/tea-circle-bankim-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Fast Food,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Tea Circle",
+        "res_no": "115"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/nandan-bankim-nagar/info",
+        "res_id": "18878064",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Nandan",
+        "res_no": "116"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/gharana-restaurant-khalpara/info",
+        "res_id": "18874744",
+        "res_cuisine": "North Indian,Biryani,Rolls,Kebab",
+        "res_city": "Siliguri",
+        "res_name": "Gharana Restaurant",
+        "res_no": "117"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hotel-mahakal-restaurant-khalpara/info",
+        "res_id": "19011861",
+        "res_cuisine": "North Indian,South Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Hotel Mahakal & Restaurant",
+        "res_no": "118"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/avyaans-food-corner-bankim-nagar/info",
+        "res_id": "19034685",
+        "res_cuisine": "North Indian,Chinese,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Avyaan's Food Corner",
+        "res_no": "119"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/new-kalapatru-pice-hotel-janta-nagar/info",
+        "res_id": "18739550",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "New Kalapatru Pice Hotel",
+        "res_no": "120"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/cuppa-java-bankim-nagar/info",
+        "res_id": "18739263",
+        "res_cuisine": "North Indian,Chinese,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Cuppa Java",
+        "res_no": "121"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/wild-orchid-restaurant-central-courtyard-boutique-resort-bankim-nagar/info",
+        "res_id": "18882991",
+        "res_cuisine": "North Indian,Chinese,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Wild Orchid restaurant - Central Courtyard Boutique...",
+        "res_no": "122"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sha-fast-food-janta-nagar/info",
+        "res_id": "18926189",
+        "res_cuisine": "Chinese,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Sha Fast Food",
+        "res_no": "123"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hotel-food-plaza-1-pradhan-nagar/info",
+        "res_id": "18738608",
+        "res_cuisine": "Chinese,Bengali,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Hotel Food Plaza",
+        "res_no": "124"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/pitcher-s-bankim-nagar/info",
+        "res_id": "18874940",
+        "res_cuisine": "North Indian,Continental,Pizza,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Pitcher (s)",
+        "res_no": "125"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/cfc-crispy-fried-chicken-bankim-nagar/info",
+        "res_id": "19000257",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "CFC - Crispy Fried Chicken",
+        "res_no": "126"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/cake-amante-bankim-nagar/info",
+        "res_id": "19022778",
+        "res_cuisine": "Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Cake Amante",
+        "res_no": "127"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/taste-of-siliguri-2-patiram-jote/info",
+        "res_id": "18978748",
+        "res_cuisine": "Chinese,North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Taste of Siliguri",
+        "res_no": "128"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-deck-patiram-jote/info",
+        "res_id": "18829134",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "THE DECK",
+        "res_no": "129"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/raju-bakery-pradhan-nagar/info",
+        "res_id": "18886750",
+        "res_cuisine": "Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Raju Bakery",
+        "res_no": "130"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/blind-date-khalpara/info",
+        "res_id": "18874856",
+        "res_cuisine": "North Indian,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Blind Date",
+        "res_no": "131"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/chill-pill-the-liquid-bar-bankim-nagar/info",
+        "res_id": "19000372",
+        "res_cuisine": "Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Chill Pill - The Liquid Bar",
+        "res_no": "132"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/aapno-rajasthan-bankim-nagar/info",
+        "res_id": "18738541",
+        "res_cuisine": "Rajasthani",
+        "res_city": "Siliguri",
+        "res_name": "Aapno Rajasthan",
+        "res_no": "133"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/adi-dada-bhai-restaurant-khalpara/info",
+        "res_id": "18939394",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Adi Dada Bhai Restaurant",
+        "res_no": "134"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/top-tea-house-champasari/info",
+        "res_id": "18885621",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Top Tea House",
+        "res_no": "135"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/coconut-south-indian-cuisine-janta-nagar/info",
+        "res_id": "18999862",
+        "res_cuisine": "South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Coconut - South Indian Cuisine",
+        "res_no": "136"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-temperature-bankim-nagar/info",
+        "res_id": "18738565",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "The Temperature",
+        "res_no": "137"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/gladly-bengali-khalpara/info",
+        "res_id": "18874869",
+        "res_cuisine": "Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Gladly Bengali",
+        "res_no": "138"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/minarva-restaurant-pradhan-nagar/info",
+        "res_id": "18738606",
+        "res_cuisine": "Chinese,South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Minarva Restaurant",
+        "res_no": "139"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/bang-onn-bankim-nagar/info",
+        "res_id": "18739023",
+        "res_cuisine": "North Indian,Chinese,Italian,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Bang Onn",
+        "res_no": "140"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/bawarchi-restaurant-pradhan-nagar/info",
+        "res_id": "18874899",
+        "res_cuisine": "North Indian,South Indian,Chinese,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Bawarchi Restaurant",
+        "res_no": "141"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sarada-hotel-restaurant-khalpara/info",
+        "res_id": "18923395",
+        "res_cuisine": "North Indian,Fast Food,South Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Sarada Hotel & Restaurant",
+        "res_no": "142"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/delicious-restaurant-hatiadanga/info",
+        "res_id": "19007687",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Delicious Restaurant",
+        "res_no": "143"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/happy-mugs-janta-nagar/info",
+        "res_id": "18924105",
+        "res_cuisine": "Cafe,Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Happy Mugs",
+        "res_no": "144"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/apple-garden-club-bankim-nagar/info",
+        "res_id": "18874922",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Apple Garden Club",
+        "res_no": "145"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/gopal-pera-bhandar-khalpara/info",
+        "res_id": "18934267",
+        "res_cuisine": "Mithai",
+        "res_city": "Siliguri",
+        "res_name": "Gopal Pera Bhandar",
+        "res_no": "146"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/lee-chinese-restaurant-khalpara/info",
+        "res_id": "18874833",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Lee Chinese Restaurant",
+        "res_no": "147"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/amilo-bankim-nagar/info",
+        "res_id": "18981552",
+        "res_cuisine": "North Indian,Chinese,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Amilo",
+        "res_no": "148"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hotel-mayor-restaurant-khalpara/info",
+        "res_id": "18875045",
+        "res_cuisine": "North Indian,South Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Hotel Mayor Restaurant",
+        "res_no": "149"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/bakers-village-bankim-nagar/info",
+        "res_id": "18878563",
+        "res_cuisine": "Bakery",
+        "res_city": "Siliguri",
+        "res_name": "Bakers Village",
+        "res_no": "150"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/ghar-ki-rasoi-khalpara/info",
+        "res_id": "18886738",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Ghar Ki Rasoi",
+        "res_no": "151"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/sizzling-sizzler-bankim-nagar/info",
+        "res_id": "19000403",
+        "res_cuisine": "Continental",
+        "res_city": "Siliguri",
+        "res_name": "Sizzling Sizzler",
+        "res_no": "152"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/icy-hot-janta-nagar/info",
+        "res_id": "18875055",
+        "res_cuisine": "Desserts",
+        "res_city": "Siliguri",
+        "res_name": "Icy Hot",
+        "res_no": "153"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/spice-restaurant-by-hotel-malisca-bankim-nagar/info",
+        "res_id": "18875745",
+        "res_cuisine": "North Indian,Chinese,South Indian",
+        "res_city": "Siliguri",
+        "res_name": "Spice Restaurant By Hotel Malisca",
+        "res_no": "154"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/lazeez-restaurant-bankim-nagar/info",
+        "res_id": "18939064",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Lazeez Restaurant",
+        "res_no": "155"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hongkong-momos-khalpara/info",
+        "res_id": "18958731",
+        "res_cuisine": "Momos",
+        "res_city": "Siliguri",
+        "res_name": "Hongkong Momo's",
+        "res_no": "156"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/new-sikkim-restaurant-bankim-nagar/info",
+        "res_id": "18926803",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "New Sikkim Restaurant",
+        "res_no": "157"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/the-paan-palace-khalpara/info",
+        "res_id": "18886072",
+        "res_cuisine": "Paan",
+        "res_city": "Siliguri",
+        "res_name": "The Paan Palace",
+        "res_no": "158"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/herbs-bankim-nagar/info",
+        "res_id": "18884169",
+        "res_cuisine": "North Indian,Chinese,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Herbs",
+        "res_no": "159"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/amrapali-bankim-nagar/info",
+        "res_id": "18939103",
+        "res_cuisine": "North Indian,Chinese,Portuguese,Continental",
+        "res_city": "Siliguri",
+        "res_name": "Amrapali",
+        "res_no": "160"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hidden-dragon-chinese-cuisine-bankim-nagar/info",
+        "res_id": "19000057",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Hidden Dragon - Chinese Cuisine",
+        "res_no": "161"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/spice-garden-janta-nagar/info",
+        "res_id": "18923431",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Spice Garden",
+        "res_no": "162"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hotel-food-plaza-pradhan-nagar/info",
+        "res_id": "NULL",
+        "res_cuisine": "Chinese,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "Hotel Food Plaza",
+        "res_no": "163"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/fresh-and-fine-fast-food-center-khalpara/info",
+        "res_id": "18879293",
+        "res_cuisine": "Street Food,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Fresh and Fine Fast Food Center",
+        "res_no": "164"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/aalishan-biriyani-dabgram/info",
+        "res_id": "18923468",
+        "res_cuisine": "Biryani",
+        "res_city": "Siliguri",
+        "res_name": "Aalishan Biriyani",
+        "res_no": "165"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/mughals-bankim-nagar/info",
+        "res_id": "18882831",
+        "res_cuisine": "North Indian,Mughlai",
+        "res_city": "Siliguri",
+        "res_name": "Mughal's",
+        "res_no": "166"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/prantika-biryani-house-pradhan-nagar/info",
+        "res_id": "18871221",
+        "res_cuisine": "Biryani,Fast Food,Beverages",
+        "res_city": "Siliguri",
+        "res_name": "Prantika Biryani House",
+        "res_no": "167"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/hazi-biryani-celebration-caterers-khalpara/info",
+        "res_id": "18939058",
+        "res_cuisine": "North Indian,Mughlai",
+        "res_city": "Siliguri",
+        "res_name": "Hazi Biryani & Celebration Caterers",
+        "res_no": "168"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/nimki-express-janta-nagar/info",
+        "res_id": "19008217",
+        "res_cuisine": "Fast Food",
+        "res_city": "Siliguri",
+        "res_name": "Nimki Express",
+        "res_no": "169"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/reshu-ki-rasoi-patiram-jote/info",
+        "res_id": "19008625",
+        "res_cuisine": "Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Reshu Ki Rasoi",
+        "res_no": "170"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/eats-treats-khalpara/info",
+        "res_id": "18874847",
+        "res_cuisine": "North Indian,Bengali,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Eats & Treats",
+        "res_no": "171"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/traditional-food-centre-khalpara/info",
+        "res_id": "18932071",
+        "res_cuisine": "North Indian,Bengali,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Traditional Food Centre",
+        "res_no": "172"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/triple-8-2-pradhan-nagar/info",
+        "res_id": "19027590",
+        "res_cuisine": "Thai,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Triple 8",
+        "res_no": "173"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/rannaghar-khalpara/info",
+        "res_id": "18874842",
+        "res_cuisine": "North Indian",
+        "res_city": "Siliguri",
+        "res_name": "Rannaghar",
+        "res_no": "174"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/my-kitchen-khalpara/info",
+        "res_id": "19034984",
+        "res_cuisine": "Chinese,Bengali",
+        "res_city": "Siliguri",
+        "res_name": "My Kitchen",
+        "res_no": "175"
+    }, {
+        "res_url": "https://www.zomato.com/siliguri/priti-pradhan-nagar/info",
+        "res_id": "18919267",
+        "res_cuisine": "North Indian,Chinese",
+        "res_city": "Siliguri",
+        "res_name": "Priti",
+        "res_no": "176"
+    }
+]

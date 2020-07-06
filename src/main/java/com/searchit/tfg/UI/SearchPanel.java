@@ -175,11 +175,6 @@ public class SearchPanel extends JPanel{
             @Override
             public void keyPressed(KeyEvent e) {
                 setAdjusting(cbInput, true);
-//                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//                    if (cbInput.isPopupVisible()) {
-//                        e.setKeyCode(KeyEvent.VK_ENTER);
-//                    }
-//                }
                 if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN) {
                     e.setSource(cbInput);
                     cbInput.dispatchEvent(e);

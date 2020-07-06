@@ -22,7 +22,7 @@ public class Main{
     private static final SearchData searchData = new SearchData();
     private static final FlopTrie.FlopTrieNode flopTrieNode = new FlopTrie.FlopTrieNode();
 
-    private static final String JSONDataDirectory = "C:\\Users\\swastika\\Desktop\\Shared Projects\\Zomato Dataset\\Final JSON\\";
+    private static final String JSONDataDirectory = "src/main/resources/Final JSON/";
     private static String word;
     static MainWindow mainWindow = new MainWindow();
 
