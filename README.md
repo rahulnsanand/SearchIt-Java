@@ -45,7 +45,32 @@ Just clone the repository onto a folder of your choice by following these steps.
 
 Next, open IntelliJ and open the project.
 
+#### Build Configuration
+![Build Configuration](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/BuildImage.png)
+
+#### Welcome Screen
+![ReadMe](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/ReadMeWelcome.png)
+
+#### Run Main Method
+![Run Main](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/RunMainImage.png)
+
+#### Loading The FlopTrie and instances required.
+![LoadingPage](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/LoadingPageImage.png)
+
+#### DarkMode UI
+![SearchPage Dark](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/SearchPageDarkImage.png)
+
+#### LightMode UI
+![SearchPage Light](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/SearchPageLightImage.png)
+
+#### Searching Procedure, Type a restaurant name and hit enter. (Click is not supported, yet)
+![SearchProcess](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/SearchProcessImage.png)
+
+#### Search Result
+![SearchResult](https://github.com/theflopguy/SearchIt-Java/blob/master/gitHubImages/Search%20Result.png)
+
 Once the dependencies are automatically installed through Maven repo, Hope you have [Internet](), you can run the app by just simply clicking on "Run Main" option.
+
 ### Plugins
 
 Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
