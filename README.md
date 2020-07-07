@@ -16,7 +16,8 @@ The basic outline of what the app does is as follows:
 #### New Features!
 
   - You can now select a Dark Theme!
-  - [Downloading the API detail as a .json file is yet to come.]
+  - Downloading the API detail as a .json file is yet to come.
+  - Check Internet Connectivity at launch and during search, handled.
 
 
 #### Dependencies Used
