@@ -8,25 +8,49 @@ import com.searchit.tfg.ui.utils.ConsoleProgress;
 import com.searchit.tfg.floptrie.FlopTrie;
 import com.searchit.tfg.floptrie.UpdateSearchList;
 import com.searchit.tfg.floptrie.UpdateTrie;
+import com.searchit.tfg.ui.utils.JDialogProgressBar;
+import jdk.nashorn.internal.scripts.JD;
 
-import java.util.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class Main{
 
     private static final FlopTrie flopTrie = new FlopTrie();
     private static final SearchData searchData = new SearchData();
     private static final FlopTrie.FlopTrieNode flopTrieNode = new FlopTrie.FlopTrieNode();
-
+    private static final JDialogProgressBar jp = new JDialogProgressBar();
     private static final String JSONDataDirectory = "src/main/resources/Final JSON/";
-    private static String word;
+
     static MainWindow mainWindow = new MainWindow();
 
     public static void main(String[] args) {
         setupFrame();
         updateFlopTrie(JSONDataDirectory);
+        jp.start("Checking Internet", "Pinging");
+        jp.dpb.setIndeterminate(true);
         updateSearch();
+        jp.stop();
         SearchPanel searchPanel = new SearchPanel(searchData,mainWindow);
+        checkInternet();
         mainWindow.switchToSearchPanel(searchPanel);
+    }
+
+    private static void checkInternet() {
+        try {
+            URL url = new URL("http://www.google.com");
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            System.out.println("Internet is connected");
+        } catch (MalformedURLException e) {
+            System.out.println("Internet is not connected");
+            System.exit(102);
+        } catch (IOException e) {
+            System.out.println("Internet is not connected");
+            System.exit(101);
+        }
     }
 
     public static void setupFrame(){
@@ -46,17 +70,6 @@ public class Main{
         mainWindow.updateProgressBar.setMinimum(0);
         mainWindow.updateProgressBar.setMaximum(100);
         mainWindow.updateProgressBar.setValue(100);
-    }
-
-    public static void getInput(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter search >>");
-        word = sc.next();
-    }
-
-    public static void search(String word){
-        flopTrie.getSuggestions(flopTrieNode,word, 2);
-        //flopTrie.showSuggestion(2,getDataPOJO);
     }
 
     public static void updateFlopTrie(String dir){

@@ -1,97 +1,51 @@
 package com.searchit.tfg.testingPackage;
 
-import com.google.api.gax.paging.Page;
-import com.google.auth.Credentials;
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.storage.*;
+import java.awt.*;
 
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.WritableByteChannel;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
+import javax.swing.*;
 
 public class test {
-    private Storage storage;
-    private Bucket bucket;
-
-    private test(String pathToConfig, String projectId) throws IOException {
-        Credentials credentials = GoogleCredentials.fromStream(new FileInputStream(pathToConfig));
-        storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId(projectId).build().getService();
-    }
-    private Bucket getBucket(String bucketName) {
-        bucket = storage.get(bucketName);
-        if (bucket == null) {
-            System.out.println("Creating new bucket.");
-            bucket = storage.create(BucketInfo.of(bucketName));
-        }
-        return bucket;
-    }
-
-    // Save a string to a blob
-    private BlobId saveString(String blobName, String value, Bucket bucket) {
-        byte[] bytes = value.getBytes(UTF_8);
-        Blob blob = bucket.create(blobName, bytes);
-        return blob.getBlobId();
-    }
 
 
-    // get a blob by id
-    private String getString(BlobId blobId) {
-        Blob blob = storage.get(blobId);
-        return new String(blob.getContent());
-    }
+    public static void main(String[] args) {
+        JFrame parentFrame = new JFrame();
+        parentFrame.setSize(500, 150);
+        JLabel jl = new JLabel();
+        jl.setText("Count : 0");
 
+        parentFrame.add(BorderLayout.CENTER, jl);
+        parentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    // get a blob by name
-    private String getString(String name) {
-        Page<Blob> blobs = bucket.list();
-        for (Blob blob: blobs.getValues()) {
-            if (name.equals(blob.getName())) {
-                return new String(blob.getContent());
+        parentFrame.setVisible(true);
+        JDialog dlg = new JDialog(parentFrame, "Progress Dialog", true);
+        JProgressBar dpb = new JProgressBar(0, 500);
+        dlg.add(BorderLayout.CENTER, dpb);
+        dlg.add(BorderLayout.NORTH, new JLabel("Progress..."));
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dlg.setSize(300, 75);
+        dlg.setLocationRelativeTo(parentFrame);
+
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                dlg.setVisible(true);
+            }
+        });
+        t.start();
+        for (int i = 0; i <= 500; i++) {
+            dpb.setValue(i);
+            if(dpb.getValue() == 500){
+                dlg.setVisible(false);
+                System.exit(0);
+
+            }
+            try {
+                Thread.sleep(25);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        return "Blob not found";
-    }
-
-    // Update a blob
-    private void updateString(BlobId blobId, String newString) throws IOException {
-        Blob blob = storage.get(blobId);
-        if (blob != null) {
-            WritableByteChannel channel = blob.writer();
-            channel.write(ByteBuffer.wrap(newString.getBytes(UTF_8)));
-            channel.close();
-        }
-    }
-
-    public static void main(String[] args){
-
-
-        test googleCloudStorage = null;
-        try {
-            googleCloudStorage = new test("src/main/resources/google_auth.json", "baeldung-cloud-tutorial");
-
-            // Bucket require globally unique names, so you'll probably need to change this
-            Bucket bucket = googleCloudStorage.getBucket("baeldung-1-bucket");
-
-            // Save a simple string
-            BlobId blobId = googleCloudStorage.saveString("my-first-blob", "Hi there!", bucket);
-
-            // Get it by blob id this time
-            String value = googleCloudStorage.getString(blobId);
-
-
-            googleCloudStorage.updateString(blobId, "Bye now!");
-
-            // Get the string by blob name
-            value = googleCloudStorage.getString("my-first-blob");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+        dlg.setVisible(true);
 
     }
-
 }
+

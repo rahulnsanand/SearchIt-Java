@@ -1,5 +1,7 @@
 package com.searchit.tfg.ui;
 
+import com.searchit.tfg.testingPackage.test;
+import com.searchit.tfg.ui.utils.JDialogProgressBar;
 import com.searchit.tfg.ui.utils.ThumbnailRetrieve;
 import com.searchit.tfg.ui.searchElement.RetrieveMapsAPI;
 import com.searchit.tfg.ui.searchElement.SearchData;
@@ -7,8 +9,10 @@ import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
 import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 public class ResultsPanel extends JPanel {
 
@@ -74,6 +78,7 @@ public class ResultsPanel extends JPanel {
         }
         else if(statusID ==101){
             System.out.println("Couldn't connect to the website. Check internet speed.");
+            System.exit(101);
         }
         else if(statusID == 102){
             System.out.println("IOException occured");
@@ -118,6 +123,7 @@ public class ResultsPanel extends JPanel {
             ratingTextLabel.setForeground(new java.awt.Color(239, 239, 239));
             searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239));
             votesLabel.setForeground(new java.awt.Color(239, 239, 239));
+            addressLabel.setForeground(new java.awt.Color(239, 239, 239));
         }
         else{
             setBackground(new java.awt.Color(239, 239, 239, 255));
@@ -136,6 +142,7 @@ public class ResultsPanel extends JPanel {
             nameLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
             phoneLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
             ratingTextLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
+            addressLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
             searchItLogoLabel.setForeground(new java.awt.Color(239, 239, 239, 255));
             votesLabel.setForeground(new java.awt.Color(50, 50, 50, 255));
         }
@@ -466,5 +473,31 @@ public class ResultsPanel extends JPanel {
     }
 
     private void downloadAsJSON(ActionEvent actionEvent) {
+        JFileChooser c = new JFileChooser();
+        c.setSelectedFile(new File(zomato.getRestaurantName()+"-"+zomato.getRestaurantID()+".json"));
+        disableTF(c);
+        int rVal = c.showSaveDialog(this);
+        if (rVal == JFileChooser.APPROVE_OPTION) {
+            JDialogProgressBar jp = new JDialogProgressBar();
+            jp.start("Download Json", "Saving File");
+            jp.dpb.setIndeterminate(true);
+            c.setFileFilter(new FileNameExtensionFilter("json file","json"));
+            ZomatoAPISearch.getJsonObjectAsJson(c.getCurrentDirectory().toString()+"\\"+zomato.getRestaurantName()+"-"+c.getSelectedFile().getName());
+            jp.stop();
+        }
+    }
+
+    public static boolean disableTF(Container c) {
+        Component[] cmps = c.getComponents();
+        for (Component cmp : cmps) {
+            if (cmp instanceof JTextField) {
+                ((JTextField)cmp).setEnabled(false);
+                return true;
+            }
+            if (cmp instanceof Container) {
+                if(disableTF((Container) cmp)) return true;
+            }
+        }
+        return false;
     }
 }

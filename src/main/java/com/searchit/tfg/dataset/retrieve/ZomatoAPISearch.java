@@ -2,17 +2,23 @@ package com.searchit.tfg.dataset.retrieve;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minidev.json.JSONArray;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
+import java.net.URL;
+import java.net.UnknownHostException;
 
 public class ZomatoAPISearch {
 
     private int retry = 0;
     private int APIRetry = 0;
     private final String[] API_KEY = new String[3];
+    private static JsonObject jsonObject;
 
     public int getApiDetails(ZomatoWebOrder zomatoWebOrder, String res_id){
 
@@ -33,8 +39,8 @@ public class ZomatoAPISearch {
             if (getResponseCode(responseHTTP) == 200) {
                 try {
                     Reader reader = new InputStreamReader(Runtime.getRuntime().exec(url).getInputStream());
-                    JsonObject jsonObject = new JsonParser().parse(reader).getAsJsonObject();
-                    setDetails(jsonObject, zomatoWebOrder);
+                    jsonObject = new JsonParser().parse(reader).getAsJsonObject();
+                    setDetails(zomatoWebOrder);
                     return 1;
                 } catch (NullPointerException nullPointerException) {
                     return 100;
@@ -82,7 +88,7 @@ public class ZomatoAPISearch {
         }
     }
 
-    public void setDetails(JsonObject jsonObject, ZomatoWebOrder zomatoWebOrder){
+    public void setDetails(ZomatoWebOrder zomatoWebOrder){
         zomatoWebOrder.setRestaurantID(jsonObject.get("R").getAsJsonObject().get("res_id").toString());
         zomatoWebOrder.setThumbURL(jsonObject.get("thumb").toString());
         zomatoWebOrder.setAddress(jsonObject.get("location").getAsJsonObject().get("address").toString());
@@ -127,6 +133,19 @@ public class ZomatoAPISearch {
             return 102;
         }
     }
+
+    public static void getJsonObjectAsJson(String destination) {
+        FileWriter file = null;
+        try {
+            file = new FileWriter(destination);
+            file.write(jsonObject.toString());
+            file.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
     public static String getRegion(String res_id){
         String region = "";
         try {

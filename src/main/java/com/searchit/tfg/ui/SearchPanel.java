@@ -34,6 +34,7 @@ public class SearchPanel extends JPanel{
             switchThemeButton.setText("LightMode");
             switchThemeButton.setForeground(new java.awt.Color(31, 31, 31));
             searchTextField.setForeground(new java.awt.Color(31, 31, 31));
+            madeInIndia.setForeground(new java.awt.Color(239, 239, 239));
             currentTheme=1;
             darkTheme=0;
         }
@@ -44,6 +45,7 @@ public class SearchPanel extends JPanel{
             switchThemeButton.setText("DarkMode ");
             switchThemeButton.setForeground(new java.awt.Color(239, 239, 239));
             searchTextField.setForeground(new java.awt.Color(32, 32, 32));
+            madeInIndia.setForeground(new java.awt.Color(32, 32, 32));
             currentTheme=0;
             darkTheme=1;
         }
