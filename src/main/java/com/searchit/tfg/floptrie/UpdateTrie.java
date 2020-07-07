@@ -2,8 +2,8 @@ package com.searchit.tfg.floptrie;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.searchit.tfg.UI.MainWindow;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.searchit.tfg.ui.MainWindow;
+import com.searchit.tfg.ui.utils.ConsoleProgress;
 
 import java.io.File;
 import java.io.IOException;

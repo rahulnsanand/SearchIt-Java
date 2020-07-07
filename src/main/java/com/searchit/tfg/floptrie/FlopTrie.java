@@ -1,7 +1,5 @@
 package com.searchit.tfg.floptrie;
 
-import com.searchit.tfg.UI.MainWindow;
-
 import java.util.*;
 
 public class FlopTrie {

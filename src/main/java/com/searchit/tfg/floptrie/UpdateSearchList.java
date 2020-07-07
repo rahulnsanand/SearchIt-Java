@@ -1,7 +1,5 @@
 package com.searchit.tfg.floptrie;
 
-import com.searchit.tfg.UI.SearchElement.SearchData;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.searchit.tfg.ui.utils.ConsoleProgress;
 import net.minidev.json.JSONArray;
 
 import java.io.File;

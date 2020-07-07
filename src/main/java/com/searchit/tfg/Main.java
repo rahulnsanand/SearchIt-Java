@@ -1,19 +1,14 @@
 package com.searchit.tfg;
 
 
-import com.searchit.tfg.UI.ResultsPanel;
-import com.searchit.tfg.UI.SearchElement.SearchData;
-import com.searchit.tfg.dataset.retrieve.ZomatoAPISearch;
-import com.searchit.tfg.dataset.retrieve.ZomatoWebOrder;
-import com.searchit.tfg.UI.MainWindow;
-import com.searchit.tfg.UI.SearchPanel;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.searchit.tfg.ui.searchElement.SearchData;
+import com.searchit.tfg.ui.MainWindow;
+import com.searchit.tfg.ui.SearchPanel;
+import com.searchit.tfg.ui.utils.ConsoleProgress;
 import com.searchit.tfg.floptrie.FlopTrie;
-import com.searchit.tfg.floptrie.GetDataPOJO;
 import com.searchit.tfg.floptrie.UpdateSearchList;
 import com.searchit.tfg.floptrie.UpdateTrie;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main{

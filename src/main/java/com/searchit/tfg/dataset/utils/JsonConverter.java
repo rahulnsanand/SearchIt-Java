@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.searchit.tfg.UI.utils.ConsoleProgress;
+import com.searchit.tfg.ui.utils.ConsoleProgress;
 
 import java.io.File;
 import java.io.IOException;
